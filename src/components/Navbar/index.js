@@ -92,59 +92,93 @@ class Index extends React.Component {
             className={sideOpen ? "fixed" : "bb"}
           >
             <MDBSideNavNav>
-              <div className="logo">
-                <img src="/images/logo-colorido.png" alt="UniClub" />
+              <div className="logo pl-5 pt-3">
+                <img
+                  className={"pointer"}
+                  src="/images/logo-colorido.png"
+                  alt="Clube Unificar Logo"
+                  style={{
+                    cursor: "pointer"
+                  }}
+                  onClick={() => Router.push('/')}
+                />
               </div>
 
               <MDBSideNavCat
-                name="Campanhas"
-                id="submit-blog-cat"
-                icon="calendar"
+                name="Classificados"
+                id="categoria-classificados"
+                icon="handshake"
               >
-                <MDBSideNavItem onClick={() => Router.push("/")}>
-                  Todas as campanhas
+                <MDBSideNavItem>
+                  Ver anúncios
                 </MDBSideNavItem>
-                <MDBSideNavItem
-                  onClick={() =>
-                    Router.push(
-                      "/campanhas/[slug]",
-                      "/campanhas/pedidos-recebidos"
-                    )
-                  }
-                >
-                  Pedidos Recentes
-                </MDBSideNavItem>
-              </MDBSideNavCat>
-              <MDBSideNavCat
-                name="Produtos"
-                id="submit-blog-cat"
-                icon="pump-medical"
-              >
-                <MDBSideNavItem onClick={() => Router.push("/produtos")}>
-                  Todos os produtos
+                <MDBSideNavItem>
+                  Anunciar
                 </MDBSideNavItem>
               </MDBSideNavCat>
 
               <MDBSideNavCat
-                name="Instruction"
-                id="instruction-cat"
-                icon="hand-pointer"
+                name="Campanhas"
+                id="categoria-campanhas"
+                icon="store"
               >
-                <MDBSideNavItem>For bloggers</MDBSideNavItem>
-                <MDBSideNavItem>For authors</MDBSideNavItem>
+                <MDBSideNavItem>
+                  Ver campanhas
+                </MDBSideNavItem>
+                <MDBSideNavItem>
+                  Pedidos Recentes
+                </MDBSideNavItem>
               </MDBSideNavCat>
-              <MDBSideNavCat name="About" id="about-cat" icon="eye">
-                <MDBSideNavItem>Instruction</MDBSideNavItem>
-                <MDBSideNavItem>Monthly meetings</MDBSideNavItem>
+
+              <MDBSideNavCat
+                name="Cursos"
+                id="categoria-cursos"
+                icon="book-open"
+              >
+                <MDBSideNavItem>
+                  Ver cursos
+                </MDBSideNavItem>
+                <MDBSideNavItem>
+                  Meus Cursos
+                </MDBSideNavItem>
+                <MDBSideNavItem>
+                  Enviar curso
+                </MDBSideNavItem>
+              </MDBSideNavCat>
+
+              <MDBSideNavCat
+                name="Consulta paciente"
+                id="categoria-consulta-paciente"
+                icon="user-shield"
+              >
+                <MDBSideNavItem onClick={() => Router.push("/admin/campanhas")}>
+                  Campanhas
+                </MDBSideNavItem>
+                <MDBSideNavItem onClick={() => Router.push("/produtos")}>
+                  Produtos
+                </MDBSideNavItem>
               </MDBSideNavCat>
 
               <MDBSideNavCat
                 name={this.state.hits && this.state.hits.funcao}
                 id="contact-me-cat"
-                icon="envelope"
+                icon="tachometer-alt"
               >
-                <MDBSideNavItem>FAQ</MDBSideNavItem>
-                <MDBSideNavItem>Write a message</MDBSideNavItem>
+                <MDBSideNavItem onClick={() => Router.push("/admin/campanhas")}>
+                  Campanhas
+                </MDBSideNavItem>
+                <MDBSideNavItem onClick={() => Router.push("/admin/produtos")}>
+                  Produtos
+                </MDBSideNavItem>
+                <MDBSideNavItem onClick={() => Router.push("/admin/produtos/categorias")}>
+                  Produtos Categorias
+                </MDBSideNavItem>
+                <MDBSideNavItem onClick={() => Router.push("/admin/produtos/fornecedores")}>
+                  Fornecedores
+                </MDBSideNavItem>
+                <MDBSideNavItem onClick={() => Router.push("/admin/usuarios")}>
+                  Usuários
+                </MDBSideNavItem>
               </MDBSideNavCat>
             </MDBSideNavNav>
           </MDBSideNav>
