@@ -2,24 +2,22 @@ import { useEffect, useState, Component } from "react";
 
 import { MDBContainer } from "mdbreact";
 
-import jwt from "jwt-decode";
-
 import Layout from "~/components/layout";
 import BaseTableHeader from "~/components/BaseTable/Header";
 import BaseTableBody from "~/components/BaseTable/Body";
+import useAuth from "../../../context/auth";
+import Router from 'next/router';
 
-function pages() {
-  const [infosUser, setInfosUser] = useState(null);
-  const [totalResults, setTotalResults] = useState(0);
+export default function pages() {
+  const { isAdmin } = useAuth();
 
   useEffect(() => {
-    const token = localStorage.getItem("auth-jwt");
+    if (!isAdmin) {
+      Router.push('/');
+    }
+  }, [isAdmin]);
 
-    let decoded = jwt(token);
-    console.log(decoded.data);
-    setInfosUser(decoded.data);
-    localStorage.setItem("infos-user", JSON.stringify(decoded.data));
-  }, []);
+  const [totalResults, setTotalResults] = useState(0);
 
   const handleUpdateTotalResults = (totalResults) => {
       if (totalResults === null) {
@@ -56,8 +54,8 @@ function pages() {
 
   return (
     <>
-      {infosUser && (
-        <Layout user={infosUser.nome}>
+    {isAdmin && (
+      <Layout>
           <MDBContainer fluid className="mt-5">
             <BaseTableHeader
               title="Produtos"
@@ -75,9 +73,7 @@ function pages() {
             handleUpdateTotalResults={handleUpdateTotalResults}
           />
         </Layout>
-      )}
+    )}
     </>
   );
 }
-
-export default pages;
