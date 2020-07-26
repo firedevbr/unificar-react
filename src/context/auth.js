@@ -1,6 +1,7 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import Router, { useRouter } from 'next/router';
+import DefaultErrorPage from 'next/error';
 
 import API from '../services/api';
 
@@ -29,12 +30,10 @@ export const AuthProvider = ({children}) => {
   const login = async (cpf, senha) => {
     const { token } = await API.post('session',  { cpf, senha });
     if (token) {
-      console.log("GOT TOKEN!");
       Cookies.set('auth-jwt', token);
       API.defaults.headers.Authorization = `Bearer ${token}`;
       const { data: data } = await API.get('usuarios/eu');
       setUser(data);
-      console.log("Got user", user);
     }
   };
 
@@ -45,7 +44,14 @@ export const AuthProvider = ({children}) => {
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated: !!user, user, login, loading, logout }}>
+    <AuthContext.Provider value={{
+      isAuthenticated: !!user,
+      isAdmin: user && user.funcao === 'admin',
+      user,
+      login,
+      loading,
+      logout
+    }}>
       {children}
     </AuthContext.Provider>
   )
@@ -53,7 +59,8 @@ export const AuthProvider = ({children}) => {
 };
 
 export default function useAuth() {
-    return useContext(AuthContext);
+    const authContext = useContext(AuthContext);
+    return authContext;
 }
 
 export function ProtectRoute(Component) {
@@ -63,9 +70,26 @@ export function ProtectRoute(Component) {
 
     useEffect(() => {
       if (!isAuthenticated && !loading) {
-        Router.push('/login');
+        router.push('/login');
       }
     }, [loading, isAuthenticated]);
+
+    return (<Component {...arguments} />)
+  }
+}
+
+export function ProtectAdminRoute(Component) {
+  return () => {
+    const { isAuthenticated, loading, isAdmin } = useAuth();
+    const router = useRouter();
+
+    useEffect(() => {
+      if (!isAuthenticated && !loading) {
+        router.push('/login');
+      } else if (!isAdmin) {
+        router.push('/');
+      }
+    }, [loading, isAuthenticated, isAdmin]);
 
     return (<Component {...arguments} />)
   }
