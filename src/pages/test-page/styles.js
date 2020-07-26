@@ -5,6 +5,11 @@ const CampaignList = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 20px;
+
+  img.img-small {
+    height: 170px;
+    width: 256px;
+  }
 `
 
 export {CampaignList}

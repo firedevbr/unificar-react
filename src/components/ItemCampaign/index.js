@@ -5,11 +5,24 @@ import { MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol }
 import ProgressBar from '~/components/ProgressBarCampaign'
 import { LinkCol } from './styles'
 
-const ItemCampaign = ({ nome, valor, descricao, quantidade_pedidos_necessarios: total, quantidade_pedidos_confirmados: reservados }) => {
+const ItemCampaign = ({
+  nome,
+  valor,
+  descricao,
+  quantidade_pedidos_necessarios: total,
+  quantidade_pedidos_confirmados: reservados,
+  imagens
+  }) => {
+    let imgPath = '/assets/images/2020/07/22050670c8c11ee86d31cabbc94fc8b7.png'
+    const imgIndex = imagens.findIndex(img => img.imagem_principal === true)
+    if (imgIndex > -1) {
+      imgPath = imagens[imgIndex].caminho
+    }
+
   return (
     <LinkCol onClick={() => Router.push("/reservar-pedido")}>
       <MDBCard style={{ width: "16rem" }}>
-        <MDBCardImage className="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" waves />
+        <MDBCardImage className="img-fluid img-small" src={`http://localhost${imgPath}`} waves/>
         <MDBCardBody>
           <MDBCardTitle className="text-truncate">{nome}</MDBCardTitle>
           <strong>Progresso: {reservados}/{total}</strong>
