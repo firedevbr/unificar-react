@@ -24,8 +24,7 @@ import useAuth from "../../context/auth";
 
 const NavBar = ({children}) => {
 
-  const { user, loading } = useAuth();
-  console.log(user);
+  const { user, loading, isAdmin } = useAuth();
 
   if (typeof window === "undefined") {
     global.window = {};
@@ -137,16 +136,16 @@ const NavBar = ({children}) => {
               id="categoria-consulta-paciente"
               icon="user-shield"
             >
-              <MDBSideNavItem onClick={() => Router.push("/admin/campanhas")}>
-                Campanhas
+              <MDBSideNavItem>
+                Consultar
               </MDBSideNavItem>
-              <MDBSideNavItem onClick={() => Router.push("/produtos")}>
-                Produtos
+              <MDBSideNavItem>
+                Cadastrar
               </MDBSideNavItem>
             </MDBSideNavCat>
 
             <MDBSideNavCat
-              className={user && user.funcao !== 'admin' ? 'd-none' : ''}
+              className={!isAdmin ? 'd-none' : ''}
               name={"Admin"}
               id="categoria-admin"
               icon="tachometer-alt"
