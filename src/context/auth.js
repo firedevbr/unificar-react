@@ -77,20 +77,3 @@ export function ProtectRoute(Component) {
     return (<Component {...arguments} />)
   }
 }
-
-export function ProtectAdminRoute(Component) {
-  return () => {
-    const { isAuthenticated, loading, isAdmin } = useAuth();
-    const router = useRouter();
-
-    useEffect(() => {
-      if (!isAuthenticated && !loading) {
-        router.push('/login');
-      } else if (!isAdmin) {
-        router.push('/');
-      }
-    }, [loading, isAuthenticated, isAdmin]);
-
-    return (<Component {...arguments} />)
-  }
-}
