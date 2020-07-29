@@ -6,6 +6,7 @@ import ProgressBar from '~/components/ProgressBarCampaign'
 import { LinkCol } from './styles'
 
 const ItemCampaign = ({
+  id,
   nome,
   valor,
   descricao,
@@ -20,7 +21,7 @@ const ItemCampaign = ({
     }
 
   return (
-    <LinkCol onClick={() => Router.push("/reservar-pedido")}>
+    <LinkCol onClick={() => Router.push(`/reservar-pedido?campanha=${id}`)}>
       <MDBCard style={{ width: "16rem" }}>
         <MDBCardImage className="img-fluid img-small" src={`http://localhost${imgPath}`} waves/>
         <MDBCardBody>
