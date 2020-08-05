@@ -41,7 +41,7 @@ class TestPage extends Component {
         <MDBContainer fluid>
           <MDBRow>
             <MDBCol sm="12" className="ml-md-5">
-              <Title className="my-5 text-center">Test Page</Title>
+              <Title className="my-5 text-center">Campanhas</Title>
             </MDBCol>
             <MDBCol sm="12" className="ml-md-5">
               <CampaignList>

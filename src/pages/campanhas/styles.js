@@ -4,12 +4,9 @@ const CampaignList = styled.div`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   margin-bottom: 20px;
-
-  img.img-small {
-    height: 170px;
-    width: 256px;
-  }
+  padding: 0 20px;
 `
 
 export {CampaignList}
