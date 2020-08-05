@@ -35,7 +35,7 @@ const BasicTable = ({resourceEndpoint, columns, handleUpdateTotalResults}) => {
 
   return (
     <>
-      <MDBContainer fluid style={{ height: 2000 }}>
+      <MDBContainer fluid>
 
         <MDBModal
           isOpen={deleteModal}

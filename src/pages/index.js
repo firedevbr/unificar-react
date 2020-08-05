@@ -1,7 +1,10 @@
 import Layout from "~/components/layout";
+import { ProtectRoute } from "../context/auth";
 
-export default () => {
+function Index() {
   return (
     <Layout/>
   );
 }
+
+export default ProtectRoute(Index);

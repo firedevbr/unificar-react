@@ -2,36 +2,76 @@ import { useEffect, useState } from "react";
 
 import { MDBContainer } from "mdbreact";
 
-import jwt from "jwt-decode";
-
 import Layout from "~/components/layout";
-import HeaderCampaign from "~/components/HeaderCampaign";
-import TableCampaign from "~/components/TableCampaign";
+import BaseTableHeader from "~/components/BaseTable/Header";
+import BaseTableBody from "~/components/BaseTable/Body";
+import useAuth from "../../../context/auth";
+import Router from "next/router";
 
-function pages() {
-  const [infosUser, setInfosUser] = useState(null);
+export default function pages() {
+  const { isAdmin } = useAuth();
 
   useEffect(() => {
-    const token = localStorage.getItem("auth-jwt");
+    if (!isAdmin) {
+      Router.push('/');
+    }
+  }, [isAdmin]);
 
-    var decoded = jwt(token);
-    console.log(decoded.data);
-    setInfosUser(decoded.data);
-    localStorage.setItem("infos-user", JSON.stringify(decoded.data));
-  }, []);
+  const [totalResults, setTotalResults] = useState(0);
+
+  const handleUpdateTotalResults = (totalResults) => {
+    if (totalResults === null) {
+      setTotalResults(0);
+    }
+
+    setTotalResults(totalResults);
+  };
+
+  const columns = [
+    {
+      label: 'Campanha',
+      field: 'nome'
+    },
+    {
+      label: 'Valor',
+      field: 'valor'
+    },
+    {
+      label: 'Data Início',
+      field: 'data_inicio'
+    },
+    {
+      label: 'Data Limite',
+      field: 'data_fim'
+    },
+    {
+      label: 'Status',
+      field: 'status'
+    }
+  ];
 
   return (
     <>
-      {infosUser && (
-        <Layout user={infosUser.nome}>
+      {isAdmin && (
+        <Layout>
           <MDBContainer fluid className="mt-5">
-            <HeaderCampaign title="Todas as campanhas" actions={true} search={true} />
+            <BaseTableHeader
+              title="Campanhas"
+              actions={false}
+              total={totalResults}
+              newResource={{
+                linkTo: "/admin/nova-campanha",
+                label: "Nova Campanha"
+              }}
+            />
           </MDBContainer>
-          <TableCampaign />
+          <BaseTableBody
+            resourceEndpoint={"campanhas"}
+            columns={columns}
+            handleUpdateTotalResults={handleUpdateTotalResults}
+          />
         </Layout>
       )}
     </>
   );
 }
-
-export default pages;
