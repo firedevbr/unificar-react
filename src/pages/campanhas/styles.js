@@ -8,5 +8,9 @@ const CampaignList = styled.div`
   margin-bottom: 20px;
   padding: 0 20px;
 `
-
-export {CampaignList}
+const Divider = styled.div`
+  width: 90%;
+  margin: 20px auto;
+  border-top: 1px solid #f5f5f5;
+`
+export {CampaignList, Divider}

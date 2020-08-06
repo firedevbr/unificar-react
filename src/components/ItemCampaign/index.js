@@ -25,7 +25,7 @@ const ItemCampaign = ({
       <Progress>Progresso: {reservados}/{total}</Progress>
       <ProgressBar total={total} atual={reservados} ></ProgressBar>
       <ItemFooter>
-        <Price className="green-text">R$ {valor.toFixed(2)}</Price>
+        <Price>R$ {valor.toFixed(2)}</Price>
         <MDBBtn color="primary" onClick={() => Router.push(`/reservar-pedido?campanha=${id}`)}>Reservar</MDBBtn>
       </ItemFooter>
     </ItemWrapper>

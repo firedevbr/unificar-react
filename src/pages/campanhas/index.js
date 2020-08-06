@@ -5,7 +5,9 @@ import Layout from '~/components/layout'
 import Title from '~/components/Title'
 import ItemCampaign from '~/components/ItemCampaign'
 import API from '../../services/api'
-import { CampaignList } from './styles'
+import { CampaignList, Divider } from './styles'
+
+import CollpaseFilter from '~/components/CollapseFilters'
 
 class TestPage extends Component {
 
@@ -40,8 +42,14 @@ class TestPage extends Component {
       <Layout>
         <MDBContainer fluid>
           <MDBRow>
-            <MDBCol sm="12" className="ml-md-5">
-              <Title className="my-5 text-center">Campanhas</Title>
+            <MDBCol sm="5" className="ml-md-5">
+              <Title className="my-3 text-center">Campanhas</Title>
+            </MDBCol>
+            <MDBCol sm="5">
+              <CollpaseFilter />
+            </MDBCol>
+            <MDBCol sm="12" className="mb-4 ml-md-5">
+              <Divider />
             </MDBCol>
             <MDBCol sm="12" className="ml-md-5">
               <CampaignList>
