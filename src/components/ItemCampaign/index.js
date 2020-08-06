@@ -1,8 +1,8 @@
 import React from 'react'
 import Router from 'next/router'
-
+import { MDBBtn } from 'mdbreact'
 import ProgressBar from '~/components/ProgressBarCampaign'
-import { ItemWrapper, Price, Progress } from './styles'
+import { ItemWrapper, Price, Progress, ItemFooter } from './styles'
 
 const ItemCampaign = ({
   id,
@@ -19,13 +19,16 @@ const ItemCampaign = ({
   }
 
   return (
-      <ItemWrapper onClick={() => Router.push(`/reservar-pedido?campanha=${id}`)}>
-        <img className="img-fluid" src={`http://localhost${imgPath}`} />
-        <h3 className="text-truncate">{nome}</h3>
-        <Progress>Progresso: {reservados}/{total}</Progress>
-        <ProgressBar total={total} atual={reservados} ></ProgressBar>
+    <ItemWrapper>
+      <img className="img-fluid" src={`http://localhost${imgPath}`} />
+      <h3 className="text-truncate">{nome}</h3>
+      <Progress>Progresso: {reservados}/{total}</Progress>
+      <ProgressBar total={total} atual={reservados} ></ProgressBar>
+      <ItemFooter>
         <Price className="green-text">R$ {valor.toFixed(2)}</Price>
-      </ItemWrapper>
+        <MDBBtn color="primary" onClick={() => Router.push(`/reservar-pedido?campanha=${id}`)}>Reservar</MDBBtn>
+      </ItemFooter>
+    </ItemWrapper>
   )
 }
 
