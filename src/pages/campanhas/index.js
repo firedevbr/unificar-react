@@ -8,6 +8,7 @@ import API from '../../services/api'
 import { CampaignList, Divider } from './styles'
 
 import CollpaseFilter from '~/components/CollapseFilters'
+import CampaignContext from '~/context/campaign'
 
 class TestPage extends Component {
 
@@ -41,25 +42,28 @@ class TestPage extends Component {
     return (
       <Layout>
         <MDBContainer fluid>
-          <MDBRow>
-            <MDBCol sm="5" className="ml-md-5">
-              <Title className="my-3 text-center">Campanhas</Title>
-            </MDBCol>
-            <MDBCol sm="5">
-              <CollpaseFilter />
-            </MDBCol>
-            <MDBCol sm="12" className="mb-4 ml-md-5">
-              <Divider />
-            </MDBCol>
-            <MDBCol sm="12" className="ml-md-5">
-              <CampaignList>
-                {campaigns.map((campaign) => (
-                  <ItemCampaign key={campaign.id} {...campaign}></ItemCampaign>
-                ))
-                }
-              </CampaignList>
-            </MDBCol>
-          </MDBRow>
+          <CampaignContext.Provider
+            value={{ campaigns: this.state.campaigns }} >
+            <MDBRow>
+              <MDBCol sm="5" className="ml-md-5">
+                <Title className="my-3 text-center">Campanhas</Title>
+              </MDBCol>
+              <MDBCol sm="5">
+                <CollpaseFilter />
+              </MDBCol>
+              <MDBCol sm="12" className="mb-4 ml-md-5">
+                <Divider />
+              </MDBCol>
+              <MDBCol sm="12" className="ml-md-5">
+                <CampaignList>
+                  {campaigns.map((campaign) => (
+                    <ItemCampaign key={campaign.id} {...campaign}></ItemCampaign>
+                  ))
+                  }
+                </CampaignList>
+              </MDBCol>
+            </MDBRow>
+          </CampaignContext.Provider>
         </MDBContainer>
       </Layout>
     )
