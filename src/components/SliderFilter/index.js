@@ -1,21 +1,26 @@
 import React from "react";
 import { MDBRangeInput, MDBRow, MDBContainer } from "mdbreact";
 
-const SliderFilter = () => {
-    return (
-      <MDBContainer>
-        <MDBRow className="mt-5">
-          <span className="font-weight-bold mr-2">0%</span>
+import {SliderWrapper} from './styles'
+
+const SliderFilter = ({ name }) => {
+  return (
+    <MDBContainer>
+      <SliderWrapper>
+        <MDBRow>
+          <p>{name}</p>
+          <span className="mr-2">0%</span>
           <MDBRangeInput
             min={0}
             max={100}
-            value={50}
-            formClassName="w-50"
+            value={0}
+            formClassName="w-25"
           />
-          <span className="font-weight-bold ml-2">100%</span>
+          <span className="ml-2">100%</span>
         </MDBRow>
-      </MDBContainer>
-    );
+      </SliderWrapper>
+    </MDBContainer>
+  );
 }
 
 export default SliderFilter;

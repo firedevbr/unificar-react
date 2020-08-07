@@ -23,7 +23,7 @@ class CollpaseFilter extends Component {
           <MDBIcon icon="sliders-h" /> Filtrar
         </IconButton>
         <MDBCollapse id="filtersCollapse" isOpen={this.state.collapseID}>
-          <SliderFilter/>
+          <SliderFilter name={'Progresso:'}/>
         </MDBCollapse>
       </>
     );
