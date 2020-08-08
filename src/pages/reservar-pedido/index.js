@@ -1,10 +1,14 @@
-import { MDBContainer } from 'mdbreact'
+import { MDBContainer, MDBRow, MDBCol } from 'mdbreact'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+
 
 import Layout from '~/components/layout'
 import Title from '~/components/Title'
 import API from '~/services/api'
+import ProductGallery from '~/components/ProductGallery'
+import CampaignInfos from '~/components/CampaignInfos'
+import ProductTabs from '~/components/ProductTabs'
 
 
 const getCampaign = async (campaignId) => {
@@ -34,12 +38,27 @@ const ReservarPedido = () => {
       })
     }
   })
+
   return (
     <Layout>
       <MDBContainer fluid className="mt-5">
         <Title className="my-5 text-center">Reservar Pedido</Title>
-        <h2>{campanha.nome}</h2>
       </MDBContainer>
+      <MDBRow>
+        <MDBContainer fluid className='ml-5'>
+          <MDBRow>
+            <MDBCol size='12' md="6" lg="7">
+              <ProductGallery />
+            </MDBCol>
+            <MDBCol size='12' md="6" lg="5">
+              <CampaignInfos campanha={campanha} />
+            </MDBCol>
+          </MDBRow>
+        </MDBContainer>
+          <MDBContainer fluid className="ml-5">
+            <ProductTabs />
+          </MDBContainer>
+      </MDBRow>
     </Layout>
   )
 }

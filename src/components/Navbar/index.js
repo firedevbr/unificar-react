@@ -107,7 +107,7 @@ const NavBar = ({children}) => {
               id="categoria-campanhas"
               icon="store"
             >
-              <MDBSideNavItem>
+              <MDBSideNavItem onClick={() => Router.push("/campanhas")}>
                 Ver campanhas
               </MDBSideNavItem>
               <MDBSideNavItem>

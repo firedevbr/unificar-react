@@ -5,8 +5,8 @@ import { SliderWrapper } from './styles'
 import CampaignContext from '~/context/campaign'
 import { getProgressPercent } from '~/utils/utils'
 
-const applyFilters = (progress, {campaigns, updateCampaignsList}) => {
-  const filteredCampaigns = campaigns.filter( (item) => {
+const applyFilters = (progress, { campaigns, updateCampaignsList }) => {
+  const filteredCampaigns = campaigns.filter((item) => {
     const itemProgress = getProgressPercent(
       item.quantidade_pedidos_confirmados,
       item.quantidade_pedidos_necessarios
@@ -16,7 +16,7 @@ const applyFilters = (progress, {campaigns, updateCampaignsList}) => {
   updateCampaignsList(filteredCampaigns)
 }
 
-const clearFilters = ({campaigns, updateCampaignsList}) => {
+const clearFilters = ({ campaigns, updateCampaignsList }) => {
   updateCampaignsList(campaigns)
 }
 
