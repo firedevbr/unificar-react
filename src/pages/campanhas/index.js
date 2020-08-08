@@ -14,6 +14,11 @@ class TestPage extends Component {
 
   state = {
     campaigns: [],
+    filteredCampaigns: []
+  }
+
+  updateCampaignsList = (campaigns) => {
+    this.setState({ filteredCampaigns: campaigns })
   }
 
   async componentDidMount() {
@@ -29,7 +34,10 @@ class TestPage extends Component {
     try {
       const res = await API.get('/campanhas', config)
       if (res.status === 200) {
-        this.setState({ campaigns: res.data.results || [] })
+        this.setState({
+          campaigns: res.data.results || [],
+          filteredCampaigns : res.data.results || []
+        })
       }
     } catch (e) {
       console.log(`deu ruim ${e}`)
@@ -37,13 +45,13 @@ class TestPage extends Component {
   }
 
   render() {
-    const { campaigns } = this.state
+    const { filteredCampaigns } = this.state
 
     return (
       <Layout>
         <MDBContainer fluid>
           <CampaignContext.Provider
-            value={{ campaigns: this.state.campaigns }} >
+            value={{ campaigns: this.state.campaigns, updateCampaignsList: this.updateCampaignsList }} >
             <MDBRow>
               <MDBCol sm="5" className="ml-md-5">
                 <Title className="my-3 text-center">Campanhas</Title>
@@ -56,7 +64,7 @@ class TestPage extends Component {
               </MDBCol>
               <MDBCol sm="12" className="ml-md-5">
                 <CampaignList>
-                  {campaigns.map((campaign) => (
+                  {filteredCampaigns.map((campaign) => (
                     <ItemCampaign key={campaign.id} {...campaign}></ItemCampaign>
                   ))
                   }

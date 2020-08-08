@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const ItemWrapper = styled.div`
-  margin: 0px 10px 40px;
+  margin: 0px 50px 40px;
   width: 280px;
   -webkit-font-smoothing: antialiased !important;
 
@@ -14,6 +14,10 @@ const ItemWrapper = styled.div`
     font-size: 18px;
     font-weight: 600;
     margin: 10px 0;
+  }
+
+  @media(max-width: 768px) {
+    margin: 0px 0px 40px;
   }
 `
 

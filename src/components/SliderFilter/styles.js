@@ -49,6 +49,10 @@ const SliderWrapper = styled.div`
     }
   }
 
+  @media(max-width: 768px) {
+    width: 100%;
+  }
+
   .range-field input[type="range"]+.thumb {
     background-color: #4057e3;
     display: none;  /* @TODO está com bug pra exibir o valor na tag acima do range, coloquei none pra não exibir */
