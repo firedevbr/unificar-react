@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import Navbar from "./Navbar";
 import { MDBToastContainer as ToastContainer } from 'mdbreact';
 

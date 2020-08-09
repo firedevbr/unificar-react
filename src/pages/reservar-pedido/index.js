@@ -33,9 +33,11 @@ const ReservarPedido = () => {
 
   useEffect(() => {
     if (query.campanha) {
-      getCampaign(query.campanha).then((campanha) => {
-        setCampanha(campanha)
-      })
+      if (!campanha.id) {
+        getCampaign(query.campanha).then((campanha) => {
+          setCampanha(campanha)
+        })
+      }
     }
   })
 
