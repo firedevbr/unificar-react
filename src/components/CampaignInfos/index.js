@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { differenceInDays, parseISO } from 'date-fns'
+import CurrencyFormat from 'react-currency-format'
 
 import { CampaignInfos } from './styles'
 
@@ -31,9 +32,9 @@ const ProductInfo = ({ campanha }) => {
       <div className='price-product'>
         <div className='price-product__left'>
           <div>
-            <span>R$ 350,99</span>
+            <span>R$ 600,00</span>
             <p>
-              <span>R$</span> 304,50
+              <span>R$</span> <CurrencyFormat decimalScale={2} fixedDecimalScale={true} displayType={'text'} value={campanha.valor} thousandSeparator={'.'} decimalSeparator={','} />
             </p>
           </div>
         </div>
