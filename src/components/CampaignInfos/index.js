@@ -34,7 +34,8 @@ const ProductInfo = ({ campanha }) => {
           <div>
             <span>R$ 600,00</span>
             <p>
-              <span>R$</span> <CurrencyFormat decimalScale={2} fixedDecimalScale={true} displayType={'text'} value={campanha.valor} thousandSeparator={'.'} decimalSeparator={','} />
+              <span>R$  </span>
+              <CurrencyFormat decimalScale={2} fixedDecimalScale={true} displayType={'text'} value={campanha.valor} thousandSeparator={'.'} decimalSeparator={','} />
             </p>
           </div>
         </div>

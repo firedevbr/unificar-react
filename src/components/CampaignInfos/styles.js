@@ -45,6 +45,11 @@ const CampaignInfos = styled.div`
           color: #ffaa2b;
           font-size: 1.4rem;
         }
+
+        span + span {
+          font-size: 2.6rem;
+          font-weight: bold;
+        }
       }
     }
 

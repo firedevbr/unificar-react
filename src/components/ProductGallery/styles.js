@@ -4,6 +4,7 @@ const GalleryProduct = styled.div`
 
   .slide-container {
     height: 460px;
+    padding-top: 20px;
 
     .slide {
       height: 90%;
@@ -45,7 +46,7 @@ const GalleryProduct = styled.div`
   }
 
   .thumb-wrapper {
-    height: 400px;
+    max-height: 415px;
     overflow-y: auto;
 
     &::-webkit-scrollbar {

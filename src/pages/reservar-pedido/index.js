@@ -9,6 +9,7 @@ import API from '~/services/api'
 import ProductGallery from '~/components/ProductGallery'
 import CampaignInfos from '~/components/CampaignInfos'
 import ProductTabs from '~/components/ProductTabs'
+import Campanha from '../nova-campanha'
 
 
 const getCampaign = async (campaignId) => {
@@ -50,7 +51,7 @@ const ReservarPedido = () => {
         <MDBContainer fluid className='ml-5'>
           <MDBRow>
             <MDBCol size='12' md="6" lg="7">
-              <ProductGallery />
+              {campanha && <ProductGallery slides={campanha.imagens} />}
             </MDBCol>
             <MDBCol size='12' md="6" lg="5">
               <CampaignInfos campanha={campanha} />
