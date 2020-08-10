@@ -47,7 +47,7 @@ const ReservarPedido = () => {
         <Title className="my-5 py-3 text-center title-orange">Reservar Pedido</Title>
       </MDBContainer>
       <MDBRow>
-        <MDBContainer fluid className='ml-5'>
+        <MDBContainer fluid className='ml-md-5 ml-lg-5'>
           <MDBRow>
             {
               !campanha ? (
@@ -68,7 +68,7 @@ const ReservarPedido = () => {
             }
           </MDBRow>
         </MDBContainer>
-        <MDBContainer fluid className="ml-5">
+        <MDBContainer fluid className="ml-md-5 ml-lg-5">
           <ProductTabs />
         </MDBContainer>
       </MDBRow>

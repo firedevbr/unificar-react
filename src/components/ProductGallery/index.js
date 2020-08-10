@@ -9,16 +9,19 @@ const slidePlaceHolder = `${URL}/assets/images/2020/07/22050670c8c11ee86d31cabbc
 const showSlide = (index) => {
   const slides = document.getElementsByClassName('slide')
   const thumbs = document.getElementsByClassName('slide-thumb')
+  const dots = document.getElementsByClassName('dot')
 
   if (slides.length > 0) {
     Array.from(slides).forEach(slide => slide.classList.add('hide'))
     Array.from(thumbs).forEach(thumb => thumb.classList.remove('active'))
+    Array.from(dots).forEach(dot => dot.classList.remove('active'))
   }
 
   slides[index].classList.add('fade')
   slides[index].classList.remove('hide')
   thumbs[index].classList.add('active')
   thumbs[index].scrollIntoView(false)
+  dots[index].classList.add('active')
 }
 
 const ProductGallery = ({ slides }) => {
@@ -45,7 +48,7 @@ const ProductGallery = ({ slides }) => {
     <GalleryProduct>
       <MDBContainer className="mt-4">
         <MDBRow>
-          <MDBCol size="12" md="2" className="d-flex flex-column align-items-center justify-content-center">
+          <MDBCol size="12" md="2" className="d-none d-md-flex flex-column align-items-center justify-content-center">
             <MDBIcon icon="angle-up" size="2x" className="custom-blue slide-control" onClick={() => changeSlide(index - 1)} />
             <div className="thumb-wrapper">
               {slides && slides.map((slide, idElement) => (
@@ -54,9 +57,16 @@ const ProductGallery = ({ slides }) => {
             </div>
             <MDBIcon icon="angle-down" size="2x" className="custom-blue slide-control" onClick={() => changeSlide(index + 1)} />
           </MDBCol>
-          <MDBCol size="12" md="10" className="d-flex flex-column align-items-center slide-container">
+          <MDBCol size="12" md="10" className="d-flex flex-row flex-md-column align-items-center slide-container">
+            <MDBIcon icon="angle-left" size="2x" className="custom-blue slide-control d-block d-md-none" onClick={() => changeSlide(index - 1)} />
             {slides && slides.map((slide, idElement) => (
               <img className="d-block w-100 slide hide" key={idElement} src={`${URL}${slide.caminho}`} />
+            ))}
+            <MDBIcon icon="angle-right" size="2x" className="custom-blue slide-control d-block d-md-none" onClick={() => changeSlide(index + 1)} />
+          </MDBCol>
+          <MDBCol size="12" sm="12" className="d-flex d-md-none flex-row align-items-center justify-content-center">
+            {slides && slides.map( (slide, index) => (
+              <span key={index} class="dot"></span>
             ))}
           </MDBCol>
         </MDBRow>
