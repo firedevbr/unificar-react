@@ -105,6 +105,12 @@ const GlobalStyles = createGlobalStyle`
     background-color: #4057e3 !important;
   }
 
+  .title-orange {
+    color: #ffaa2b;
+    font-weight: 600;
+    font-size: 36px;
+  }
+
   `;
 
 export default GlobalStyles;

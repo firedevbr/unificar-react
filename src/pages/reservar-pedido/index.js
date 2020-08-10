@@ -1,4 +1,4 @@
-import { MDBContainer, MDBRow, MDBCol } from 'mdbreact'
+import { MDBSpinner, MDBContainer, MDBRow, MDBCol } from 'mdbreact'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
@@ -9,7 +9,6 @@ import API from '~/services/api'
 import ProductGallery from '~/components/ProductGallery'
 import CampaignInfos from '~/components/CampaignInfos'
 import ProductTabs from '~/components/ProductTabs'
-import Campanha from '../nova-campanha'
 
 
 const getCampaign = async (campaignId) => {
@@ -45,25 +44,35 @@ const ReservarPedido = () => {
   return (
     <Layout>
       <MDBContainer fluid className="mt-5">
-        <Title className="my-5 text-center">Reservar Pedido</Title>
+        <Title className="my-5 py-3 text-center title-orange">Reservar Pedido</Title>
       </MDBContainer>
       <MDBRow>
         <MDBContainer fluid className='ml-5'>
           <MDBRow>
-            <MDBCol size='12' md="6" lg="7">
-              {campanha && <ProductGallery slides={campanha.imagens} />}
-            </MDBCol>
-            <MDBCol size='12' md="6" lg="5">
-              <CampaignInfos campanha={campanha} />
-            </MDBCol>
+            {
+              !campanha ? (
+                <MDBCol size='12' className="d-flex align-items-center justify-content-center">
+                  <MDBSpinner className="custom-blue" />
+                </MDBCol>
+              )
+                : (
+                  <>
+                    <MDBCol size='12' md="6" lg="7">
+                      {campanha && <ProductGallery slides={campanha.imagens} />}
+                    </MDBCol>
+                    <MDBCol size='12' md="6" lg="5">
+                      <CampaignInfos campanha={campanha} />
+                    </MDBCol>
+                  </>
+                )
+            }
           </MDBRow>
         </MDBContainer>
-          <MDBContainer fluid className="ml-5">
-            <ProductTabs />
-          </MDBContainer>
+        <MDBContainer fluid className="ml-5">
+          <ProductTabs />
+        </MDBContainer>
       </MDBRow>
-    </Layout>
-  )
+    </Layout>)
 }
 
 export default ReservarPedido
