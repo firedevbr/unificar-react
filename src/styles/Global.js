@@ -97,6 +97,14 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
+  .custom-blue {
+    color: #4057e3 !important;
+  }
+
+  .bg-custom-blue {
+    background-color: #4057e3 !important;
+  }
+
   `;
 
 export default GlobalStyles;
