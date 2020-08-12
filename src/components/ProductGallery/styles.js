@@ -4,7 +4,6 @@ const GalleryProduct = styled.div`
 
   .slide-container {
     height: 460px;
-    padding-top: 20px;
 
     .slide {
       height: 90%;
@@ -38,9 +37,10 @@ const GalleryProduct = styled.div`
     }
 
     @media(max-width: 768px) {
-      height: 420px;
+      height: 390px;
       justify-content: space-evenly;
       margin-bottom: -35px;
+      padding: 40px;
       width: 100%;
     }
   }

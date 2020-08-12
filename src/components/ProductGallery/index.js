@@ -58,11 +58,11 @@ const ProductGallery = ({ slides }) => {
             <MDBIcon icon="angle-down" size="2x" className="custom-blue slide-control" onClick={() => changeSlide(index + 1)} />
           </MDBCol>
           <MDBCol size="12" md="10" className="d-flex flex-row flex-md-column align-items-center slide-container">
-            <MDBIcon icon="angle-left" size="2x" className="custom-blue slide-control d-block d-md-none" onClick={() => changeSlide(index - 1)} />
+            <MDBIcon icon="angle-left" size="2x" className="custom-blue slide-control d-block d-md-none mr-3" onClick={() => changeSlide(index - 1)} />
             {slides && slides.map((slide, idElement) => (
               <img className="d-block w-100 slide hide" key={idElement} src={`${URL}${slide.caminho}`} />
             ))}
-            <MDBIcon icon="angle-right" size="2x" className="custom-blue slide-control d-block d-md-none" onClick={() => changeSlide(index + 1)} />
+            <MDBIcon icon="angle-right" size="2x" className="custom-blue slide-control d-block d-md-none ml-3" onClick={() => changeSlide(index + 1)} />
           </MDBCol>
           <MDBCol size="12" sm="12" className="d-flex d-md-none flex-row align-items-center justify-content-center">
             {slides && slides.map( (slide, index) => (

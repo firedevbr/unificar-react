@@ -12,7 +12,22 @@ const remainingDays = (dataFim) => {
   return differenceInDays(parseISO(dataFim), new Date())
 }
 
+const getTotalPrice = (produtos) => {
+  let total = 0
+  if (Array.isArray(produtos)) {
+    produtos.forEach(produto => total += produto.valor)
+  }
+  console.log(produtos)
+  console.log(total)
+  return total
+}
+
+const currencyFormat = (valor) => (
+  <CurrencyFormat decimalScale={2} fixedDecimalScale={true} displayType={'text'} value={valor} thousandSeparator={'.'} decimalSeparator={','} />
+)
+
 const ProductInfo = ({ campanha }) => {
+  const totalProdutos = getTotalPrice(campanha.produtos)
 
   return (
     <CampaignInfos>
@@ -32,10 +47,10 @@ const ProductInfo = ({ campanha }) => {
       <div className='price-product'>
         <div className='price-product__left'>
           <div>
-            <span>R$ 600,00</span>
+            <span>R$ {currencyFormat(totalProdutos)}</span>
             <p>
               <span>R$  </span>
-              <CurrencyFormat decimalScale={2} fixedDecimalScale={true} displayType={'text'} value={campanha.valor} thousandSeparator={'.'} decimalSeparator={','} />
+              {currencyFormat(campanha.valor)}
             </p>
           </div>
         </div>
