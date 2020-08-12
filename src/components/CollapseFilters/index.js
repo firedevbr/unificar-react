@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { MDBBtn, MDBCollapse, MDBIcon } from "mdbreact";
+import { MDBCollapse, MDBIcon } from "mdbreact";
 import { IconButton } from './styles'
 import SliderFilter from '~/components/SliderFilter'
 

@@ -3,11 +3,11 @@ import { MDBRangeInput, MDBRow, MDBContainer, MDBBtn } from "mdbreact";
 
 import { SliderWrapper } from './styles'
 import CampaignContext from '~/context/campaign'
-import { getProgressPercent } from '~/utils/utils'
+import { getPercent } from '~/utils/utils'
 
 const applyFilters = (progress, { campaigns, updateCampaignsList }) => {
   const filteredCampaigns = campaigns.filter((item) => {
-    const itemProgress = getProgressPercent(
+    const itemProgress = getPercent(
       item.quantidade_pedidos_confirmados,
       item.quantidade_pedidos_necessarios
     )

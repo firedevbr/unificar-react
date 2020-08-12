@@ -1,5 +1,14 @@
-const getProgressPercent = (atual, total) => {
+const getPercent = (atual, total) => {
   return Math.floor((atual / total) * 100)
 }
 
-export { getProgressPercent }
+const getTotalPrice = (produtos) => {
+  let total = 0
+  if (Array.isArray(produtos)) {
+    produtos.forEach(produto => total += produto.valor)
+  }
+
+  return total
+}
+
+export { getPercent, getTotalPrice }

@@ -44,7 +44,7 @@ const ReservarPedido = () => {
   return (
     <Layout>
       <MDBContainer fluid className="mt-5">
-        <Title className="my-5 py-3 text-center title-orange">Reservar Pedido</Title>
+        <Title className="mt-5 py-3 text-center title-orange">Reservar Pedido</Title>
       </MDBContainer>
       <MDBRow>
         <MDBContainer fluid className='ml-md-5 ml-lg-5'>
@@ -58,7 +58,7 @@ const ReservarPedido = () => {
                 : (
                   <>
                     <MDBCol size='12' md="6" lg="7">
-                      {campanha && <ProductGallery slides={campanha.imagens} />}
+                      {campanha && <ProductGallery campanha={campanha}/>}
                     </MDBCol>
                     <MDBCol size='12' md="6" lg="5">
                       <CampaignInfos campanha={campanha} />

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdbreact'
 
-import { GalleryProduct } from './styles'
+import { GalleryProduct, BadgePercent } from './styles'
+import { getPercent, getTotalPrice } from '~/utils/utils'
 
 const URL = 'http://localhost'
 const slidePlaceHolder = `${URL}/assets/images/2020/07/22050670c8c11ee86d31cabbc94fc8b7.png`
@@ -24,7 +25,11 @@ const showSlide = (index) => {
   dots[index].classList.add('active')
 }
 
-const ProductGallery = ({ slides }) => {
+const getDiscountPercent = (campanha) => {
+  return  100 - (getPercent(campanha.valor, getTotalPrice(campanha.produtos)))
+}
+
+const ProductGallery = ({ campanha: { imagens: slides, ...dadosCampanha } }) => {
   const [index, updateIndex] = useState(0)
 
   const changeSlide = (index) => {
@@ -46,7 +51,7 @@ const ProductGallery = ({ slides }) => {
 
   const renderSlider = (slides) => (
     <GalleryProduct>
-      <MDBContainer className="mt-4">
+      <MDBContainer>
         <MDBRow>
           <MDBCol size="12" md="2" className="d-none d-md-flex flex-column align-items-center justify-content-center">
             <MDBIcon icon="angle-up" size="2x" className="custom-blue slide-control" onClick={() => changeSlide(index - 1)} />
@@ -63,9 +68,10 @@ const ProductGallery = ({ slides }) => {
               <img className="d-block w-100 slide hide" key={idElement} src={`${URL}${slide.caminho}`} />
             ))}
             <MDBIcon icon="angle-right" size="2x" className="custom-blue slide-control d-block d-md-none ml-3" onClick={() => changeSlide(index + 1)} />
+            <BadgePercent>{getDiscountPercent(dadosCampanha)}%</BadgePercent>
           </MDBCol>
           <MDBCol size="12" sm="12" className="d-flex d-md-none flex-row align-items-center justify-content-center">
-            {slides && slides.map( (slide, index) => (
+            {slides && slides.map((slide, index) => (
               <span key={index} class="dot"></span>
             ))}
           </MDBCol>

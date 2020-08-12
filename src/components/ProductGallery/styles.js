@@ -37,7 +37,7 @@ const GalleryProduct = styled.div`
     }
 
     @media(max-width: 768px) {
-      height: 390px;
+      height: 410px;
       justify-content: space-evenly;
       margin-bottom: -35px;
       padding: 40px;
@@ -80,7 +80,7 @@ const GalleryProduct = styled.div`
   }
 
   @media(max-width: 768px) {
-    margin: -130px 0px 0px 0px;
+    margin: -65px 0px 0px 0px;
     width: 100%;
 
     .slide-control {
@@ -106,6 +106,31 @@ const GalleryProduct = styled.div`
   .active {
     background-color: #717171;
   }
+`
+
+const BadgePercent = styled.span`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: #fff;
+  background: #2ec701;
+  position: absolute;
+  right: 18px;
+  top: 28px;
+  z-index: 2;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media(max-width: 768px) {
+    height: 40px;
+    width: 40px;
+
+    right: 43px;
+    top: 63px;
+  }
 
 `
-export { GalleryProduct }
+export { GalleryProduct, BadgePercent }
