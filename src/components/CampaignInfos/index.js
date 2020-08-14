@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { differenceInDays, parseISO } from 'date-fns'
 import CurrencyFormat from 'react-currency-format'
-import { MDBFormInline, MDBInput, MDBSelect, MDBSelectOptions, MDBSelectOption, MDBSelectInput } from 'mdbreact'
+import { MDBCollapse, MDBInput, MDBSelect, MDBSelectOptions, MDBSelectOption, MDBSelectInput } from 'mdbreact'
 
 import { CampaignInfos, PaymentForm } from './styles'
 
@@ -20,8 +20,12 @@ const currencyFormat = (valor) => (
 const quantidade = [...Array(10).keys()]
 
 const ProductInfo = ({ campanha }) => {
-  const [formaPagamento, updateFormaPagamento] = useState(0)
+  const [formaPagamento, updateFormaPagamento] = useState('avista')
   const totalProdutos = getTotalPrice(campanha.produtos)
+
+  const handlePaymentChange = (e) => {
+    updateFormaPagamento(e.target.value)
+  }
 
   return (
     <CampaignInfos>
@@ -56,29 +60,31 @@ const ProductInfo = ({ campanha }) => {
         </div>
       </div>
 
-      <PaymentForm>
+      <PaymentForm onSubmit={(e) => e.preventDefault()}>
         <label>Forma de Pagamento:</label>
         <div className="d-flex align-items-center">
           <MDBInput
             gap
-            onClick={() => updateFormaPagamento(0)}
-            checked={formaPagamento === 0 ? true : false}
+            checked={formaPagamento === 'avista'}
+            onChange={handlePaymentChange}
             label='à vista'
             type='radio'
             id='radio1'
             containerClass='mr-3'
+            value='avista'
           />
           <MDBInput
             gap
-            onClick={() => updateFormaPagamento(1)}
-            checked={formaPagamento === 1 ? true : false}
+            checked={formaPagamento === 'parcelado'}
+            onChange={handlePaymentChange}
             label='parcelar'
             type='radio'
             id='radio2'
             containerClass='mr-3'
+            value='parcelado'
           />
         </div>
-        <div className="parcelas">
+        <MDBCollapse isOpen={formaPagamento === 'parcelado'} className="parcelas">
           <MDBSelect label="Parcelas">
             <MDBSelectInput selected="Selecione a forma de parcelamento" />
             <MDBSelectOptions>
@@ -87,7 +93,7 @@ const ProductInfo = ({ campanha }) => {
               <MDBSelectOption value="3">1x R$ 100,00 + 3x R$133,34</MDBSelectOption>
             </MDBSelectOptions>
           </MDBSelect>
-        </div>
+        </MDBCollapse>
         <div className='quantity-product'>
           <div className='quantity-product__left'>
             <MDBSelect label="Quantidade">
