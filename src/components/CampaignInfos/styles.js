@@ -136,4 +136,90 @@ const CampaignInfos = styled.div`
     }
   }
 `
-export { CampaignInfos }
+
+const PaymentForm = styled.form`
+  color: #a6b1c3;
+  margin-top: 20px;
+  padding-top: 10px;
+
+  .form-check {
+    padding-left: 0;
+  }
+
+  .parcelas {
+    padding-top: 20px;
+  }
+
+  .select-wrapper>label.mdb-main-label {
+    font-weight: 300;
+    top: 0;
+  }
+
+  .dropdown-content li>a, .dropdown-content li>span {
+    color: #4057e3 !important;
+    font-weight: 400;
+  }
+
+  .select-wrapper>label.mdb-main-label.active {
+    color: #4057e3 !important;
+    font-weight: 400;
+  }
+
+  .select-wrapper input.select-dropdown {
+    color: #a6b1c3;
+  }
+
+  .quantity-product {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+
+    .quantity-product__left {
+      width: 100%;
+      display: flex;
+      margin-bottom: 1rem;
+      p {
+        padding-top: .5rem;
+        margin-right: 15px;
+        color: #a6b1c3;
+        font-size: 1.1rem;
+        font-weight: 300;
+      }
+    }
+
+    .quantity-product__right{
+      width: 100%;
+
+      button{
+        width: 100%;
+        height: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #4057e3;
+        border-radius: 5px;
+        color: #f0f2f7;
+        border: none
+      }
+    }
+  }
+
+  @media(min-width: 768px) {
+    .quantity-product{
+      .quantity-product__left{
+        width: 50%;
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+      }
+      .quantity-product__right{
+        width: 50%;
+        display: flex;
+        align-items: center;
+        padding-left: 15px;
+      }
+    }
+  }
+`
+export { CampaignInfos, PaymentForm }

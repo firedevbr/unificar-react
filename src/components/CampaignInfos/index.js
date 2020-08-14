@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { differenceInDays, parseISO } from 'date-fns'
 import CurrencyFormat from 'react-currency-format'
+import { MDBFormInline, MDBInput, MDBSelect, MDBSelectOptions, MDBSelectOption, MDBSelectInput } from 'mdbreact'
 
-import { CampaignInfos } from './styles'
+import { CampaignInfos, PaymentForm } from './styles'
 
 import Title from './components/Title'
 import Time from './components/Time'
@@ -16,7 +17,10 @@ const currencyFormat = (valor) => (
   <CurrencyFormat decimalScale={2} fixedDecimalScale={true} displayType={'text'} value={valor} thousandSeparator={'.'} decimalSeparator={','} />
 )
 
+const quantidade = [...Array(10).keys()]
+
 const ProductInfo = ({ campanha }) => {
+  const [formaPagamento, updateFormaPagamento] = useState(0)
   const totalProdutos = getTotalPrice(campanha.produtos)
 
   return (
@@ -47,26 +51,58 @@ const ProductInfo = ({ campanha }) => {
 
         <div className='price-product__right'>
           <p>
-            R$ 304,90 no boleto bancário <br />
-            em até 12x sem juros no cartão de crédito
+            R$ {currencyFormat(campanha.valor)} à visto ou em até 1 + 3x no boleto bancário
           </p>
         </div>
       </div>
 
-      <div className='quantity-product'>
-        <div className='quantity-product__left'>
-          <p>Quantidade</p>
-          <select className='browser-default custom-select'>
-            <option value='1'>Option 1</option>
-            <option value='2'>Option 2</option>
-            <option value='3'>Option 3</option>
-          </select>
+      <PaymentForm>
+        <label>Forma de Pagamento:</label>
+        <div className="d-flex align-items-center">
+          <MDBInput
+            gap
+            onClick={() => updateFormaPagamento(0)}
+            checked={formaPagamento === 0 ? true : false}
+            label='à vista'
+            type='radio'
+            id='radio1'
+            containerClass='mr-3'
+          />
+          <MDBInput
+            gap
+            onClick={() => updateFormaPagamento(1)}
+            checked={formaPagamento === 1 ? true : false}
+            label='parcelar'
+            type='radio'
+            id='radio2'
+            containerClass='mr-3'
+          />
         </div>
+        <div className="parcelas">
+          <MDBSelect label="Parcelas">
+            <MDBSelectInput selected="Selecione a forma de parcelamento" />
+            <MDBSelectOptions>
+              <MDBSelectOption value="1">1x R$ 100,00 + 1x R$400,00</MDBSelectOption>
+              <MDBSelectOption value="2">1x R$ 100,00 + 2x R$200,00</MDBSelectOption>
+              <MDBSelectOption value="3">1x R$ 100,00 + 3x R$133,34</MDBSelectOption>
+            </MDBSelectOptions>
+          </MDBSelect>
+        </div>
+        <div className='quantity-product'>
+          <div className='quantity-product__left'>
+            <MDBSelect label="Quantidade">
+              <MDBSelectInput />
+              <MDBSelectOptions>
+                {quantidade.map((option, index) => (<MDBSelectOption key={index} value={index + 1}>{index + 1}</MDBSelectOption>))}
+              </MDBSelectOptions>
+            </MDBSelect>
+          </div>
 
-        <div className='quantity-product__right'>
-          <button>Comprar</button>
+          <div className='quantity-product__right'>
+            <button>Comprar</button>
+          </div>
         </div>
-      </div>
+      </PaymentForm>
     </CampaignInfos>
   )
 }
