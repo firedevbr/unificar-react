@@ -18,6 +18,7 @@ const currencyFormat = (valor) => (
 )
 
 const quantidade = [...Array(10).keys()]
+const parcelas = [...Array(3).keys()]
 
 const ProductInfo = ({ campanha }) => {
   const [formaPagamento, updateFormaPagamento] = useState('avista')
@@ -55,7 +56,7 @@ const ProductInfo = ({ campanha }) => {
 
         <div className='price-product__right'>
           <p>
-            R$ {currencyFormat(campanha.valor)} à visto ou em até 1 + 3x no boleto bancário
+            R$ {currencyFormat(campanha.valor)} à vista ou em até 1 + 3x no boleto bancário
           </p>
         </div>
       </div>
@@ -88,9 +89,12 @@ const ProductInfo = ({ campanha }) => {
           <MDBSelect label="Parcelas">
             <MDBSelectInput selected="Selecione a forma de parcelamento" />
             <MDBSelectOptions>
-              <MDBSelectOption value="1">1x R$ 100,00 + 1x R$400,00</MDBSelectOption>
-              <MDBSelectOption value="2">1x R$ 100,00 + 2x R$200,00</MDBSelectOption>
-              <MDBSelectOption value="3">1x R$ 100,00 + 3x R$133,34</MDBSelectOption>
+              {parcelas.map((parcela) => {
+                parcela += 1
+                return (
+                <MDBSelectOption key={parcela} value={parcela}>1x R$ {currencyFormat(campanha.valor_sinal)} + {parcela}x R$ {currencyFormat((campanha.valor - campanha.valor_sinal) / parcela)}</MDBSelectOption>
+                )
+              })}
             </MDBSelectOptions>
           </MDBSelect>
         </MDBCollapse>
