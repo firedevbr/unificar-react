@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { differenceInDays, parseISO } from 'date-fns'
 import CurrencyFormat from 'react-currency-format'
-import { MDBCollapse, MDBInput, MDBSelect, MDBSelectOptions, MDBSelectOption, MDBSelectInput } from 'mdbreact'
+import { MDBCol, MDBCollapse, MDBInput, MDBSelect, MDBSelectOptions, MDBSelectOption, MDBSelectInput } from 'mdbreact'
 
-import { CampaignInfos, PaymentForm } from './styles'
+import { CampaignInfos, PaymentForm, TotalLabel } from './styles'
 
 import Title from './components/Title'
 import Time from './components/Time'
@@ -22,7 +22,12 @@ const parcelas = [...Array(3).keys()]
 
 const ProductInfo = ({ campanha }) => {
   const [formaPagamento, updateFormaPagamento] = useState('avista')
+  const [total, updateTotal] = useState({ sinal: campanha.valor_sinal, valor: campanha.valor })
   const totalProdutos = getTotalPrice(campanha.produtos)
+
+  useEffect(() => {
+    updateTotal({ sinal: campanha.valor_sinal, valor: campanha.valor })
+  }, [])
 
   const handlePaymentChange = (e) => {
     updateFormaPagamento(e.target.value)
@@ -62,28 +67,38 @@ const ProductInfo = ({ campanha }) => {
       </div>
 
       <PaymentForm onSubmit={(e) => e.preventDefault()}>
-        <label>Forma de Pagamento:</label>
-        <div className="d-flex align-items-center">
-          <MDBInput
-            gap
-            checked={formaPagamento === 'avista'}
-            onChange={handlePaymentChange}
-            label='à vista'
-            type='radio'
-            id='radio1'
-            containerClass='mr-3'
-            value='avista'
-          />
-          <MDBInput
-            gap
-            checked={formaPagamento === 'parcelado'}
-            onChange={handlePaymentChange}
-            label='parcelar'
-            type='radio'
-            id='radio2'
-            containerClass='mr-3'
-            value='parcelado'
-          />
+        <div className="quantity">
+          <div>
+            <label>Forma de Pagamento:</label>
+            <div className="d-flex align-items-center">
+              <MDBInput
+                gap
+                checked={formaPagamento === 'avista'}
+                onChange={handlePaymentChange}
+                label='à vista'
+                type='radio'
+                id='radio1'
+                containerClass='mr-3'
+                value='avista'
+              />
+              <MDBInput
+                gap
+                checked={formaPagamento === 'parcelado'}
+                onChange={handlePaymentChange}
+                label='parcelar'
+                type='radio'
+                id='radio2'
+                containerClass='mr-3'
+                value='parcelado'
+              />
+            </div>
+          </div>
+          <MDBSelect label="Quantidade">
+            <MDBSelectInput />
+            <MDBSelectOptions>
+              {quantidade.map((option, index) => (<MDBSelectOption key={index} value={index + 1}>{index + 1}</MDBSelectOption>))}
+            </MDBSelectOptions>
+          </MDBSelect>
         </div>
         <MDBCollapse isOpen={formaPagamento === 'parcelado'} className="parcelas">
           <MDBSelect label="Parcelas">
@@ -92,23 +107,18 @@ const ProductInfo = ({ campanha }) => {
               {parcelas.map((parcela) => {
                 parcela += 1
                 return (
-                <MDBSelectOption key={parcela} value={parcela}>1x R$ {currencyFormat(campanha.valor_sinal)} + {parcela}x R$ {currencyFormat((campanha.valor - campanha.valor_sinal) / parcela)}</MDBSelectOption>
+                  <MDBSelectOption key={parcela} value={parcela}>1x R$ {currencyFormat(total.sinal)} + {parcela}x R$ {currencyFormat((total.valor - total.sinal) / parcela)}</MDBSelectOption>
                 )
               })}
             </MDBSelectOptions>
           </MDBSelect>
         </MDBCollapse>
-        <div className='quantity-product'>
-          <div className='quantity-product__left'>
-            <MDBSelect label="Quantidade">
-              <MDBSelectInput />
-              <MDBSelectOptions>
-                {quantidade.map((option, index) => (<MDBSelectOption key={index} value={index + 1}>{index + 1}</MDBSelectOption>))}
-              </MDBSelectOptions>
-            </MDBSelect>
+        <div className='total-purchase'>
+          <div className='total-purchase__left'>
+            <span className="custom-orange">Total</span><TotalLabel>R$ <span>{currencyFormat(total.valor)}</span></TotalLabel>
           </div>
 
-          <div className='quantity-product__right'>
+          <div className='total-purchase__right'>
             <button>Comprar</button>
           </div>
         </div>

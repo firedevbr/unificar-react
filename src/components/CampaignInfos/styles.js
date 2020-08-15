@@ -64,13 +64,13 @@ const CampaignInfos = styled.div`
     }
   }
 
-  .quantity-product{
+  .total-purchase{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     margin-top: 1rem;
 
-    .quantity-product__left{
+    .total-purchase__left{
       width: 100%;
       display: flex;
       margin-bottom: 1rem;
@@ -91,7 +91,7 @@ const CampaignInfos = styled.div`
       }
     }
 
-    .quantity-product__right{
+    .total-purchase__right{
       width: 100%;
 
       button{
@@ -120,14 +120,14 @@ const CampaignInfos = styled.div`
       }
     }
 
-    .quantity-product{
-      .quantity-product__left{
+    .total-purchase{
+      .total-purchase__left{
         width: 50%;
         display: flex;
         align-items: center;
         margin-bottom: 0;
       }
-      .quantity-product__right{
+      .total-purchase__right{
         width: 50%;
         display: flex;
         align-items: center;
@@ -151,6 +151,7 @@ const PaymentForm = styled.form`
   }
 
   .select-wrapper>label.mdb-main-label {
+    color: #a6b1c3;
     font-weight: 300;
     top: 0;
   }
@@ -167,15 +168,16 @@ const PaymentForm = styled.form`
 
   .select-wrapper input.select-dropdown {
     color: #a6b1c3;
+    margin-bottom: 0px;
   }
 
-  .quantity-product {
+  .total-purchase {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     margin-top: 1rem;
 
-    .quantity-product__left {
+    .total-purchase__left {
       width: 100%;
       display: flex;
       margin-bottom: 1rem;
@@ -188,7 +190,7 @@ const PaymentForm = styled.form`
       }
     }
 
-    .quantity-product__right{
+    .total-purchase__right{
       width: 100%;
 
       button{
@@ -206,20 +208,45 @@ const PaymentForm = styled.form`
   }
 
   @media(min-width: 768px) {
-    .quantity-product{
-      .quantity-product__left{
-        width: 50%;
+    .total-purchase{
+      margin-top: 60px;
+
+      .total-purchase__left{
+        align-items: baseline;
         display: flex;
-        align-items: center;
+        font-size: 16px;
+        font-weight: 600;
         margin-bottom: 0;
+        width: 50%;
       }
-      .quantity-product__right{
+      .total-purchase__right{
         width: 50%;
         display: flex;
         align-items: center;
-        padding-left: 15px;
+        padding-left: 40px;
+      }
+    }
+
+    .quantity {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+
+      .md-form {
+        margin-bottom: 15px;
       }
     }
   }
 `
-export { CampaignInfos, PaymentForm }
+
+const TotalLabel = styled.span`
+  border: 1.1px solid #bdbdbd;
+  border-radius: 4px;
+  color: #ffaa2b;
+  margin: 10px;
+  padding: 8px 10px;
+  span {
+    font-size: 24px;
+  }
+`
+export { CampaignInfos, PaymentForm, TotalLabel }
