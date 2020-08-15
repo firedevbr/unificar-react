@@ -240,7 +240,7 @@ const PaymentForm = styled.form`
 `
 
 const TotalLabel = styled.span`
-  border: 1.1px solid #bdbdbd;
+  border: 1.1px solid rgba(173, 183, 200, 0.5);
   border-radius: 4px;
   color: #ffaa2b;
   margin: 10px;

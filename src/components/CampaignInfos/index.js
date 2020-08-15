@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { differenceInDays, parseISO } from 'date-fns'
 import CurrencyFormat from 'react-currency-format'
-import { MDBCol, MDBCollapse, MDBInput, MDBSelect, MDBSelectOptions, MDBSelectOption, MDBSelectInput } from 'mdbreact'
+import { MDBCollapse, MDBInput, MDBSelect, MDBSelectOptions, MDBSelectOption, MDBSelectInput } from 'mdbreact'
 
 import { CampaignInfos, PaymentForm, TotalLabel } from './styles'
 
@@ -17,20 +17,31 @@ const currencyFormat = (valor) => (
   <CurrencyFormat decimalScale={2} fixedDecimalScale={true} displayType={'text'} value={valor} thousandSeparator={'.'} decimalSeparator={','} />
 )
 
-const quantidade = [...Array(10).keys()]
+const [, ...quantidade] = [...Array(11).keys()]
 const parcelas = [...Array(3).keys()]
 
 const ProductInfo = ({ campanha }) => {
   const [formaPagamento, updateFormaPagamento] = useState('avista')
-  const [total, updateTotal] = useState({ sinal: campanha.valor_sinal, valor: campanha.valor })
+  const [total, updateTotal] = useState({sinal: campanha.valor_sinal, valor: campanha.valor})
   const totalProdutos = getTotalPrice(campanha.produtos)
 
   useEffect(() => {
-    updateTotal({ sinal: campanha.valor_sinal, valor: campanha.valor })
-  }, [])
+    if (!total.valor) {
+      updateTotal({sinal: campanha.valor_sinal, valor: campanha.valor})
+    }
+    console.log('rodei')
+  })
 
   const handlePaymentChange = (e) => {
     updateFormaPagamento(e.target.value)
+  }
+
+  const handleQuantityChange = ([quantity]) => {
+    console.log(quantity)
+    updateTotal({
+      sinal: campanha.valor_sinal * quantity,
+      valor: campanha.valor * quantity
+    })
   }
 
   return (
@@ -93,8 +104,8 @@ const ProductInfo = ({ campanha }) => {
               />
             </div>
           </div>
-          <MDBSelect label="Quantidade">
-            <MDBSelectInput />
+          <MDBSelect getValue={handleQuantityChange}>
+            <MDBSelectInput selected={quantidade[0]} />
             <MDBSelectOptions>
               {quantidade.map((option, index) => (<MDBSelectOption key={index} value={index + 1}>{index + 1}</MDBSelectOption>))}
             </MDBSelectOptions>
