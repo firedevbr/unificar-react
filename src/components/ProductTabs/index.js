@@ -8,7 +8,7 @@ class TabsDefault extends Component {
     activeItem: '1'
   }
 
-  toggle = tab => e => {
+  toggle = (tab) => (e) => {
     if (this.state.activeItem !== tab) {
       this.setState({
         activeItem: tab
@@ -16,19 +16,19 @@ class TabsDefault extends Component {
     }
   }
 
-  render () {
+  render() {
     return (
       <>
-        <Styled.TabsHeader className='nav-tabs mt-5'>
-          <MDBNav className='nav-tabs mt-5'>
+        <Styled.TabsHeader className="nav-tabs mt-5">
+          <MDBNav className="nav-tabs mt-5">
             <MDBNavItem>
               <a
                 link
-                to='#'
+                to="#"
                 className={this.state.activeItem === '1' ? 'active' : ''}
                 active={this.state.activeItem === '1'}
                 onClick={this.toggle('1')}
-                role='tab'
+                role="tab"
               >
                 Regras e Instruções
               </a>
@@ -36,11 +36,11 @@ class TabsDefault extends Component {
             <MDBNavItem>
               <a
                 link
-                to='#'
+                to="#"
                 className={this.state.activeItem === '2' ? 'active' : ''}
                 active={this.state.activeItem === '2'}
                 onClick={this.toggle('2')}
-                role='tab'
+                role="tab"
               >
                 Características
               </a>
@@ -48,11 +48,11 @@ class TabsDefault extends Component {
             <MDBNavItem>
               <a
                 link
-                to='#'
+                to="#"
                 className={this.state.activeItem === '3' ? 'active' : ''}
                 active={this.state.activeItem === '3'}
                 onClick={this.toggle('3')}
-                role='tab'
+                role="tab"
               >
                 Indicação
               </a>
@@ -61,38 +61,38 @@ class TabsDefault extends Component {
         </Styled.TabsHeader>
 
         <Styled.TabsHeader className="mb-md-5">
-        <MDBTabContent activeItem={this.state.activeItem}>
-          <MDBTabPane tabId='1' role='tabpanel'>
-            <p className='mt-2'>
-              1Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil
-              odit magnam minima, soluta doloribus reiciendis molestiae placeat
-              unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat
-              ratione porro voluptate odit minima.
-            </p>
-          </MDBTabPane>
-          <MDBTabPane tabId='2' role='tabpanel'>
-            <p className='mt-2'>
-              2Quisquam aperiam, pariatur. Tempora, placeat ratione porro
-              voluptate odit minima. Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit. Nihil odit magnam minima, soluta doloribus
-              reiciendis molestiae placeat unde eos molestias.
-            </p>
-            <p>
-              2Quisquam aperiam, pariatur. Tempora, placeat ratione porro
-              voluptate odit minima. Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit. Nihil odit magnam minima, soluta doloribus
-              reiciendis molestiae placeat unde eos molestias.
-            </p>
-          </MDBTabPane>
-          <MDBTabPane tabId='3' role='tabpanel'>
-            <p className='mt-2'>
-              3Quisquam aperiam, pariatur. Tempora, placeat ratione porro
-              voluptate odit minima. Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit. Nihil odit magnam minima, soluta doloribus
-              reiciendis molestiae placeat unde eos molestias.
-            </p>
-          </MDBTabPane>
-        </MDBTabContent>
+          <MDBTabContent activeItem={this.state.activeItem}>
+            <MDBTabPane tabId="1" role="tabpanel">
+              <p className="mt-2">
+                1Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil
+                odit magnam minima, soluta doloribus reiciendis molestiae
+                placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora,
+                placeat ratione porro voluptate odit minima.
+              </p>
+            </MDBTabPane>
+            <MDBTabPane tabId="2" role="tabpanel">
+              <p className="mt-2">
+                2Quisquam aperiam, pariatur. Tempora, placeat ratione porro
+                voluptate odit minima. Lorem ipsum dolor sit amet, consectetur
+                adipisicing elit. Nihil odit magnam minima, soluta doloribus
+                reiciendis molestiae placeat unde eos molestias.
+              </p>
+              <p>
+                2Quisquam aperiam, pariatur. Tempora, placeat ratione porro
+                voluptate odit minima. Lorem ipsum dolor sit amet, consectetur
+                adipisicing elit. Nihil odit magnam minima, soluta doloribus
+                reiciendis molestiae placeat unde eos molestias.
+              </p>
+            </MDBTabPane>
+            <MDBTabPane tabId="3" role="tabpanel">
+              <p className="mt-2">
+                3Quisquam aperiam, pariatur. Tempora, placeat ratione porro
+                voluptate odit minima. Lorem ipsum dolor sit amet, consectetur
+                adipisicing elit. Nihil odit magnam minima, soluta doloribus
+                reiciendis molestiae placeat unde eos molestias.
+              </p>
+            </MDBTabPane>
+          </MDBTabContent>
         </Styled.TabsHeader>
       </>
     )

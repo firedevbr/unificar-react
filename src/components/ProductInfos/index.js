@@ -8,9 +8,9 @@ import Time from './components/Time'
 function ProductInfo() {
   return (
     <Styled.ProductInfos>
-      <Title border={true} />
+      <Title border />
 
-      <div className='about'>
+      <div className="about">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde ex natus
           alias id optio delectus quos earum perferendis at reiciendis ad
@@ -21,8 +21,8 @@ function ProductInfo() {
 
       <Time width="60" days={2} />
 
-      <div className='price-product'>
-        <div className='price-product__left'>
+      <div className="price-product">
+        <div className="price-product__left">
           <div>
             <span>R$ 350,99</span>
             <p>
@@ -31,7 +31,7 @@ function ProductInfo() {
           </div>
         </div>
 
-        <div className='price-product__right'>
+        <div className="price-product__right">
           <p>
             R$ 304,90 no boleto bancário <br />
             em até 12x sem juros no cartão de crédito
@@ -39,17 +39,17 @@ function ProductInfo() {
         </div>
       </div>
 
-      <div className='quantity-product'>
-        <div className='quantity-product__left'>
+      <div className="quantity-product">
+        <div className="quantity-product__left">
           <p>Quantidade</p>
-          <select className='browser-default custom-select'>
-            <option value='1'>Option 1</option>
-            <option value='2'>Option 2</option>
-            <option value='3'>Option 3</option>
+          <select className="browser-default custom-select">
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
           </select>
         </div>
 
-        <div className='quantity-product__right'>
+        <div className="quantity-product__right">
           <button>Comprar</button>
         </div>
       </div>

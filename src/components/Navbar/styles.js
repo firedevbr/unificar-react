@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Sidebar = styled.div`
   .logo {
@@ -75,7 +75,7 @@ export const Sidebar = styled.div`
       }
     }
   }
-`;
+`
 
 export const Navbar = styled.div`
   width: 100%;
@@ -104,7 +104,7 @@ export const Navbar = styled.div`
       display: none;
     }
   }
-`;
+`
 
 export const NavbarNotification = styled.div`
   width: 100%;
@@ -117,7 +117,7 @@ export const NavbarNotification = styled.div`
   i {
     font-size: 1.5rem;
   }
-`;
+`
 
 export const NavbarUser = styled.div`
   width: 100%;
@@ -148,4 +148,4 @@ export const NavbarUser = styled.div`
       }
     }
   }
-`;
+`

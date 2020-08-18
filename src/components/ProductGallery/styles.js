@@ -124,13 +124,12 @@ const BadgePercent = styled.span`
   align-items: center;
   justify-content: center;
 
-  @media(max-width: 768px) {
+  @media (max-width: 768px) {
     height: 40px;
     width: 40px;
 
     right: 43px;
     top: 63px;
   }
-
 `
 export { GalleryProduct, BadgePercent }

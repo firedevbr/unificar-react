@@ -1,31 +1,31 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 
-import { MDBContainer } from "mdbreact";
+import { MDBContainer } from 'mdbreact'
 
-import Layout from "~/components/layout";
-import BaseTableHeader from "~/components/BaseTable/Header";
-import BaseTableBody from "~/components/BaseTable/Body";
-import useAuth from "../../../context/auth";
-import Router from "next/router";
+import Router from 'next/router'
+import Layout from '~/components/layout'
+import BaseTableHeader from '~/components/BaseTable/Header'
+import BaseTableBody from '~/components/BaseTable/Body'
+import useAuth from '../../../context/auth'
 
 export default function pages() {
-  const { isAdmin } = useAuth();
+  const { isAdmin } = useAuth()
 
   useEffect(() => {
     if (!isAdmin) {
-      Router.push('/');
+      Router.push('/')
     }
-  }, [isAdmin]);
+  }, [isAdmin])
 
-  const [totalResults, setTotalResults] = useState(0);
+  const [totalResults, setTotalResults] = useState(0)
 
   const handleUpdateTotalResults = (totalResults) => {
     if (totalResults === null) {
-      setTotalResults(0);
+      setTotalResults(0)
     }
 
-    setTotalResults(totalResults);
-  };
+    setTotalResults(totalResults)
+  }
 
   const columns = [
     {
@@ -48,7 +48,7 @@ export default function pages() {
       label: 'Status',
       field: 'status'
     }
-  ];
+  ]
 
   return (
     <>
@@ -60,18 +60,18 @@ export default function pages() {
               actions={false}
               total={totalResults}
               newResource={{
-                linkTo: "/admin/nova-campanha",
-                label: "Nova Campanha"
+                linkTo: '/admin/nova-campanha',
+                label: 'Nova Campanha'
               }}
             />
           </MDBContainer>
           <BaseTableBody
-            resourceEndpoint={"campanhas"}
+            resourceEndpoint="campanhas"
             columns={columns}
             handleUpdateTotalResults={handleUpdateTotalResults}
           />
         </Layout>
       )}
     </>
-  );
+  )
 }

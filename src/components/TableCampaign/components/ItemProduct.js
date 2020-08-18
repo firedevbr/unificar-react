@@ -26,22 +26,22 @@ export default function ({
     <>
       <Styled.ProductItem>
         <td>
-          <div className='custom-control custom-checkbox'>
+          <div className="custom-control custom-checkbox">
             <input
-              type='checkbox'
-              className='custom-control-input'
+              type="checkbox"
+              className="custom-control-input"
               id={idCheckbox}
             />
-            <label className='custom-control-label' htmlFor={idCheckbox}></label>
+            <label className="custom-control-label" htmlFor={idCheckbox} />
           </div>
         </td>
         <td>
-          <div className='item'>
-            <div className='item-img'>
+          <div className="item">
+            <div className="item-img">
               <img src={urlImg} alt={nameProduct} />
             </div>
-            <div className='item-name'>
-              <Link href='/produtos/[id]' as='/produtos/abc'>
+            <div className="item-name">
+              <Link href="/produtos/[id]" as="/produtos/abc">
                 <p>{nameProduct}</p>
               </Link>
             </div>
@@ -60,7 +60,7 @@ export default function ({
           <p>{total}</p>
         </td>
         <td>
-          <div className='item-status'>
+          <div className="item-status">
             <span className={status ? 'ok' : 'error'}>
               {status ? 'Ativa' : 'Inativa'}
             </span>
@@ -68,8 +68,8 @@ export default function ({
         </td>
         <td>
           <MDBDropdown dropleft>
-            <MDBDropdownToggle color='flat'>
-              <MDBIcon icon='angle-down' size='lg' />
+            <MDBDropdownToggle color="flat">
+              <MDBIcon icon="angle-down" size="lg" />
             </MDBDropdownToggle>
             <MDBDropdownMenu basic>
               <MDBDropdownItem>Editar</MDBDropdownItem>

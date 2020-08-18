@@ -11,7 +11,6 @@ import CollpaseFilter from '~/components/CollapseFilters'
 import CampaignContext from '~/context/campaign'
 
 class TestPage extends Component {
-
   state = {
     campaigns: [],
     filteredCampaigns: []
@@ -29,7 +28,7 @@ class TestPage extends Component {
     const token = localStorage.getItem('auth-jwt')
     const config = {
       headers: { Authorization: `Bearer ${token}` }
-    };
+    }
 
     try {
       const res = await API.get('/campanhas', config)
@@ -51,35 +50,39 @@ class TestPage extends Component {
       <Container>
         <MDBSpinner className="custom-blue" />
       </Container>
+    ) : (
+      <Layout>
+        <MDBContainer fluid>
+          <CampaignContext.Provider
+            value={{
+              campaigns: this.state.campaigns,
+              updateCampaignsList: this.updateCampaignsList
+            }}
+          >
+            <MDBRow>
+              <MDBCol sm="5" className="ml-md-5">
+                <Title className="my-3 text-center title-orange">
+                  Campanhas
+                </Title>
+              </MDBCol>
+              <MDBCol sm="5">
+                <CollpaseFilter />
+              </MDBCol>
+              <MDBCol sm="12" className="mb-4 ml-md-5">
+                <Divider />
+              </MDBCol>
+              <MDBCol sm="12" className="ml-md-5">
+                <CampaignList>
+                  {filteredCampaigns.map((campaign) => (
+                    <ItemCampaign key={campaign.id} {...campaign} />
+                  ))}
+                </CampaignList>
+              </MDBCol>
+            </MDBRow>
+          </CampaignContext.Provider>
+        </MDBContainer>
+      </Layout>
     )
-      : (
-        <Layout>
-          <MDBContainer fluid>
-            <CampaignContext.Provider
-              value={{ campaigns: this.state.campaigns, updateCampaignsList: this.updateCampaignsList }} >
-              <MDBRow>
-                <MDBCol sm="5" className="ml-md-5">
-                  <Title className="my-3 text-center title-orange">Campanhas</Title>
-                </MDBCol>
-                <MDBCol sm="5">
-                  <CollpaseFilter />
-                </MDBCol>
-                <MDBCol sm="12" className="mb-4 ml-md-5">
-                  <Divider />
-                </MDBCol>
-                <MDBCol sm="12" className="ml-md-5">
-                  <CampaignList>
-                    {filteredCampaigns.map((campaign) => (
-                      <ItemCampaign key={campaign.id} {...campaign}></ItemCampaign>
-                    ))
-                    }
-                  </CampaignList>
-                </MDBCol>
-              </MDBRow>
-            </CampaignContext.Provider>
-          </MDBContainer>
-        </Layout>
-      )
   }
 }
 

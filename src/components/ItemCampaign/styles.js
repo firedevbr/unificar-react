@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const ItemWrapper = styled.div`
   margin: 0px 50px 40px;
@@ -16,7 +16,7 @@ const ItemWrapper = styled.div`
     margin: 10px 0;
   }
 
-  @media(max-width: 768px) {
+  @media (max-width: 768px) {
     margin: 0px 0px 40px;
   }
 `

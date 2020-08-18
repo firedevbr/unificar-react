@@ -12,7 +12,6 @@ export const ProductCarouselImage = styled.div`
   height: 200px;
   overflow: hidden;
 
-
   img {
     position: absolute;
     left: 50%;
@@ -24,7 +23,7 @@ export const ProductCarouselImage = styled.div`
     transform: translate(-50%, -50%);
   }
 
-  .porcetage{
+  .porcetage {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -81,10 +80,10 @@ export const ProductCarouselText = styled.div`
       }
     }
 
-    .price-product__right{
+    .price-product__right {
       width: 50%;
 
-      button{
+      button {
         width: 100%;
         height: 36px;
         display: flex;
@@ -93,7 +92,7 @@ export const ProductCarouselText = styled.div`
         background: #4057e3;
         border-radius: 5px;
         color: #f0f2f7;
-        border: none
+        border: none;
       }
     }
   }

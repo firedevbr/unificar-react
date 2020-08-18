@@ -5,7 +5,9 @@ const getPercent = (atual, total) => {
 const getTotalPrice = (produtos) => {
   let total = 0
   if (Array.isArray(produtos)) {
-    produtos.forEach(produto => total += produto.valor)
+    for (let i = 0; i < produtos.length; i++) {
+      total += produtos[i].valor
+    }
   }
 
   return total

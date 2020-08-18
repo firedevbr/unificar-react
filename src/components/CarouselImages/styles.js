@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const CarouselImages = styled.div`
   width: 100%;
@@ -6,10 +6,10 @@ export const CarouselImages = styled.div`
   margin-bottom: 3rem;
   display: block;
 
-  img{
+  img {
     width: 100%;
     height: auto;
     border-radius: 5px;
-    box-shadow: 0px 2px 8px rgba(0,0,0,.4);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
   }
-`;
+`

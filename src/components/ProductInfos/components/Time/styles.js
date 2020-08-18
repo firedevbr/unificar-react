@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Time = styled.div`
   width: 100%;
@@ -27,4 +27,4 @@ export const Time = styled.div`
       font-style: italic;
     }
   }
-`;
+`

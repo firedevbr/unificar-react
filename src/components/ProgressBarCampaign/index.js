@@ -1,5 +1,5 @@
-import React from "react";
-import { MDBProgress } from 'mdbreact';
+import React from 'react'
+import { MDBProgress } from 'mdbreact'
 
 import { getPercent } from '~/utils/utils'
 
@@ -9,7 +9,7 @@ const ProgressBar = ({ total, atual }) => {
     <>
       <MDBProgress className="my-2" material value={progress} color="success" />
     </>
-  );
+  )
 }
 
-export default ProgressBar;
+export default ProgressBar

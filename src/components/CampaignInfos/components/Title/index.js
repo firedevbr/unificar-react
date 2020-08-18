@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 import { Title as TitleStyle } from './styles'
 
@@ -7,7 +7,7 @@ const Title = ({ border, title }) => {
     <TitleStyle border={border}>
       <h2>{title}</h2>
     </TitleStyle>
-  );
+  )
 }
 
-export default Title;
+export default Title

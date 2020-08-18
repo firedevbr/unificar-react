@@ -49,27 +49,26 @@ const SliderWrapper = styled.div`
     }
   }
 
-  @media(max-width: 768px) {
+  @media (max-width: 768px) {
     width: 100%;
   }
 
-  .range-field input[type="range"]+.thumb {
+  .range-field input[type='range'] + .thumb {
     background-color: #4057e3;
-    display: none;  /* @TODO está com bug pra exibir o valor na tag acima do range, coloquei none pra não exibir */
+    display: none; /* @TODO está com bug pra exibir o valor na tag acima do range, coloquei none pra não exibir */
   }
 
-  input[type=range]::-webkit-slider-thumb {
-    background-color: #4057e3;
-  }
-
-  input[type=range]::-moz-range-thumb {
+  input[type='range']::-webkit-slider-thumb {
     background-color: #4057e3;
   }
 
-  input[type=range]::-ms-thumb {
+  input[type='range']::-moz-range-thumb {
     background-color: #4057e3;
   }
 
+  input[type='range']::-ms-thumb {
+    background-color: #4057e3;
+  }
 `
 
 export { SliderWrapper }

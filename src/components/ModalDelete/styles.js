@@ -28,7 +28,7 @@ export const ModalDelete = styled.div`
       height: 43px;
       border-radius: 5px;
       font-weight: 400;
-      transition: .2s all linear;
+      transition: 0.2s all linear;
       &:hover {
         box-shadow: 0px 2px 8px #4057e3;
       }

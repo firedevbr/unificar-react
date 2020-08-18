@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import * as Styled from "./styles";
+import * as Styled from './styles'
 
 function UserInfos({ infos }) {
   return (
@@ -34,16 +34,16 @@ function UserInfos({ infos }) {
       </div>
       <div className="item-dados">
         <p>Tipo da conta:</p>
-        <span>{infos && infos.tipoPessoa === "F" ? "Fisica" : "Juridica"}</span>
+        <span>{infos && infos.tipoPessoa === 'F' ? 'Fisica' : 'Juridica'}</span>
       </div>
       <div className="item-dados">
         <p>Conta Ativa?</p>
         <span
           className={`status ${
-            infos && infos.confirmado === true ? "green" : "red"
+            infos && infos.confirmado === true ? 'green' : 'red'
           }`}
         >
-          {infos && infos.confirmado === true ? "Ativa" : "Desativada"}
+          {infos && infos.confirmado === true ? 'Ativa' : 'Desativada'}
         </span>
       </div>
 
@@ -51,7 +51,7 @@ function UserInfos({ infos }) {
         <button>Editar Conta</button>
       </div>
     </Styled.UserInfos>
-  );
+  )
 }
 
-export default UserInfos;
+export default UserInfos

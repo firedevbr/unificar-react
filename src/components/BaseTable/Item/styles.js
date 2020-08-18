@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const ProductItem = styled.tr`
   width: 100%;
@@ -104,4 +104,4 @@ export const ProductItem = styled.tr`
       }
     }
   }
-`;
+`
