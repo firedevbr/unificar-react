@@ -227,13 +227,34 @@ const PaymentForm = styled.form`
       }
     }
 
+    .payments {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+        width: 100%;
+
+        label {
+          margin-bottom: 0px;
+        }
+
+        div {
+          flex-grow: 1;
+          margin-left: 40px;
+        }
+    }
+
     .quantity {
       align-items: center;
       display: flex;
       justify-content: space-between;
 
-      .md-form {
-        margin-bottom: 15px;
+      .quantity__select__label {
+        margin: 0 30px;
+      }
+
+      .quantity__select {
+        flex-grow: 1;
       }
     }
   }

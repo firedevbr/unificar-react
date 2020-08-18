@@ -13,35 +13,61 @@ const remainingDays = (dataFim) => {
   return differenceInDays(parseISO(dataFim), new Date())
 }
 
-const currencyFormat = (valor) => (
-  <CurrencyFormat decimalScale={2} fixedDecimalScale={true} displayType={'text'} value={valor} thousandSeparator={'.'} decimalSeparator={','} />
-)
+const currencyFormat = (valor) => valor ? valor.toLocaleString('pt-br', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : ''
+
+const getParcelas = (total, valor_sinal) => {
+  const parcelas = []
+  for (let i = 1; i <= 3; i++) {
+    parcelas.push((total - valor_sinal) / i)
+  }
+  return parcelas
+}
+
+const test = () => {
+  document.getElementById('select-parcelas').querySelector('input').value = 'Selecione a forma de parcelamento'
+}
 
 const [, ...quantidade] = [...Array(11).keys()]
-const parcelas = [...Array(3).keys()]
 
 const ProductInfo = ({ campanha }) => {
   const [formaPagamento, updateFormaPagamento] = useState('avista')
-  const [total, updateTotal] = useState({sinal: campanha.valor_sinal, valor: campanha.valor})
+  const [total, updateTotal] = useState({ sinal: campanha.valor_sinal, valor: campanha.valor })
+  const [parcelas, updateParcelas] = useState([])
+  const [selectedParcelas, setSelectedParcelas] = useState('Selecione a forma de parcelamento')
   const totalProdutos = getTotalPrice(campanha.produtos)
 
   useEffect(() => {
     if (!total.valor) {
-      updateTotal({sinal: campanha.valor_sinal, valor: campanha.valor})
+      updateTotal({ sinal: campanha.valor_sinal, valor: campanha.valor })
+      updateParcelas(getParcelas(campanha.valor, campanha.valor_sinal))
     }
-    console.log('rodei')
+    console.log(parcelas)
   })
 
   const handlePaymentChange = (e) => {
     updateFormaPagamento(e.target.value)
   }
 
-  const handleQuantityChange = ([quantity]) => {
-    console.log(quantity)
+  const renderParcelasSelect = () => (
+    <MDBSelect label="Parcelas">
+      <MDBSelectInput />
+      <MDBSelectOptions>
+        {parcelas.map((parcela, index) => {
+          return (
+            <MDBSelectOption key={index} value={index + 1}>1x R$ {currencyFormat(total.sinal)} + {index + 1}x R$ {currencyFormat(parcela)}</MDBSelectOption>
+          )
+        })}
+      </MDBSelectOptions>
+    </MDBSelect>
+  )
+
+  const handleQuantityChange = (e) => {
+    const quantity = e.target.value
     updateTotal({
       sinal: campanha.valor_sinal * quantity,
       valor: campanha.valor * quantity
     })
+    updateParcelas(getParcelas(campanha.valor * quantity, campanha.valor_sinal * quantity))
   }
 
   return (
@@ -104,25 +130,25 @@ const ProductInfo = ({ campanha }) => {
               />
             </div>
           </div>
-          <MDBSelect getValue={handleQuantityChange}>
-            <MDBSelectInput selected={quantidade[0]} />
-            <MDBSelectOptions>
-              {quantidade.map((option, index) => (<MDBSelectOption key={index} value={index + 1}>{index + 1}</MDBSelectOption>))}
-            </MDBSelectOptions>
-          </MDBSelect>
+          <label className="quantity__select__label">Quantidade:</label>
+          <div className="quantity__select">
+            <select className="browser-default custom-select" selected={quantidade[0]} onChange={handleQuantityChange}>
+              {quantidade.map((option, index) => (<option key={index} value={index + 1}>{index + 1}</option>))}
+            </select>
+          </div>
         </div>
-        <MDBCollapse isOpen={formaPagamento === 'parcelado'} className="parcelas">
-          <MDBSelect label="Parcelas">
-            <MDBSelectInput selected="Selecione a forma de parcelamento" />
-            <MDBSelectOptions>
-              {parcelas.map((parcela) => {
-                parcela += 1
-                return (
-                  <MDBSelectOption key={parcela} value={parcela}>1x R$ {currencyFormat(total.sinal)} + {parcela}x R$ {currencyFormat((total.valor - total.sinal) / parcela)}</MDBSelectOption>
-                )
-              })}
-            </MDBSelectOptions>
-          </MDBSelect>
+        <MDBCollapse id="select-parcelas" isOpen={formaPagamento === 'parcelado'} className="parcelas">
+          <div className="payments">
+            <label>Parcelas:</label>
+            <div>
+              <select className="browser-default custom-select">
+                <option value="" disabled selected>{selectedParcelas}</option>
+                {parcelas && parcelas.map((parcela, index) => (
+                  <option key={index} value={index + 1}>1x R$ {currencyFormat(total.sinal)} + {index + 1}x R$ {currencyFormat(parcela)}</option>
+                ))}
+              </select>
+            </div>
+          </div>
         </MDBCollapse>
         <div className='total-purchase'>
           <div className='total-purchase__left'>
