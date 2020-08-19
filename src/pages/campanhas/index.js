@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import React, { Component } from 'react'
 import { MDBContainer, MDBRow, MDBCol, MDBSpinner } from 'mdbreact'
 
 import Layout from '~/components/layout'
@@ -16,12 +16,12 @@ class TestPage extends Component {
     filteredCampaigns: []
   }
 
-  updateCampaignsList = (campaigns) => {
-    this.setState({ filteredCampaigns: campaigns })
-  }
-
   async componentDidMount() {
     await this.fetchCampaigns()
+  }
+
+  updateCampaignsList = (campaigns) => {
+    this.setState({ filteredCampaigns: campaigns })
   }
 
   fetchCampaigns = async () => {

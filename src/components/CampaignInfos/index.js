@@ -7,6 +7,8 @@ import { CampaignInfos, PaymentForm, TotalLabel } from './styles'
 import Title from './components/Title'
 import Time from './components/Time'
 import { getPercent, getTotalPrice } from '~/utils/utils'
+import Loading from '~/components/Loading'
+import API from '~/services/api'
 
 const remainingDays = (dataFim) => {
   return differenceInDays(parseISO(dataFim), new Date())
@@ -28,6 +30,27 @@ const getParcelas = (total, valor_sinal) => {
   return parcelas
 }
 
+const validaFormPedido = (pedido) => {
+  const emptyInputs = Object.keys(pedido).filter((key) => !pedido[key])
+  if (emptyInputs.length > 0) {
+    return {
+      error: 'Verifique os campos e tente novamente.',
+      campos: emptyInputs
+    }
+  }
+
+  const parcelado =
+    pedido.forma_pagamento === 'parcelado' && pedido.parcelas < 2
+  const avista = pedido.forma_pagamento === 'avista' && pedido.parcelas > 1
+
+  if (parcelado || avista) {
+    return {
+      error:
+        'Verifique a forma de pagamento ou o parcelamento e tente novamente.'
+    }
+  }
+}
+
 const [, ...quantidade] = [...Array(11).keys()]
 
 const ProductInfo = ({ campanha }) => {
@@ -37,8 +60,8 @@ const ProductInfo = ({ campanha }) => {
     valor: campanha.valor
   })
   const [parcelas, updateParcelas] = useState([])
-  const [selectedParcelas, setSelectedParcelas] = useState('Parcelas')
   const totalProdutos = getTotalPrice(campanha.produtos)
+  const [loading, updateLoading] = useState(false)
 
   useEffect(() => {
     if (!total.valor) {
@@ -62,8 +85,31 @@ const ProductInfo = ({ campanha }) => {
     )
   }
 
+  const handleFormSubmit = (e) => {
+    e.preventDefault()
+    updateLoading(true)
+    const pedido = {
+      campanha: campanha.id,
+      quantidade_produtos: e.target.input_quantidade.value,
+      opcao_entrega: 'retirar_no_local',
+      data_retirada: '31/01/2021 10:00',
+      forma_pagamento: formaPagamento,
+      parcelas: formaPagamento === 'avista' ? 1 : e.target.input_parcelas.value
+    }
+
+    const pedidoInvalido = validaFormPedido(pedido)
+    if (pedidoInvalido) {
+      console.log('deu ruim', pedidoInvalido)
+    }
+
+    setTimeout(() => {
+      updateLoading(false)
+    }, 4000)
+  }
+
   return (
     <CampaignInfos>
+      {loading && <Loading />}
       <Title border title={campanha.nome} />
 
       <div className="about">
@@ -97,7 +143,7 @@ const ProductInfo = ({ campanha }) => {
         </div>
       </div>
 
-      <PaymentForm onSubmit={(e) => e.preventDefault()}>
+      <PaymentForm onSubmit={handleFormSubmit}>
         <div className="quantity">
           <div>
             <label>Forma de Pagamento:</label>
@@ -130,6 +176,8 @@ const ProductInfo = ({ campanha }) => {
               className="browser-default custom-select"
               selected={quantidade[0]}
               onChange={handleQuantityChange}
+              name="input_quantidade"
+              required
             >
               {quantidade.map((option, index) => (
                 <option key={index} value={index + 1}>
@@ -146,13 +194,16 @@ const ProductInfo = ({ campanha }) => {
         >
           <div className="payments">
             <div>
-              <select className="browser-default custom-select">
+              <select
+                className="browser-default custom-select"
+                name="input_parcelas"
+              >
                 <option value="" disabled selected>
-                  {selectedParcelas}
+                  Parcelas
                 </option>
                 {parcelas &&
                   parcelas.map((parcela, index) => (
-                    <option key={index} value={index + 1}>
+                    <option key={index} value={index + 2}>
                       1x R$ {currencyFormat(total.sinal)} + {index + 1}x R${' '}
                       {currencyFormat(parcela)}
                     </option>
@@ -170,7 +221,7 @@ const ProductInfo = ({ campanha }) => {
           </div>
 
           <div className="total-purchase__right">
-            <button type="button">Comprar</button>
+            <button type="submit">Comprar</button>
           </div>
         </div>
       </PaymentForm>

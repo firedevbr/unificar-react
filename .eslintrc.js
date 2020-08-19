@@ -29,6 +29,8 @@ module.exports = {
     'react/state-in-constructor': 'off',
     'react/prop-types': 'off',
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
+    'import/no-unresolved': [2, { ignore: ['^~'] }],
+    'import/extensions': ['error', 'never'],
     'prettier/prettier': 'error'
   }
 }
