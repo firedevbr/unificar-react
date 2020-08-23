@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { differenceInDays, parseISO } from 'date-fns'
 import { MDBCollapse, MDBInput } from 'mdbreact'
 
+import { useRouter } from 'next/router'
 import { CampaignInfos, PaymentForm, TotalLabel } from './styles'
 
 import Title from './components/Title'
 import Time from './components/Time'
 import { getPercent, getTotalPrice } from '~/utils/utils'
 import Loading from '~/components/Loading'
+import ErrorModal from '~/components/ErrorModal'
 import API from '~/services/api'
 
 const remainingDays = (dataFim) => {
@@ -33,10 +35,7 @@ const getParcelas = (total, valor_sinal) => {
 const validaFormPedido = (pedido) => {
   const emptyInputs = Object.keys(pedido).filter((key) => !pedido[key])
   if (emptyInputs.length > 0) {
-    return {
-      error: 'Verifique os campos e tente novamente.',
-      campos: emptyInputs
-    }
+    throw new Error(`Verifique o(s) campo(s) e tente novamente: ${emptyInputs}`)
   }
 
   const parcelado =
@@ -44,10 +43,9 @@ const validaFormPedido = (pedido) => {
   const avista = pedido.forma_pagamento === 'avista' && pedido.parcelas > 1
 
   if (parcelado || avista) {
-    return {
-      error:
-        'Verifique a forma de pagamento ou o parcelamento e tente novamente.'
-    }
+    throw new Error(
+      'Verifique a forma de pagamento ou o parcelamento e tente novamente.'
+    )
   }
 }
 
@@ -62,6 +60,7 @@ const ProductInfo = ({ campanha }) => {
   const [parcelas, updateParcelas] = useState([])
   const totalProdutos = getTotalPrice(campanha.produtos)
   const [loading, updateLoading] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
     if (!total.valor) {
@@ -85,7 +84,26 @@ const ProductInfo = ({ campanha }) => {
     )
   }
 
-  const handleFormSubmit = (e) => {
+  const modalRef = useRef()
+
+  const createOrder = async (pedido) => {
+    const token = localStorage.getItem('auth-jwt')
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    }
+
+    try {
+      const res = await API.post('/pedidos', { ...pedido }, config)
+      if (res.status !== 201) {
+        throw Error()
+      }
+      return res
+    } catch (err) {
+      throw new Error('Não foi possível finalizar o pedido!')
+    }
+  }
+
+  const handleFormSubmit = async (e) => {
     e.preventDefault()
     updateLoading(true)
     const pedido = {
@@ -97,14 +115,16 @@ const ProductInfo = ({ campanha }) => {
       parcelas: formaPagamento === 'avista' ? 1 : e.target.input_parcelas.value
     }
 
-    const pedidoInvalido = validaFormPedido(pedido)
-    if (pedidoInvalido) {
-      console.log('deu ruim', pedidoInvalido)
-    }
+    try {
+      validaFormPedido(pedido)
 
-    setTimeout(() => {
+      const { data } = await createOrder(pedido)
       updateLoading(false)
-    }, 4000)
+      router.push(`/pedidos/${data.id}`)
+    } catch (err) {
+      updateLoading(false)
+      modalRef.current.renderModal('Erro ao Realizar o Pedido', err.message)
+    }
   }
 
   return (
@@ -225,6 +245,7 @@ const ProductInfo = ({ campanha }) => {
           </div>
         </div>
       </PaymentForm>
+      <ErrorModal ref={modalRef} />
     </CampaignInfos>
   )
 }

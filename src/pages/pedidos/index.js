@@ -1,6 +1,6 @@
 import { MDBSpinner, MDBContainer, MDBRow, MDBCol } from 'mdbreact'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Layout from '~/components/layout'
 import Title from '~/components/Title'

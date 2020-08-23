@@ -20,7 +20,7 @@ const ItemCampaign = ({
 
   return (
     <ItemWrapper>
-      <img className="img-fluid" src={`http://localhost${imgPath}`} />
+      <img className="img-fluid" alt="" src={`http://localhost${imgPath}`} />
       <h3 className="text-truncate">{nome}</h3>
       <Progress>
         Progresso: {reservados}/{total}
@@ -30,7 +30,7 @@ const ItemCampaign = ({
         <Price>R$ {valor.toFixed(2)}</Price>
         <MDBBtn
           color="primary"
-          onClick={() => Router.push(`/reservar-pedido?campanha=${id}`)}
+          onClick={() => Router.push(`/pedidos?campanha=${id}`)}
         >
           Reservar
         </MDBBtn>
