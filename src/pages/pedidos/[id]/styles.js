@@ -44,5 +44,15 @@ const CampaingDetails = styled.div`
     }
   }
 `
+const PaymentDetails = styled.div`
+  margin: 10px 30px;
+  padding: 5px;
+  width: 100%;
+`
 
-export { CampaingDetails }
+const PageWrapper = styled.div`
+  h2.title-orange {
+    font-size: 24px;
+  }
+`
+export { CampaingDetails, PaymentDetails, PageWrapper }

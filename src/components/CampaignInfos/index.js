@@ -7,7 +7,7 @@ import { CampaignInfos, PaymentForm, TotalLabel } from './styles'
 
 import Title from './components/Title'
 import Time from './components/Time'
-import { getPercent, getTotalPrice } from '~/utils/utils'
+import { getPercent, getTotalPrice, currencyFormat } from '~/utils/utils'
 import Loading from '~/components/Loading'
 import ErrorModal from '~/components/ErrorModal'
 import API from '~/services/api'
@@ -15,14 +15,6 @@ import API from '~/services/api'
 const remainingDays = (dataFim) => {
   return differenceInDays(parseISO(dataFim), new Date())
 }
-
-const currencyFormat = (valor) =>
-  valor
-    ? valor.toLocaleString('pt-br', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      })
-    : ''
 
 const getParcelas = (total, valor_sinal) => {
   const parcelas = []

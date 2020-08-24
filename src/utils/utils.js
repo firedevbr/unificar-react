@@ -13,4 +13,12 @@ const getTotalPrice = (produtos) => {
   return total
 }
 
-export { getPercent, getTotalPrice }
+const currencyFormat = (valor) =>
+  valor
+    ? valor.toLocaleString('pt-br', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      })
+    : ''
+
+export { getPercent, getTotalPrice, currencyFormat }
