@@ -178,8 +178,10 @@ const PaymentForm = styled.form`
     margin-top: 1rem;
 
     .total-purchase__left {
-      width: 100%;
+      align-items: center;
       display: flex;
+      justify-content: center;
+      width: 100%;
       margin-bottom: 1rem;
       p {
         padding-top: 0.5rem;
@@ -252,6 +254,7 @@ const PaymentForm = styled.form`
 
   @media (max-width: 768px) {
     .quantity {
+      margin-top: 5px;
       text-align: center;
       div {
         flex-direction: column;
@@ -262,13 +265,13 @@ const PaymentForm = styled.form`
           flex-direction: row;
         }
 
-        .quantity__select__label {
-          margin: 0 30px;
-        }
-
         .quantity__select {
           flex-grow: 1;
         }
+      }
+
+      .quantity__select__label {
+        margin: 30px 0px 10px;
       }
     }
   }
