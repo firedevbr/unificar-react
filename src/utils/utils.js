@@ -1,5 +1,6 @@
 const getPercent = (atual, total) => {
-  return Math.floor((atual / total) * 100)
+  const percent = Math.floor((atual / total) * 100)
+  return percent <= 100 ? percent : 100
 }
 
 const getTotalPrice = (produtos) => {

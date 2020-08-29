@@ -34,13 +34,13 @@ const ProductGallery = ({
 }) => {
   const [index, updateIndex] = useState(0)
 
-  const changeSlide = (index) => {
+  const changeSlide = (slideIndex) => {
     /** Prevents out of index on the slider */
-    if (index > slides.length - 1) index = 0
-    if (index < 0) index = slides.length - 1
+    if (slideIndex > slides.length - 1) slideIndex = 0
+    if (slideIndex < 0) slideIndex = slides.length - 1
 
-    updateIndex(index)
-    showSlide(index)
+    updateIndex(slideIndex)
+    showSlide(slideIndex)
   }
 
   useEffect(() => {

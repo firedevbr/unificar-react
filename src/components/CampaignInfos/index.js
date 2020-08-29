@@ -192,7 +192,7 @@ const ProductInfo = ({ campanha }) => {
               required
             >
               {quantidade.map((option, index) => (
-                <option key={index} value={index + 1}>
+                <option key={index} value={index + 2}>
                   {index + 1}
                 </option>
               ))}
