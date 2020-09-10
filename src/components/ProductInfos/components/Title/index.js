@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
 import * as Styled from './styles'
 
-function Title({border}) {
+function Title({ border }) {
   return (
     <Styled.Title border={border}>
       <h2>
@@ -11,7 +11,7 @@ function Title({border}) {
       </h2>
       <p>Porto Alegre, Rio Grande do Sul | Cod. de Referência: 101148</p>
     </Styled.Title>
-  );
+  )
 }
 
-export default Title;
+export default Title

@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 const Bootstrap = createGlobalStyle`
   /*!
@@ -10194,6 +10194,6 @@ const Bootstrap = createGlobalStyle`
       border-color: #dee2e6;
     }
   }
-`;
+`
 
-export default Bootstrap;
+export default Bootstrap

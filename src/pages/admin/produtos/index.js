@@ -1,31 +1,31 @@
-import { useEffect, useState, Component } from "react";
+import { useEffect, useState, Component } from 'react'
 
-import { MDBContainer } from "mdbreact";
+import { MDBContainer } from 'mdbreact'
 
-import Layout from "~/components/layout";
-import BaseTableHeader from "~/components/BaseTable/Header";
-import BaseTableBody from "~/components/BaseTable/Body";
-import useAuth from "../../../context/auth";
-import Router from 'next/router';
+import Router from 'next/router'
+import Layout from '~/components/layout'
+import BaseTableHeader from '~/components/BaseTable/Header'
+import BaseTableBody from '~/components/BaseTable/Body'
+import useAuth from '../../../context/auth'
 
 export default function pages() {
-  const { isAdmin } = useAuth();
+  const { isAdmin } = useAuth()
 
   useEffect(() => {
     if (!isAdmin) {
-      Router.push('/');
+      Router.push('/')
     }
-  }, [isAdmin]);
+  }, [isAdmin])
 
-  const [totalResults, setTotalResults] = useState(0);
+  const [totalResults, setTotalResults] = useState(0)
 
   const handleUpdateTotalResults = (totalResults) => {
-      if (totalResults === null) {
-          setTotalResults(0);
-      }
+    if (totalResults === null) {
+      setTotalResults(0)
+    }
 
-      setTotalResults(totalResults);
-  };
+    setTotalResults(totalResults)
+  }
 
   const columns = [
     {
@@ -50,30 +50,30 @@ export default function pages() {
       field: 'fornecedor',
       child: 'nome'
     }
-  ];
+  ]
 
   return (
     <>
-    {isAdmin && (
-      <Layout>
+      {isAdmin && (
+        <Layout>
           <MDBContainer fluid className="mt-5">
             <BaseTableHeader
               title="Produtos"
               actions={false}
               total={totalResults}
               newResource={{
-                linkTo: "/novo-produto",
-                label: "Novo Produto"
+                linkTo: '/novo-produto',
+                label: 'Novo Produto'
               }}
             />
           </MDBContainer>
           <BaseTableBody
-            resourceEndpoint={"produtos"}
+            resourceEndpoint="produtos"
             columns={columns}
             handleUpdateTotalResults={handleUpdateTotalResults}
           />
         </Layout>
-    )}
+      )}
     </>
-  );
+  )
 }

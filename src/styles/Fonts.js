@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
   @font-face {
@@ -192,4 +192,4 @@ export default createGlobalStyle`
       font-weight: 100;
       font-style: italic;
   }
-`;
+`

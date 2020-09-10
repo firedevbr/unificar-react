@@ -1,13 +1,13 @@
-import React, { useState, useContext } from "react";
-import { MDBRangeInput, MDBRow, MDBContainer, MDBBtn } from "mdbreact";
+import React, { useState, useContext } from 'react'
+import { MDBRangeInput, MDBRow, MDBContainer, MDBBtn } from 'mdbreact'
 
 import { SliderWrapper } from './styles'
 import CampaignContext from '~/context/campaign'
-import { getProgressPercent } from '~/utils/utils'
+import { getPercent } from '~/utils/utils'
 
-const applyFilters = (progress, {campaigns, updateCampaignsList}) => {
-  const filteredCampaigns = campaigns.filter( (item) => {
-    const itemProgress = getProgressPercent(
+const applyFilters = (progress, { campaigns, updateCampaignsList }) => {
+  const filteredCampaigns = campaigns.filter((item) => {
+    const itemProgress = getPercent(
       item.quantidade_pedidos_confirmados,
       item.quantidade_pedidos_necessarios
     )
@@ -16,7 +16,7 @@ const applyFilters = (progress, {campaigns, updateCampaignsList}) => {
   updateCampaignsList(filteredCampaigns)
 }
 
-const clearFilters = ({campaigns, updateCampaignsList}) => {
+const clearFilters = ({ campaigns, updateCampaignsList }) => {
   updateCampaignsList(campaigns)
 }
 
@@ -34,18 +34,27 @@ const SliderFilter = ({ name }) => {
               min={0}
               max={100}
               value={progress}
-              getValue={value => setProgress(value)}
+              getValue={(value) => setProgress(value)}
             />
             <span className="progress-value ml-2">{progress} %</span>
           </div>
           <div className="slider-bottom">
-            <button className="btn-link" onClick={() => clearFilters(context)}>Limpar Filtros</button>
-            <MDBBtn outline color="primary" size="sm" onClick={() => applyFilters(progress, context)}>Aplicar</MDBBtn>
+            <button className="btn-link" onClick={() => clearFilters(context)}>
+              Limpar Filtros
+            </button>
+            <MDBBtn
+              outline
+              color="primary"
+              size="sm"
+              onClick={() => applyFilters(progress, context)}
+            >
+              Aplicar
+            </MDBBtn>
           </div>
         </MDBRow>
       </SliderWrapper>
     </MDBContainer>
-  );
+  )
 }
 
-export default SliderFilter;
+export default SliderFilter

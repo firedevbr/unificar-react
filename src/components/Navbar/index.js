@@ -1,5 +1,5 @@
-import Router from "next/router";
-import React, { useState, useEffect } from 'react';
+import Router from 'next/router'
+import React, { useState, useEffect } from 'react'
 
 import {
   MDBBadge,
@@ -16,74 +16,73 @@ import {
   MDBSideNavNav,
   MDBSideNav,
   MDBContainer,
-  MDBAnimation,
-} from "mdbreact";
+  MDBAnimation
+} from 'mdbreact'
 
-import * as Styled from "./styles";
-import useAuth from "../../context/auth";
+import * as Styled from './styles'
+import useAuth from '../../context/auth'
 
-const NavBar = ({children}) => {
+const NavBar = ({ children }) => {
+  const { user, loading, isAdmin } = useAuth()
 
-  const { user, loading, isAdmin } = useAuth();
-
-  if (typeof window === "undefined") {
-    global.window = {};
+  if (typeof window === 'undefined') {
+    global.window = {}
   }
 
-  const [toggleStateA, setToggleStateA] = useState(false);
-  const [breakWidth, setBreakWidth] = useState(1300);
-  const [windowWidth, setWindowWidth] = useState(0);
-  const [sideOpen, setSideOpen] = useState(false);
+  const [toggleStateA, setToggleStateA] = useState(false)
+  const [breakWidth, setBreakWidth] = useState(1300)
+  const [windowWidth, setWindowWidth] = useState(0)
+  const [sideOpen, setSideOpen] = useState(false)
 
   useEffect(() => {
-    handleResize();
-    window.addEventListener("resize", handleResize);
+    handleResize()
+    window.addEventListener('resize', handleResize)
 
     return function cleanUp() {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize)
     }
-  }, []);
+  }, [])
 
   const handleResize = () => {
-    setWindowWidth(window.innerWidth);
+    setWindowWidth(window.innerWidth)
 
     if (window.innerWidth > 1300) {
-      setSideOpen(true);
+      setSideOpen(true)
     }
-  };
+  }
 
   const handleToggleClickA = () => {
-    setToggleStateA(!toggleStateA);
-  };
+    setToggleStateA(!toggleStateA)
+  }
 
   const navStyle = {
-    paddingLeft: windowWidth > breakWidth ? "210px" : "16px",
-  };
+    paddingLeft: windowWidth > breakWidth ? '210px' : '16px'
+  }
   const mainStyle = {
-    margin: "0 6%",
-    paddingTop: "2.5rem",
-    paddingLeft: windowWidth > breakWidth ? "146px" : "0",
-  };
+    margin: '0 6%',
+    paddingTop: '2.5rem',
+    paddingLeft: windowWidth > breakWidth ? '146px' : '0'
+  }
   const specialCaseNavbarStyles = {
-    WebkitBoxOrient: "horizontal",
-    flexDirection: "row",
-  };
+    WebkitBoxOrient: 'horizontal',
+    flexDirection: 'row'
+  }
 
   return (
     <div className={`fixed-sn white-skin ${loading === true && 'd-none'}`}>
       <Styled.Sidebar>
         <MDBSideNav
           triggerOpening={toggleStateA}
-          className={sideOpen ? "fixed" : "bb"}
+          className={sideOpen ? 'fixed' : 'bb'}
         >
           <MDBSideNavNav>
             <div className="logo pl-5 pt-3">
               <img
-                className={"pointer"}
+                className="pointer"
                 src="/images/logo-colorido.png"
                 alt="Clube Unificar Logo"
                 style={{
-                  cursor: "pointer"
+                  cursor: 'pointer'
                 }}
                 onClick={() => Router.push('/')}
               />
@@ -94,12 +93,8 @@ const NavBar = ({children}) => {
               id="categoria-classificados"
               icon="handshake"
             >
-              <MDBSideNavItem>
-                Ver anúncios
-              </MDBSideNavItem>
-              <MDBSideNavItem>
-                Anunciar
-              </MDBSideNavItem>
+              <MDBSideNavItem>Ver anúncios</MDBSideNavItem>
+              <MDBSideNavItem>Anunciar</MDBSideNavItem>
             </MDBSideNavCat>
 
             <MDBSideNavCat
@@ -107,28 +102,16 @@ const NavBar = ({children}) => {
               id="categoria-campanhas"
               icon="store"
             >
-              <MDBSideNavItem>
+              <MDBSideNavItem onClick={() => Router.push('/campanhas')}>
                 Ver campanhas
               </MDBSideNavItem>
-              <MDBSideNavItem>
-                Pedidos Recentes
-              </MDBSideNavItem>
+              <MDBSideNavItem>Pedidos Recentes</MDBSideNavItem>
             </MDBSideNavCat>
 
-            <MDBSideNavCat
-              name="Cursos"
-              id="categoria-cursos"
-              icon="book-open"
-            >
-              <MDBSideNavItem>
-                Ver cursos
-              </MDBSideNavItem>
-              <MDBSideNavItem>
-                Meus Cursos
-              </MDBSideNavItem>
-              <MDBSideNavItem>
-                Enviar curso
-              </MDBSideNavItem>
+            <MDBSideNavCat name="Cursos" id="categoria-cursos" icon="book-open">
+              <MDBSideNavItem>Ver cursos</MDBSideNavItem>
+              <MDBSideNavItem>Meus Cursos</MDBSideNavItem>
+              <MDBSideNavItem>Enviar curso</MDBSideNavItem>
             </MDBSideNavCat>
 
             <MDBSideNavCat
@@ -136,37 +119,36 @@ const NavBar = ({children}) => {
               id="categoria-consulta-paciente"
               icon="user-shield"
             >
-              <MDBSideNavItem>
-                Consultar
-              </MDBSideNavItem>
-              <MDBSideNavItem>
-                Cadastrar
-              </MDBSideNavItem>
+              <MDBSideNavItem>Consultar</MDBSideNavItem>
+              <MDBSideNavItem>Cadastrar</MDBSideNavItem>
             </MDBSideNavCat>
 
             <MDBSideNavCat
               className={!isAdmin ? 'd-none' : ''}
-              name={"Admin"}
+              name="Admin"
               id="categoria-admin"
               icon="tachometer-alt"
             >
-              <MDBSideNavItem onClick={() => Router.push("/admin/campanhas")}>
+              <MDBSideNavItem onClick={() => Router.push('/admin/campanhas')}>
                 Campanhas
               </MDBSideNavItem>
-              <MDBSideNavItem onClick={() => Router.push("/admin/produtos")}>
+              <MDBSideNavItem onClick={() => Router.push('/admin/produtos')}>
                 Produtos
               </MDBSideNavItem>
-              <MDBSideNavItem onClick={() => Router.push("/admin/produtos/categorias")}>
+              <MDBSideNavItem
+                onClick={() => Router.push('/admin/produtos/categorias')}
+              >
                 Produtos Categorias
               </MDBSideNavItem>
-              <MDBSideNavItem onClick={() => Router.push("/admin/produtos/fornecedores")}>
+              <MDBSideNavItem
+                onClick={() => Router.push('/admin/produtos/fornecedores')}
+              >
                 Fornecedores
               </MDBSideNavItem>
-              <MDBSideNavItem onClick={() => Router.push("/admin/usuarios")}>
+              <MDBSideNavItem onClick={() => Router.push('/admin/usuarios')}>
                 Usuários
               </MDBSideNavItem>
             </MDBSideNavCat>
-
           </MDBSideNavNav>
         </MDBSideNav>
       </Styled.Sidebar>
@@ -179,9 +161,9 @@ const NavBar = ({children}) => {
                 onClick={handleToggleClickA}
                 key="sideNavToggleA"
                 style={{
-                  lineHeight: "32px",
-                  marginRight: "1em",
-                  verticalAlign: "middle",
+                  lineHeight: '32px',
+                  marginRight: '1em',
+                  verticalAlign: 'middle'
                 }}
               >
                 <MDBIcon icon="bars" color="white" size="2x" />
@@ -235,12 +217,7 @@ const NavBar = ({children}) => {
                 <MDBDropdownMenu right>
                   <MDBDropdownItem href="#!">Log out</MDBDropdownItem>
                   <MDBDropdownItem
-                    onClick={() =>
-                      Router.push(
-                        "/minha-conta",
-                        "/minha-conta"
-                      )
-                    }
+                    onClick={() => Router.push('/minha-conta', '/minha-conta')}
                   >
                     Minha Conta
                   </MDBDropdownItem>
@@ -254,7 +231,7 @@ const NavBar = ({children}) => {
         <div className="mt-5">{children}</div>
       </main>
     </div>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar

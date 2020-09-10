@@ -17,4 +17,12 @@ const Divider = styled.div`
   margin: 20px auto;
   border-top: 1px solid #f5f5f5;
 `
-export {CampaignList, Divider}
+const Container = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 90vh;
+  width: 100vw;
+`
+
+export { CampaignList, Divider, Container }

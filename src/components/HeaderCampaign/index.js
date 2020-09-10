@@ -1,11 +1,11 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react'
+import Link from 'next/link'
 
-import { MDBRow, MDBCol, MDBIcon } from "mdbreact";
+import { MDBRow, MDBCol, MDBIcon } from 'mdbreact'
 
-import * as Styled from "./styles";
+import * as Styled from './styles'
 
-function HeaderCampaign({ title, actions, search, filter}) {
+function HeaderCampaign({ title, actions, search, filter }) {
   return (
     <Styled.Header>
       <MDBRow>
@@ -44,7 +44,7 @@ function HeaderCampaign({ title, actions, search, filter}) {
         </MDBCol>
       </MDBRow>
     </Styled.Header>
-  );
+  )
 }
 
-export default HeaderCampaign;
+export default HeaderCampaign

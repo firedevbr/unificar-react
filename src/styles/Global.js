@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
     * {
@@ -101,10 +101,20 @@ const GlobalStyles = createGlobalStyle`
     color: #4057e3 !important;
   }
 
+  .custom-orange {
+    color: #ffaa2b !important;
+  }
+
   .bg-custom-blue {
     background-color: #4057e3 !important;
   }
 
-  `;
+  .title-orange {
+    color: #ffaa2b;
+    font-weight: 600;
+    font-size: 36px;
+  }
 
-export default GlobalStyles;
+  `
+
+export default GlobalStyles

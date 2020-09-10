@@ -30,17 +30,17 @@ export const TabsHeader = styled.div`
     }
   }
 
-  .tab-content{
+  .tab-content {
     margin-top: 0;
     padding: 0 !important;
     padding-top: 1rem !important;
     color: #c0c8d5;
   }
 
-  @media(min-width: 768px){
-    ul{
-      li{
-        a{
+  @media (min-width: 768px) {
+    ul {
+      li {
+        a {
           font-size: 1rem !important;
         }
       }

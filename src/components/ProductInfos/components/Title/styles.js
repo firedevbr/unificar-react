@@ -3,8 +3,9 @@ import styled from 'styled-components'
 export const Title = styled.div`
   width: 100%;
   padding-bottom: 1rem;
-  border-bottom: ${props => props.border ? "1px solid rgba(173, 183, 200, 0.5)" : ""} ;
-  margin-bottom: ${props => props.border ? "2rem" : ""};
+  border-bottom: ${(props) =>
+    props.border ? '1px solid rgba(173, 183, 200, 0.5)' : ''};
+  margin-bottom: ${(props) => (props.border ? '2rem' : '')};
 
   h2 {
     font-size: 1.3rem;

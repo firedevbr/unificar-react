@@ -5,7 +5,6 @@ export const ProductInfos = styled.div`
   margin-top: 1rem;
   margin-bottom: 2rem;
 
-
   .about {
     width: 100%;
     margin-bottom: 2rem;
@@ -48,10 +47,10 @@ export const ProductInfos = styled.div`
       }
     }
 
-    .price-product__right{
+    .price-product__right {
       width: 100%;
 
-      p{
+      p {
         font-size: 0.875rem;
         color: #a6b1c3;
         font-weight: 400;
@@ -59,25 +58,25 @@ export const ProductInfos = styled.div`
     }
   }
 
-  .quantity-product{
+  .quantity-product {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     margin-top: 1rem;
 
-    .quantity-product__left{
+    .quantity-product__left {
       width: 100%;
       display: flex;
       margin-bottom: 1rem;
-      p{
-        padding-top: .5rem;
+      p {
+        padding-top: 0.5rem;
         margin-right: 15px;
         color: #a6b1c3;
         font-size: 1.1rem;
         font-weight: 300;
       }
 
-      select{
+      select {
         border: 1px solid #a6b1c3;
         color: #a6b1c3;
         outline: 0;
@@ -86,10 +85,10 @@ export const ProductInfos = styled.div`
       }
     }
 
-    .quantity-product__right{
+    .quantity-product__right {
       width: 100%;
 
-      button{
+      button {
         width: 100%;
         height: 54px;
         display: flex;
@@ -98,31 +97,31 @@ export const ProductInfos = styled.div`
         background: #4057e3;
         border-radius: 5px;
         color: #f0f2f7;
-        border: none
+        border: none;
       }
     }
   }
 
-  @media(min-width: 768px){
+  @media (min-width: 768px) {
     .price-product {
-      .price-product__left{
-        width:40%;
+      .price-product__left {
+        width: 40%;
       }
-      .price-product__right{
+      .price-product__right {
         display: flex;
         align-items: center;
         width: 60%;
       }
     }
 
-    .quantity-product{
-      .quantity-product__left{
+    .quantity-product {
+      .quantity-product__left {
         width: 50%;
         display: flex;
         align-items: center;
         margin-bottom: 0;
       }
-      .quantity-product__right{
+      .quantity-product__right {
         width: 50%;
         display: flex;
         align-items: center;
