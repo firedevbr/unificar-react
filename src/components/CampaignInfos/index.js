@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { differenceInDays, parseISO } from 'date-fns'
 import { MDBCollapse, MDBInput } from 'mdbreact'
 
 import { useRouter } from 'next/router'
@@ -7,14 +6,15 @@ import { CampaignInfos, PaymentForm, TotalLabel } from './styles'
 
 import Title from './components/Title'
 import Time from './components/Time'
-import { getPercent, getTotalPrice, currencyFormat } from '~/utils/utils'
+import {
+  getPercent,
+  getTotalPrice,
+  currencyFormat,
+  remainingDays
+} from '~/utils/utils'
 import Loading from '~/components/Loading'
 import ErrorModal from '~/components/ErrorModal'
 import API from '~/services/api'
-
-const remainingDays = (dataFim) => {
-  return differenceInDays(parseISO(dataFim), new Date())
-}
 
 const getParcelas = (total, valor_sinal) => {
   const parcelas = []
@@ -85,7 +85,7 @@ const ProductInfo = ({ campanha }) => {
     }
 
     try {
-      const res = await API.post('/pedidos', { ...pedido }, config)
+      const res = await API.post('/pedidose', { ...pedido }, config)
       if (res.status !== 201) {
         throw Error()
       }

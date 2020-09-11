@@ -5,11 +5,11 @@ const CampaignList = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
-  margin: 0px -24px 20px;
+  margin: 0px 0px 20px;
   padding: 0 20px;
 
-  @media(max-width: 800px) {
-    margin 0px 0 20px;
+  @media (max-width: 800px) {
+    margin: 0px 0 20px;
   }
 `
 const Divider = styled.div`
@@ -22,7 +22,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   height: 90vh;
-  width: 100vw;
+  width: 100%;
 `
 
 export { CampaignList, Divider, Container }

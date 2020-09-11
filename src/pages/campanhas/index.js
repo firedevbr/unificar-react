@@ -48,10 +48,10 @@ class TestPage extends Component {
 
     return filteredCampaigns.length === 0 ? (
       <Container>
-        <MDBSpinner className="custom-blue" />
+        <MDBSpinner />
       </Container>
     ) : (
-      <Layout>
+      <Layout customMainClass="bg-custom-grey">
         <MDBContainer fluid>
           <CampaignContext.Provider
             value={{
@@ -60,7 +60,7 @@ class TestPage extends Component {
             }}
           >
             <MDBRow>
-              <MDBCol sm="5" className="ml-md-5">
+              <MDBCol sm="5">
                 <Title className="my-3 text-center title-orange">
                   Campanhas
                 </Title>
@@ -68,10 +68,10 @@ class TestPage extends Component {
               <MDBCol sm="5">
                 <CollpaseFilter />
               </MDBCol>
-              <MDBCol sm="12" className="mb-4 ml-md-5">
+              <MDBCol sm="12" className="mb-4">
                 <Divider />
               </MDBCol>
-              <MDBCol sm="12" className="ml-md-5">
+              <MDBCol sm="12">
                 <CampaignList>
                   {filteredCampaigns.map((campaign) => (
                     <ItemCampaign key={campaign.id} {...campaign} />

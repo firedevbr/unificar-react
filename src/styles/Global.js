@@ -115,6 +115,10 @@ const GlobalStyles = createGlobalStyle`
     font-size: 36px;
   }
 
+  .bg-custom-grey {
+    background-color: #F5F8FA;
+  }
+
   `
 
 export default GlobalStyles

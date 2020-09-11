@@ -1,3 +1,5 @@
+import { differenceInDays, parseISO } from 'date-fns'
+
 const getPercent = (atual, total) => {
   const percent = Math.floor((atual / total) * 100)
   return percent <= 100 ? percent : 100
@@ -22,4 +24,8 @@ const currencyFormat = (valor) =>
       })
     : ''
 
-export { getPercent, getTotalPrice, currencyFormat }
+const remainingDays = (dataFim) => {
+  return differenceInDays(parseISO(dataFim), new Date())
+}
+
+export { getPercent, getTotalPrice, currencyFormat, remainingDays }

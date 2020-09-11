@@ -6,7 +6,7 @@ export const Time = styled.div`
   .time {
     width: 100%;
     background: #f0f2f7;
-    height: 8px;
+    height: ${(props) => (props.size === 'small' ? '5px' : '8px')};
     display: flex;
     border-radius: 57px;
     overflow: hidden;
@@ -18,6 +18,11 @@ export const Time = styled.div`
   }
 
   .time-title {
+    ${({ size }) =>
+      size === 'small' &&
+      `
+    font-size: 13px;
+  `}
     width: 100%;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
