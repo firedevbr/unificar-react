@@ -1,9 +1,9 @@
 import React from 'react'
 import Router from 'next/router'
 import { MDBBtn } from 'mdbreact'
-import { ItemWrapper, Price, ItemFooter, ItemBody } from './styles'
+import { ItemWrapper, Price, ItemFooter, ItemBody, ItemHeader } from './styles'
 import Time from '../CampaignInfos/components/Time'
-import { getPercent, remainingDays } from '~/utils/utils'
+import { getPercent, remainingDays, currencyFormat } from '~/utils/utils'
 
 const ItemCampaign = ({
   id,
@@ -24,14 +24,18 @@ const ItemCampaign = ({
     <ItemWrapper>
       <img className="img-fluid" alt="" src={`http://localhost${imgPath}`} />
       <ItemBody>
-        <h3 className="text-truncate">{nome}</h3>
+        <ItemHeader>
+          <h3 className="text-truncate">{nome}</h3>
+        </ItemHeader>
         <Time
           width={getPercent(reservados, total)}
           days={remainingDays(data_fim)}
           size="small"
         />
         <ItemFooter>
-          <Price>R$ {valor.toFixed(2)}</Price>
+          <Price>
+            R$ <span>{currencyFormat(valor)}</span>
+          </Price>
           <MDBBtn
             color="primary"
             onClick={() => Router.push(`/pedidos?campanha=${id}`)}

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
-import { MDBRangeInput, MDBRow, MDBContainer, MDBBtn } from 'mdbreact'
+import { MDBRangeInput, MDBRow, MDBContainer } from 'mdbreact'
 
-import { SliderWrapper } from './styles'
+import { SliderWrapper, ButtonSmall } from './styles'
 import CampaignContext from '~/context/campaign'
 import { getPercent } from '~/utils/utils'
 
@@ -39,17 +39,19 @@ const SliderFilter = ({ name }) => {
             <span className="progress-value ml-2">{progress} %</span>
           </div>
           <div className="slider-bottom">
-            <button className="btn-link" onClick={() => clearFilters(context)}>
+            <button
+              type="button"
+              className="btn-link"
+              onClick={() => clearFilters(context)}
+            >
               Limpar Filtros
             </button>
-            <MDBBtn
-              outline
-              color="primary"
-              size="sm"
+            <ButtonSmall
+              type="button"
               onClick={() => applyFilters(progress, context)}
             >
               Aplicar
-            </MDBBtn>
+            </ButtonSmall>
           </div>
         </MDBRow>
       </SliderWrapper>

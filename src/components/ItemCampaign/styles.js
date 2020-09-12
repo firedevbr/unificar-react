@@ -7,11 +7,13 @@ const ItemWrapper = styled.div`
   -moz-box-shadow: 0px 0px 6px #00000029;
   box-shadow: 0px 0px 6px #00000029;
   height: 347px;
-  margin: 0px 50px 40px;
+  margin: 0px 10px 40px;
+  position: relative;
   width: 256px;
   -webkit-font-smoothing: antialiased !important;
 
   img {
+    border-bottom: 1px solid #f9f9f9;
     height: 181px;
     width: 100%;
   }
@@ -35,22 +37,30 @@ const Progress = styled.p`
 `
 
 const Price = styled.p`
-  font-size: 18px;
+  color: #ffaa2b;
+  font-size: 16px;
   font-weight: 600;
+
+  span {
+    font-size: 28px;
+    margin-left: 3px;
+  }
 `
 
 const ItemFooter = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
+  position: absolute;
+  bottom: 10px;
+  width: 90%;
 
   button.btn-primary {
     background-color: #4057e3 !important;
-    border-radius: 0px;
+    border-radius: 8px;
     font-size: 13px;
     height: 30px;
-    margin-right: 0px;
-    padding: 5px 10px !important;
+    padding: 5px 20px !important;
     text-transform: none;
   }
 
@@ -62,4 +72,8 @@ const ItemFooter = styled.div`
 const ItemBody = styled.div`
   padding: 0px 15px;
 `
-export { ItemWrapper, Price, Progress, ItemFooter, ItemBody }
+
+const ItemHeader = styled.div`
+  height: 50px;
+`
+export { ItemWrapper, Price, Progress, ItemFooter, ItemBody, ItemHeader }

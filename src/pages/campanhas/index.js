@@ -51,7 +51,7 @@ class TestPage extends Component {
         <MDBSpinner />
       </Container>
     ) : (
-      <Layout customMainClass="bg-custom-grey">
+      <Layout>
         <MDBContainer fluid>
           <CampaignContext.Provider
             value={{

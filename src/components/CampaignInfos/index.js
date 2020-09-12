@@ -85,7 +85,7 @@ const ProductInfo = ({ campanha }) => {
     }
 
     try {
-      const res = await API.post('/pedidose', { ...pedido }, config)
+      const res = await API.post('/pedidos', { ...pedido }, config)
       if (res.status !== 201) {
         throw Error()
       }

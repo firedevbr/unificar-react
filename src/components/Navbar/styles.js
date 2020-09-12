@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Sidebar = styled.div`
   .logo {
-    height: 62px;
+    height: 76px;
     padding: 0 15px;
     border-bottom: 1px solid #f5f7fc;
     margin-bottom: 2rem;
@@ -16,6 +16,7 @@ export const Sidebar = styled.div`
   }
 
   .side-nav {
+    background-color: #ffffff;
     & .fa-angle-down.rotate-icon {
       top: 1.3rem;
       display: none;
