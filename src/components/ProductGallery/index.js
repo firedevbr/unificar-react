@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdbreact'
 
 import { GalleryProduct, BadgePercent } from './styles'
-import { getPercent, getTotalPrice } from '~/utils/utils'
+import { getDiscountPercent } from '~/utils/utils'
 
 const URL = 'http://localhost'
 const slidePlaceHolder = `${URL}/assets/images/2020/07/22050670c8c11ee86d31cabbc94fc8b7.png`
@@ -23,10 +23,6 @@ const showSlide = (index) => {
   thumbs[index].classList.add('active')
   thumbs[index].scrollIntoView(false)
   dots[index].classList.add('active')
-}
-
-const getDiscountPercent = (campanha) => {
-  return 100 - getPercent(campanha.valor, getTotalPrice(campanha.produtos))
 }
 
 const ProductGallery = ({
@@ -109,7 +105,9 @@ const ProductGallery = ({
               className="custom-blue slide-control d-block d-md-none ml-3"
               onClick={() => changeSlide(index + 1)}
             />
-            <BadgePercent>{getDiscountPercent(dadosCampanha)}%</BadgePercent>
+            <BadgePercent>
+              {getDiscountPercent(dadosCampanha.valor, dadosCampanha.produtos)}%
+            </BadgePercent>
           </MDBCol>
           <MDBCol
             size="12"

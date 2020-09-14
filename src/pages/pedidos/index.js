@@ -41,37 +41,35 @@ const ReservarPedido = () => {
 
   return (
     <Layout>
-      <MDBContainer fluid className="mt-5">
-        <Title className="mt-5 py-3 text-center title-orange">
-          Reservar Pedido
-        </Title>
-      </MDBContainer>
-      <MDBRow>
-        <MDBContainer fluid className="ml-md-5 ml-lg-5">
-          <MDBRow>
-            {!campanha ? (
-              <MDBCol
-                size="12"
-                className="d-flex align-items-center justify-content-center"
-              >
-                <MDBSpinner className="custom-blue" />
+      <MDBContainer fluid>
+        <MDBRow>
+          <MDBCol size="12">
+            <Title className="my-3 text-center title-orange">
+              Reservar Pedido
+            </Title>
+          </MDBCol>
+          {!campanha ? (
+            <MDBCol
+              size="12"
+              className="d-flex align-items-center justify-content-center"
+            >
+              <MDBSpinner className="custom-blue" />
+            </MDBCol>
+          ) : (
+            <>
+              <MDBCol size="12" md="6" lg="7">
+                {campanha && <ProductGallery campanha={campanha} />}
               </MDBCol>
-            ) : (
-              <>
-                <MDBCol size="12" md="6" lg="7">
-                  {campanha && <ProductGallery campanha={campanha} />}
-                </MDBCol>
-                <MDBCol size="12" md="6" lg="5">
-                  <CampaignInfos campanha={campanha} />
-                </MDBCol>
-              </>
-            )}
-          </MDBRow>
-        </MDBContainer>
-        <MDBContainer fluid className="ml-md-5 ml-lg-5">
-          <ProductTabs />
-        </MDBContainer>
-      </MDBRow>
+              <MDBCol size="12" md="6" lg="5">
+                <CampaignInfos campanha={campanha} />
+              </MDBCol>
+            </>
+          )}
+          <MDBCol size="12">
+            <ProductTabs />
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
     </Layout>
   )
 }

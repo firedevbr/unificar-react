@@ -5,7 +5,7 @@ const getPercent = (atual, total) => {
   return percent <= 100 ? percent : 100
 }
 
-const getTotalPrice = (produtos) => {
+const getOriginalPrice = (produtos) => {
   let total = 0
   if (Array.isArray(produtos)) {
     for (let i = 0; i < produtos.length; i++) {
@@ -28,4 +28,14 @@ const remainingDays = (dataFim) => {
   return differenceInDays(parseISO(dataFim), new Date())
 }
 
-export { getPercent, getTotalPrice, currencyFormat, remainingDays }
+const getDiscountPercent = (valor, produtos) => {
+  return 100 - getPercent(valor, getOriginalPrice(produtos))
+}
+
+export {
+  getPercent,
+  getOriginalPrice,
+  currencyFormat,
+  remainingDays,
+  getDiscountPercent
+}

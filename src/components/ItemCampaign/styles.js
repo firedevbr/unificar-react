@@ -9,7 +9,7 @@ const ItemWrapper = styled.div`
   height: 347px;
   margin: 0px 10px 40px;
   position: relative;
-  width: 256px;
+  width: 258px;
   -webkit-font-smoothing: antialiased !important;
 
   img {
@@ -48,7 +48,7 @@ const Price = styled.p`
 `
 
 const ItemFooter = styled.div`
-  align-items: center;
+  align-items: flex-end;
   display: flex;
   justify-content: space-between;
   position: absolute;
@@ -76,4 +76,19 @@ const ItemBody = styled.div`
 const ItemHeader = styled.div`
   height: 50px;
 `
-export { ItemWrapper, Price, Progress, ItemFooter, ItemBody, ItemHeader }
+
+const OriginalPrice = styled.p`
+  color: #a6b1c3;
+  font-size: 12px;
+  font-weight: 300;
+  ${(props) => (props.discount > 0 ? 'text-decoration: line-through;' : '')}
+`
+export {
+  ItemWrapper,
+  Price,
+  Progress,
+  ItemFooter,
+  ItemBody,
+  ItemHeader,
+  OriginalPrice
+}

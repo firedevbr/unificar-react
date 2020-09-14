@@ -69,10 +69,11 @@ const CampaignInfos = styled.div`
     flex-wrap: wrap;
     margin-top: 1rem;
 
-    .total-purchase__left {
-      width: 100%;
+    /* .total-purchase__left {
       display: flex;
+      font-weight: 600;
       margin-bottom: 1rem;
+      width: 100%;
       p {
         padding-top: 0.5rem;
         margin-right: 15px;
@@ -88,7 +89,7 @@ const CampaignInfos = styled.div`
         box-shadow: none;
         max-width: 150px;
       }
-    }
+    } */
 
     .total-purchase__right {
       width: 100%;
@@ -108,6 +109,7 @@ const CampaignInfos = styled.div`
   }
 
   @media (min-width: 768px) {
+    padding-right: 20px;
     .price-product {
       .price-product__left {
         width: 40%;
@@ -120,12 +122,6 @@ const CampaignInfos = styled.div`
     }
 
     .total-purchase {
-      .total-purchase__left {
-        width: 50%;
-        display: flex;
-        align-items: center;
-        margin-bottom: 0;
-      }
       .total-purchase__right {
         width: 50%;
         display: flex;
@@ -180,7 +176,8 @@ const PaymentForm = styled.form`
     .total-purchase__left {
       align-items: center;
       display: flex;
-      justify-content: center;
+      font-weight: 600;
+      justify-content: left;
       width: 100%;
       margin-bottom: 1rem;
       p {
@@ -217,7 +214,6 @@ const PaymentForm = styled.form`
         align-items: baseline;
         display: flex;
         font-size: 16px;
-        font-weight: 600;
         margin-bottom: 0;
         width: 50%;
       }
@@ -272,6 +268,13 @@ const PaymentForm = styled.form`
 
       .quantity__select__label {
         margin: 30px 0px 10px;
+      }
+    }
+
+    .total-purchase {
+      .total-purchase__left {
+        justify-content: center;
+        width: 100%;
       }
     }
   }

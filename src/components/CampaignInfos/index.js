@@ -8,7 +8,7 @@ import Title from './components/Title'
 import Time from './components/Time'
 import {
   getPercent,
-  getTotalPrice,
+  getOriginalPrice,
   currencyFormat,
   remainingDays
 } from '~/utils/utils'
@@ -50,7 +50,7 @@ const ProductInfo = ({ campanha }) => {
     valor: campanha.valor
   })
   const [parcelas, updateParcelas] = useState([])
-  const totalProdutos = getTotalPrice(campanha.produtos)
+  const totalProdutos = getOriginalPrice(campanha.produtos)
   const [loading, updateLoading] = useState(false)
   const router = useRouter()
 
