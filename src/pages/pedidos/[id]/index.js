@@ -60,84 +60,88 @@ const OrderDetails = () => {
       {order.campanha && (
         <MDBContainer fluid>
           <MDBRow>
-            <OrderContainer>
-              <MDBCol sm="12" className="ml-md-3">
-                <Title className="mt-4 mb-4 text-center title-orange">
-                  Detalhes da Campanha
-                </Title>
-                <CampaingDetails>
-                  <table className="table">
-                    <tbody>
-                      <tr>
-                        <th scope="row">Nome:</th>
-                        <td>{order.campanha.nome}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Valor p/unidade:</th>
-                        <td>R$ {currencyFormat(order.campanha.valor)}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Descrição</th>
-                        <td>{order.campanha.descricao}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Produtos</th>
+            <MDBCol sm="12">
+              <Title className="mt-4 mb-4 text-center title-orange">
+                Detalhes da Campanha
+              </Title>
+            </MDBCol>
+            <MDBCol size="12">
+              <CampaingDetails>
+                <table className="table">
+                  <tbody>
+                    <tr>
+                      <th scope="row">Nome:</th>
+                      <td>{order.campanha.nome}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Valor p/unidade:</th>
+                      <td>R$ {currencyFormat(order.campanha.valor)}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Descrição</th>
+                      <td>{order.campanha.descricao}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Produtos</th>
+                      <td>
+                        {order.campanha.produtos.map((produto) => (
+                          <li key={produto.id}>
+                            <MDBIcon
+                              size="sm"
+                              icon="shopping-cart"
+                              className="custom-blue"
+                            />
+                            &nbsp;&nbsp;
+                            {produto.nome}
+                          </li>
+                        ))}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </CampaingDetails>
+            </MDBCol>
+            <MDBCol size="12">
+              <Title className="mt-5 mb-3 text-center title-orange">
+                Detalhes de Pagamento
+              </Title>
+            </MDBCol>
+            <MDBCol size="12">
+              <PaymentDetails>
+                <MDBTable>
+                  <MDBTableHead textWhite>
+                    <tr className="bg-custom-blue text-center">
+                      <th>Parcela</th>
+                      <th>Vencimento</th>
+                      <th>Status</th>
+                      <th>Valor</th>
+                      <th>PDF</th>
+                    </tr>
+                  </MDBTableHead>
+                  <MDBTableBody>
+                    {order.boletos.map((boleto, index) => (
+                      <tr key={boleto.id} className="text-center">
+                        <td>{index + 1}</td>
+                        <td>{dateFormat(boleto.vencimento)}</td>
+                        <td>{boleto.status}</td>
+                        <td className="w-sm-helper">
+                          R$ {currencyFormat(boleto.valor)}
+                        </td>
                         <td>
-                          {order.campanha.produtos.map((produto) => (
-                            <li key={produto.id}>
-                              <MDBIcon
-                                size="sm"
-                                icon="shopping-cart"
-                                className="custom-blue"
-                              />
-                              &nbsp;&nbsp;
-                              {produto.nome}
-                            </li>
-                          ))}
+                          <a href={boleto.public_url}>
+                            <MDBIcon
+                              size="2x"
+                              className="custom-orange"
+                              icon="file-download"
+                            />
+                          </a>
                         </td>
                       </tr>
-                    </tbody>
-                  </table>
-                </CampaingDetails>
-                <Title className="mt-5 mb-3 text-center title-orange">
-                  Detalhes de Pagamento
-                </Title>
-                <PaymentDetails>
-                  <MDBTable>
-                    <MDBTableHead textWhite>
-                      <tr className="bg-custom-blue text-center">
-                        <th>Parcela</th>
-                        <th>Vencimento</th>
-                        <th>Status</th>
-                        <th>Valor</th>
-                        <th>PDF</th>
-                      </tr>
-                    </MDBTableHead>
-                    <MDBTableBody>
-                      {order.boletos.map((boleto, index) => (
-                        <tr key={boleto.id} className="text-center">
-                          <td>{index + 1}</td>
-                          <td>{dateFormat(boleto.vencimento)}</td>
-                          <td>{boleto.status}</td>
-                          <td className="w-sm-helper">
-                            R$ {currencyFormat(boleto.valor)}
-                          </td>
-                          <td>
-                            <a href={boleto.public_url}>
-                              <MDBIcon
-                                size="2x"
-                                className="custom-orange"
-                                icon="file-download"
-                              />
-                            </a>
-                          </td>
-                        </tr>
-                      ))}
-                    </MDBTableBody>
-                  </MDBTable>
-                </PaymentDetails>
-              </MDBCol>
-            </OrderContainer>
+                    ))}
+                  </MDBTableBody>
+                </MDBTable>
+              </PaymentDetails>
+            </MDBCol>
           </MDBRow>
         </MDBContainer>
       )}

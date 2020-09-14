@@ -113,6 +113,10 @@ const GlobalStyles = createGlobalStyle`
     color: #ffaa2b;
     font-weight: 600;
     font-size: 36px;
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
   }
 
   .bg-custom-grey {
