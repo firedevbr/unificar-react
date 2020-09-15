@@ -8,6 +8,8 @@ import {
   MDBModalFooter
 } from 'mdbreact'
 
+import { ModalWrapper } from './styles'
+
 class ErrorModal extends Component {
   state = {
     title: 'Erro',
@@ -32,15 +34,17 @@ class ErrorModal extends Component {
     return (
       <MDBContainer>
         <MDBModal isOpen={modal} toggle={this.toggle} centered>
-          <MDBModalHeader toggle={this.toggle}>{title}</MDBModalHeader>
-          <MDBModalBody>
-            <div className="p-5">{text}</div>
-          </MDBModalBody>
-          <MDBModalFooter>
-            <MDBBtn color="secondary" onClick={this.toggle}>
-              Fechar
-            </MDBBtn>
-          </MDBModalFooter>
+          <ModalWrapper>
+            <MDBModalHeader toggle={this.toggle}>{title}</MDBModalHeader>
+            <MDBModalBody>
+              <div>{text}</div>
+            </MDBModalBody>
+            <MDBModalFooter>
+              <MDBBtn color="secondary" onClick={this.toggle}>
+                Fechar
+              </MDBBtn>
+            </MDBModalFooter>
+          </ModalWrapper>
         </MDBModal>
       </MDBContainer>
     )

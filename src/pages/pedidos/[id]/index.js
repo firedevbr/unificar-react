@@ -17,7 +17,7 @@ import Layout from '~/components/layout'
 import Title from '~/components/Title'
 import Loading from '~/components/Loading'
 
-import { CampaingDetails, PaymentDetails, OrderContainer } from './styles'
+import { CampaingDetails, PaymentDetails } from './styles'
 
 const dateFormat = (dateStr) => {
   const parsed = parseISO(dateStr)

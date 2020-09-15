@@ -91,7 +91,7 @@ const ProductInfo = ({ campanha }) => {
       }
       return res
     } catch (err) {
-      throw new Error('Não foi possível finalizar o pedido!')
+      throw new Error('Não foi possível finalizar o pedido.')
     }
   }
 
