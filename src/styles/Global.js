@@ -9,6 +9,10 @@ const GlobalStyles = createGlobalStyle`
 
     }
 
+    html, body, #__next, .white-skin, main {
+      height: 100%;
+    }
+
     body {
       background: #FFF;
       line-height: 1.3;
@@ -113,6 +117,38 @@ const GlobalStyles = createGlobalStyle`
     color: #ffaa2b;
     font-weight: 600;
     font-size: 36px;
+  }
+
+  .scrollbar {
+    overflow: scroll;
+  }
+
+  .scrollbar-only-y {
+    overflow-x: hidden;
+  }
+
+  .scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  /* custom colors  */
+  .scrollbar-primary::-webkit-scrollbar {
+    background-color: #F5F5F5;
+  }
+  .scrollbar-primary {
+    scrollbar-color: #4285f4 #f5f5f5;
+  }
+  .scrollbar-primary::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: #4285F4;
   }
 
   `

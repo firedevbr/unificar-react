@@ -228,7 +228,7 @@ const NavBar = ({ children }) => {
         </MDBNavbar>
       </Styled.Navbar>
       <main style={mainStyle}>
-        <div className="mt-5">{children}</div>
+        <div className="pt-5 h-100">{children}</div>
       </main>
     </div>
   )

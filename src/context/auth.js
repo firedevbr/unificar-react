@@ -11,6 +11,13 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
 
+  const redirectAfterLogin = () => {
+    Router.push('/');
+  };
+  const redirectAfterLogout = () => {
+    Router.push('/home');
+  };
+
   useEffect(() => {
     async function loadUserFromCookies() {
       const token = Cookies.get('auth-jwt')
@@ -27,12 +34,14 @@ export const AuthProvider = ({ children }) => {
   }, [])
 
   const login = async (cpf, senha) => {
-    const { token } = await API.post('session', { cpf, senha })
+    const token = (await API.post('session', { cpf, senha })).data;
+
     if (token) {
       Cookies.set('auth-jwt', token)
       API.defaults.headers.Authorization = `Bearer ${token}`
       const { data } = await API.get('usuarios/eu')
       setUser(data)
+      redirectAfterLogin();
     }
   }
 
@@ -70,7 +79,7 @@ export function ProtectRoute(Component) {
 
     useEffect(() => {
       if (!isAuthenticated && !loading) {
-        router.push('/login')
+        router.push('/home')
       }
     }, [loading, isAuthenticated])
 
