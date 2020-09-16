@@ -42,7 +42,7 @@ class CampaingsPage extends Component {
     }
 
     try {
-      const res = await API.get('/campanhase', config)
+      const res = await API.get('/campanhas', config)
       if (res.status === 200) {
         this.setState({
           campaigns: res.data.results || [],
