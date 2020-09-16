@@ -151,6 +151,30 @@ const GlobalStyles = createGlobalStyle`
     background-color: #4285F4;
   }
 
+  .curved {
+    background: #ff3c00;
+    color: #fff;
+    text-align: center;
+  }
+
+  .curved h1 {
+    font-size: 6rem;
+    margin-top: 0;
+  }
+
+  .curved p {
+    font-size: 1rem;
+    margin: 0 5rem 0 5rem;
+  }
+
+  .curved svg {
+    display: block
+  }
+
+  .curved.upper {
+    background: #fff;
+  }
+
   `
 
 export default GlobalStyles

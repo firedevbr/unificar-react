@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import React, { useState } from 'react'
-import StarRatingComponent from 'react-star-rating-component'
 import ReactStars from 'react-rating-stars-component'
 
 import {
@@ -45,24 +44,37 @@ const ConsultaPaciente = () => {
       )}
       {step === 3 && (
         <MDBBox>
-          <MDBCard testimonial>
-            <MDBCardUp className="indigo lighten-1" />
-            <MDBAvatar className="mx-auto white">
-              <img
-                src="https://mdbootstrap.com/img/Photos/Avatars/img%20%2810%29.jpg"
-                alt=""
+          <MDBBox className="curved">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 319">
+              <path
+                fill="#fff"
+                fillOpacity="1"
+                d="M0,160L48,176C96,192,192,224,288,218.7C384,213,480,171,576,144C672,117,768,107,864,128C960,149,1056,
+                203,1152,202.7C1248,203,1344,149,1392,122.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,
+                320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
               />
-            </MDBAvatar>
-            <MDBCardBody>
-              <h4 className="card-title">Anna Doe</h4>
-              <hr />
-              <p>
-                <MDBIcon icon="quote-left" /> Lorem ipsum dolor sit amet,
-                consectetur adipisicing elit. Eos, adipisci{' '}
-                <MDBIcon icon="quote-right" />
-              </p>
-            </MDBCardBody>
-          </MDBCard>
+            </svg>
+          </MDBBox>
+          <MDBBox flex="center">
+            <img
+              style={{ 'margin-top': '-300px', border: '10px solid white' }}
+              className="rounded-circle"
+              src="https://mdbootstrap.com/img/Photos/Avatars/img%20%2810%29.jpg"
+              alt=""
+            />
+          </MDBBox>
+
+          {/* <MDBBox className="curved upper">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 319">
+              <path
+                fill="#ff3c00"
+                fillOpacity="1"
+                d="M0,160L48,176C96,192,192,224,288,218.7C384,213,480,171,576,144C672,117,768,107,864,128C960,149,1056,
+                203,1152,202.7C1248,203,1344,149,1392,122.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,
+                320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+              />
+            </svg>
+          </MDBBox> */}
           <MDBRow className="mt-5 ">
             <MDBCol md="12" lg="4">
               <MDBTypography tag="h2" variant="h2" className="text-center">
