@@ -18,7 +18,7 @@ class CollpaseFilter extends Component {
     return (
       <>
         <IconButton
-          className="mt-3"
+          className="mt-md-3"
           onClick={this.toggleCollapse('filtersCollapse')}
         >
           <MDBIcon icon="sliders-h" /> Filtrar

@@ -5,12 +5,13 @@ const CampaingDetails = styled.div`
   display: flex;
   margin: 10px 30px;
   padding: 5px;
-  width: 100%;
+  width: 95%;
 
   .table {
     border: none;
     border-collapse: separate;
     border-spacing: 0;
+    margin: 0 auto;
 
     tr:first-child {
       th {
@@ -80,20 +81,26 @@ const CampaingDetails = styled.div`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     margin: 0;
     padding: 0;
+    width: 100%;
   }
 `
 const PaymentDetails = styled.div`
   margin: 10px 30px;
   padding: 5px;
+  width: 95%;
 
-  @media (max-width: 768px) {
-    margin: 0px 0px 0px -35px;
+  .table {
+    margin: 0px auto;
+  }
+
+  @media (max-width: 767px) {
+    margin: 0;
     overflow-x: scroll;
-    padding: 5px 15px;
-    width: 100vw;
+    padding: 0;
+    width: 96vw;
 
     .w-sm-helper {
       display: block;
@@ -102,10 +109,4 @@ const PaymentDetails = styled.div`
   }
 `
 
-const OrderContainer = styled.div`
-  width: 100%;
-  h2.title-orange {
-    font-size: 24px;
-  }
-`
-export { CampaingDetails, PaymentDetails, OrderContainer }
+export { CampaingDetails, PaymentDetails }

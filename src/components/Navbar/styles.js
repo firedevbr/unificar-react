@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Sidebar = styled.div`
   .logo {
-    height: 62px;
+    height: 76px;
     padding: 0 15px;
     margin-bottom: 2rem;
 

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { differenceInDays, parseISO } from 'date-fns'
 import { MDBCollapse, MDBInput } from 'mdbreact'
 
 import { useRouter } from 'next/router'
@@ -7,14 +6,15 @@ import { CampaignInfos, PaymentForm, TotalLabel } from './styles'
 
 import Title from './components/Title'
 import Time from './components/Time'
-import { getPercent, getTotalPrice, currencyFormat } from '~/utils/utils'
+import {
+  getPercent,
+  getOriginalPrice,
+  currencyFormat,
+  remainingDays
+} from '~/utils/utils'
 import Loading from '~/components/Loading'
 import ErrorModal from '~/components/ErrorModal'
 import API from '~/services/api'
-
-const remainingDays = (dataFim) => {
-  return differenceInDays(parseISO(dataFim), new Date())
-}
 
 const getParcelas = (total, valor_sinal) => {
   const parcelas = []
@@ -50,7 +50,7 @@ const ProductInfo = ({ campanha }) => {
     valor: campanha.valor
   })
   const [parcelas, updateParcelas] = useState([])
-  const totalProdutos = getTotalPrice(campanha.produtos)
+  const totalProdutos = getOriginalPrice(campanha.produtos)
   const [loading, updateLoading] = useState(false)
   const router = useRouter()
 
@@ -91,7 +91,7 @@ const ProductInfo = ({ campanha }) => {
       }
       return res
     } catch (err) {
-      throw new Error('Não foi possível finalizar o pedido!')
+      throw new Error('Não foi possível finalizar o pedido.')
     }
   }
 

@@ -14,15 +14,12 @@ import {
   MDBSideNavItem,
   MDBSideNavCat,
   MDBSideNavNav,
-  MDBSideNav,
-  MDBContainer,
-  MDBAnimation
+  MDBSideNav
 } from 'mdbreact'
-
 import * as Styled from './styles'
 import useAuth from '../../context/auth'
 
-const NavBar = ({ children }) => {
+const NavBar = ({ children, customMainClass }) => {
   const { user, loading, isAdmin } = useAuth()
 
   if (typeof window === 'undefined') {
@@ -59,7 +56,7 @@ const NavBar = ({ children }) => {
     paddingLeft: windowWidth > breakWidth ? '210px' : '16px'
   }
   const mainStyle = {
-    margin: '0 6%',
+    margin: '0',
     paddingTop: '2.5rem',
     paddingLeft: windowWidth > breakWidth ? '146px' : '0'
   }
@@ -227,8 +224,8 @@ const NavBar = ({ children }) => {
           </MDBNavbarNav>
         </MDBNavbar>
       </Styled.Navbar>
-      <main style={mainStyle}>
-        <div className="pt-5 h-100">{children}</div>
+      <main className={customMainClass} style={mainStyle}>
+        <div className="mt-5 ml-md-5 pl-md-5">{children}</div>
       </main>
     </div>
   )

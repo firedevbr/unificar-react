@@ -70,5 +70,16 @@ const SliderWrapper = styled.div`
     background-color: #4057e3;
   }
 `
-
-export { SliderWrapper }
+const ButtonSmall = styled.button`
+  background-color: #4057e3 !important;
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  height: 30px;
+  margin-right: 0px;
+  padding: 5px 20px !important;
+  text-transform: none;
+`
+export { SliderWrapper, ButtonSmall }

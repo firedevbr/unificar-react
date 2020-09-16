@@ -1,8 +1,23 @@
 import React from 'react'
 import Router from 'next/router'
 import { MDBBtn } from 'mdbreact'
-import ProgressBar from '~/components/ProgressBarCampaign'
-import { ItemWrapper, Price, Progress, ItemFooter } from './styles'
+import {
+  ItemWrapper,
+  Price,
+  ItemFooter,
+  ItemBody,
+  ItemHeader,
+  OriginalPrice
+} from './styles'
+import Time from '../CampaignInfos/components/Time'
+import {
+  getPercent,
+  remainingDays,
+  currencyFormat,
+  getDiscountPercent,
+  getOriginalPrice
+} from '~/utils/utils'
+import { BadgePercent } from '~/components/ProductGallery/styles'
 
 const ItemCampaign = ({
   id,
@@ -10,7 +25,9 @@ const ItemCampaign = ({
   valor,
   quantidade_pedidos_necessarios: total,
   quantidade_pedidos_confirmados: reservados,
-  imagens
+  imagens,
+  data_fim,
+  produtos
 }) => {
   let imgPath = '/assets/images/2020/07/22050670c8c11ee86d31cabbc94fc8b7.png'
   const imgIndex = imagens.findIndex((img) => img.imagem_principal === true)
@@ -18,23 +35,51 @@ const ItemCampaign = ({
     imgPath = imagens[imgIndex].caminho
   }
 
+  const discount = getDiscountPercent(valor, produtos)
+
   return (
     <ItemWrapper>
       <img className="img-fluid" alt="" src={`http://localhost${imgPath}`} />
-      <h3 className="text-truncate">{nome}</h3>
-      <Progress>
-        Progresso: {reservados}/{total}
-      </Progress>
-      <ProgressBar total={total} atual={reservados} />
-      <ItemFooter>
-        <Price>R$ {valor.toFixed(2)}</Price>
-        <MDBBtn
-          color="primary"
-          onClick={() => Router.push(`/pedidos?campanha=${id}`)}
+      {discount > 0 ? (
+        <BadgePercent
+          size="small"
+          position={{
+            top: '5px',
+            right: '5px',
+            mobile: { top: '5px', right: '5px' }
+          }}
         >
-          Reservar
-        </MDBBtn>
-      </ItemFooter>
+          {discount}%
+        </BadgePercent>
+      ) : (
+        ''
+      )}
+      <ItemBody>
+        <ItemHeader>
+          <h3 className="text-truncate">{nome}</h3>
+        </ItemHeader>
+        <Time
+          width={getPercent(reservados, total)}
+          days={remainingDays(data_fim)}
+          size="small"
+        />
+        <ItemFooter>
+          <div>
+            <OriginalPrice discount={discount}>
+              {discount > 0 ? `R$ ${getOriginalPrice(produtos)}` : 'por apenas'}
+            </OriginalPrice>
+            <Price>
+              R$ <span>{currencyFormat(valor)}</span>
+            </Price>
+          </div>
+          <MDBBtn
+            color="primary"
+            onClick={() => Router.push(`/pedidos?campanha=${id}`)}
+          >
+            Comprar
+          </MDBBtn>
+        </ItemFooter>
+      </ItemBody>
     </ItemWrapper>
   )
 }

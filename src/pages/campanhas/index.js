@@ -1,23 +1,34 @@
 import React, { Component } from 'react'
-import { MDBContainer, MDBRow, MDBCol, MDBSpinner } from 'mdbreact'
+import { MDBContainer, MDBRow, MDBCol } from 'mdbreact'
 
 import Layout from '~/components/layout'
 import Title from '~/components/Title'
 import ItemCampaign from '~/components/ItemCampaign'
 import API from '../../services/api'
-import { CampaignList, Divider, Container } from './styles'
+import { CampaignList, Divider } from './styles'
 
 import CollpaseFilter from '~/components/CollapseFilters'
 import CampaignContext from '~/context/campaign'
+import Loading from '~/components/Loading'
+import ErrorAlert from '~/components/Alerts/ErrorAlert'
 
-class TestPage extends Component {
+class CampaingsPage extends Component {
   state = {
     campaigns: [],
-    filteredCampaigns: []
+    filteredCampaigns: [],
+    loading: false,
+    error: ''
   }
 
   async componentDidMount() {
-    await this.fetchCampaigns()
+    this.setState({ loading: true })
+    try {
+      await this.fetchCampaigns()
+    } catch (err) {
+      this.setState({ error: err.message })
+    }
+
+    this.setState({ loading: false })
   }
 
   updateCampaignsList = (campaigns) => {
@@ -39,51 +50,66 @@ class TestPage extends Component {
         })
       }
     } catch (e) {
-      console.log(`deu ruim ${e}`)
+      throw new Error('Erro ao carregar campanhas.')
     }
   }
 
   render() {
-    const { filteredCampaigns } = this.state
+    const { filteredCampaigns, loading, error } = this.state
 
-    return filteredCampaigns.length === 0 ? (
-      <Container>
-        <MDBSpinner className="custom-blue" />
-      </Container>
-    ) : (
+    return (
       <Layout>
-        <MDBContainer fluid>
-          <CampaignContext.Provider
-            value={{
-              campaigns: this.state.campaigns,
-              updateCampaignsList: this.updateCampaignsList
-            }}
-          >
+        {loading && <Loading />}
+        {error ? (
+          <MDBContainer fluid>
             <MDBRow>
-              <MDBCol sm="5" className="ml-md-5">
-                <Title className="my-3 text-center title-orange">
-                  Campanhas
-                </Title>
-              </MDBCol>
-              <MDBCol sm="5">
-                <CollpaseFilter />
-              </MDBCol>
-              <MDBCol sm="12" className="mb-4 ml-md-5">
-                <Divider />
-              </MDBCol>
-              <MDBCol sm="12" className="ml-md-5">
-                <CampaignList>
-                  {filteredCampaigns.map((campaign) => (
-                    <ItemCampaign key={campaign.id} {...campaign} />
-                  ))}
-                </CampaignList>
+              <MDBCol
+                size="12"
+                className="d-flex justify-content-center text-center px-3 mt-5"
+              >
+                <ErrorAlert
+                  customClasses="mx-auto"
+                  message={error}
+                  linkRef="/"
+                  linkText="Voltar"
+                />
               </MDBCol>
             </MDBRow>
-          </CampaignContext.Provider>
-        </MDBContainer>
+          </MDBContainer>
+        ) : (
+          <MDBContainer fluid>
+            <CampaignContext.Provider
+              value={{
+                campaigns: this.state.campaigns,
+                updateCampaignsList: this.updateCampaignsList
+              }}
+            >
+              <MDBRow>
+                <MDBCol sm="5">
+                  <Title className="my-3 text-center title-orange">
+                    Campanhas
+                  </Title>
+                </MDBCol>
+                <MDBCol sm="5">
+                  <CollpaseFilter />
+                </MDBCol>
+                <MDBCol sm="12" className="mb-4">
+                  <Divider />
+                </MDBCol>
+                <MDBCol sm="12">
+                  <CampaignList>
+                    {filteredCampaigns.map((campaign) => (
+                      <ItemCampaign key={campaign.id} {...campaign} />
+                    ))}
+                  </CampaignList>
+                </MDBCol>
+              </MDBRow>
+            </CampaignContext.Provider>
+          </MDBContainer>
+        )}
       </Layout>
     )
   }
 }
 
-export default TestPage
+export default CampaingsPage

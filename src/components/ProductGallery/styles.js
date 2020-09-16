@@ -107,18 +107,18 @@ const GalleryProduct = styled.div`
     background-color: #717171;
   }
 `
-
 const BadgePercent = styled.span`
-  width: 50px;
-  height: 50px;
+  width: ${(props) => (props.size === 'small' ? '35px' : '50px')};
+  height: ${(props) => (props.size === 'small' ? '35px' : '50px')};
   border-radius: 50%;
   color: #fff;
   background: #2ec701;
-  position: absolute;
-  right: 18px;
-  top: 28px;
-  z-index: 2;
+  font-size: ${(props) => (props.size === 'small' ? '13px' : '18px')};
   font-weight: bold;
+  position: absolute;
+  right: ${(props) => (props.position ? props.position.right : '18px')};
+  top: ${(props) => (props.position ? props.position.top : '28px')};
+  z-index: 2;
 
   display: flex;
   align-items: center;
@@ -128,8 +128,9 @@ const BadgePercent = styled.span`
     height: 40px;
     width: 40px;
 
-    right: 43px;
-    top: 63px;
+    right: ${(props) =>
+      props.position ? props.position.mobile.right : '43px'};
+    top: ${(props) => (props.position ? props.position.mobile.top : '63px')};
   }
 `
 export { GalleryProduct, BadgePercent }

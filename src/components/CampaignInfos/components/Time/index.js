@@ -2,9 +2,9 @@ import React from 'react'
 
 import * as Styled from './styles'
 
-function Time({ width, days }) {
+function Time({ width, days, size }) {
   return (
-    <Styled.Time>
+    <Styled.Time size={size}>
       <div className="time">
         <span style={{ width: `${width}%` }} />
       </div>
