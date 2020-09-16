@@ -4,7 +4,6 @@ export const Sidebar = styled.div`
   .logo {
     height: 76px;
     padding: 0 15px;
-    border-bottom: 1px solid #f5f7fc;
     margin-bottom: 2rem;
 
     img {
@@ -16,7 +15,8 @@ export const Sidebar = styled.div`
   }
 
   .side-nav {
-    background-color: #ffffff;
+    background: #384c63;
+
     & .fa-angle-down.rotate-icon {
       top: 1.3rem;
       display: none;
@@ -38,16 +38,15 @@ export const Sidebar = styled.div`
 
       li {
         padding: 0 15px;
-        margin-bottom: 1.5rem;
 
         a.collapsible-header {
-          font-weight: bold;
-          font-size: 1rem;
-          color: #000;
+          font-size: 0.8rem;
+          font-weight: 300;
+          color: #fff;
 
           i {
             font-size: 1.2rem;
-            color: #4057e3;
+            color: #fff;
             margin-top: -3px;
           }
 
@@ -90,7 +89,7 @@ export const Navbar = styled.div`
       align-items: center;
     }
 
-    background: #4057e3;
+    background: #384e6e;
     color: #fff;
     height: 76px;
 

@@ -9,6 +9,10 @@ const GlobalStyles = createGlobalStyle`
 
     }
 
+    html, body, #__next, .white-skin, main {
+      height: 100%;
+    }
+
     body {
       background: #FFF;
       line-height: 1.3;
@@ -121,6 +125,62 @@ const GlobalStyles = createGlobalStyle`
 
   .bg-custom-grey {
     background-color: #F5F8FA;
+  }
+
+  .scrollbar {
+    overflow: scroll;
+  }
+
+  .scrollbar-only-y {
+    overflow-x: hidden;
+  }
+
+  .scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  /* custom colors  */
+  .scrollbar-primary::-webkit-scrollbar {
+    background-color: #F5F5F5;
+  }
+  .scrollbar-primary {
+    scrollbar-color: #4285f4 #f5f5f5;
+  }
+  .scrollbar-primary::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: #4285F4;
+  }
+
+  .curved {
+    background: #ff3c00;
+    color: #fff;
+    text-align: center;
+  }
+
+  .curved h1 {
+    font-size: 6rem;
+    margin-top: 0;
+  }
+
+  .curved p {
+    font-size: 1rem;
+    margin: 0 5rem 0 5rem;
+  }
+
+  .curved svg {
+    display: block
+  }
+
+  .curved.upper {
+    background: #fff;
   }
 
   `

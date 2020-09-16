@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 
 import { MDBModal, MDBModalBody, MDBInput } from "mdbreact";
-import Router, { useRouter } from 'next/router';
 
 import * as Styled from "./styles";
 import useAuth from "~/context/auth";
@@ -11,18 +10,10 @@ function ModalLogin({ modalStatus, setModal, activeItem, setActiveItem }) {
   const { login } = useAuth();
   const [cpf, setCpf] = useState(null);
   const [password, setPassword] = useState(null);
-  const router = useRouter();
-
 
   const submitLogin = (event) => {
     event.preventDefault();
-    try {
-      login(cpf, password);
-      router.push('/');
-      console.log("loged in");
-    } catch (err) {
-      console.log(err);
-    }
+    login(cpf, password);
   };
 
   const handleChangeCpf = (event) => {

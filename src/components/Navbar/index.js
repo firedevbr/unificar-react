@@ -73,7 +73,7 @@ const NavBar = ({ children, customMainClass }) => {
           className={sideOpen ? 'fixed' : 'bb'}
         >
           <MDBSideNavNav>
-            <div className="logo pl-5 pt-3">
+            <div className="logo pl-4 pt-3">
               <img
                 className="pointer"
                 src="/images/logo-colorido.png"
