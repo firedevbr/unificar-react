@@ -56,9 +56,10 @@ const ItemFooter = styled.div`
   width: 90%;
 
   button.btn-primary {
-    background-color: #4057e3 !important;
-    border-radius: 8px;
+    background-color: #384e6e !important;
+    border-radius: 2px;
     font-size: 13px;
+    font-weight: 600;
     height: 30px;
     padding: 5px 20px !important;
     text-transform: none;

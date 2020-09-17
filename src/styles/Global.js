@@ -102,17 +102,20 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .custom-blue {
-    color: #4057e3 !important;
+    color: #384e6e !important;
   }
 
-  .custom-orange {
-    color: #ffaa2b !important;
+  .bg-custom-orange {
+    background-color: #ffaa2b !important;
   }
 
   .bg-custom-blue {
     background-color: #4057e3 !important;
   }
 
+  .cutom-red {
+    color: #ff4a67 !important;
+  }
   .title-orange {
     color: #ffaa2b;
     font-weight: 600;

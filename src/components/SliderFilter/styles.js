@@ -22,7 +22,7 @@ const SliderWrapper = styled.div`
         background-color: #fff;
         border: 1.5px solid #eeeeee;
         border-radius: 4px;
-        color: #4057e3;
+        color: #384e6e;
         font-weight: 600;
         padding: 8px 10px;
         text-align: center;
@@ -34,8 +34,8 @@ const SliderWrapper = styled.div`
       justify-content: space-between;
       margin-top: 5px;
       .btn-outline-primary {
-        color: #4057e3 !important;
-        border: 2px solid #4057e3 !important;
+        color: #384e6e !important;
+        border: 2px solid #384e6e !important;
         margin-right: 0px;
       }
 
@@ -54,24 +54,24 @@ const SliderWrapper = styled.div`
   }
 
   .range-field input[type='range'] + .thumb {
-    background-color: #4057e3;
+    background-color: #384e6e;
     display: none; /* @TODO está com bug pra exibir o valor na tag acima do range, coloquei none pra não exibir */
   }
 
   input[type='range']::-webkit-slider-thumb {
-    background-color: #4057e3;
+    background-color: #384e6e;
   }
 
   input[type='range']::-moz-range-thumb {
-    background-color: #4057e3;
+    background-color: #384e6e;
   }
 
   input[type='range']::-ms-thumb {
-    background-color: #4057e3;
+    background-color: #384e6e;
   }
 `
 const ButtonSmall = styled.button`
-  background-color: #4057e3 !important;
+  background-color: #384e6e !important;
   border: none;
   border-radius: 8px;
   color: #ffffff;

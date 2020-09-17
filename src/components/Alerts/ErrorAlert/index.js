@@ -14,7 +14,7 @@ import { CardHeader } from './styles'
 
 const ErrorAlert = ({ message, linkRef, linkText }) => {
   return (
-    <MDBCol size="10" md="3">
+    <MDBCol size="10" md="4">
       <MDBCard>
         <CardHeader>
           <MDBIcon
@@ -27,7 +27,7 @@ const ErrorAlert = ({ message, linkRef, linkText }) => {
           <MDBCardTitle>Algo deu Errado</MDBCardTitle>
           <MDBCardText>{message || 'Página em manutenção'}</MDBCardText>
           <Link href={linkRef}>
-            <MDBBtn color="pink">{linkText}</MDBBtn>
+            <MDBBtn className="bg-cutom-red">{linkText}</MDBBtn>
           </Link>
         </MDBCardBody>
       </MDBCard>

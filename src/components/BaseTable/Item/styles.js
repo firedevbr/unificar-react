@@ -96,7 +96,7 @@ export const ProductItem = styled.tr`
       font-weight: 400;
 
       &.ok {
-        background: #2ec701;
+        background: #ffaa2b;
       }
 
       &.error {

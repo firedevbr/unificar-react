@@ -66,7 +66,7 @@ const NavBar = ({ children, customMainClass }) => {
   }
 
   return (
-    <div className={`fixed-sn white-skin ${loading === true && 'd-none'}`}>
+    <div className={`fixed-sn mdb-skin ${loading === true && 'd-none'}`}>
       <Styled.Sidebar>
         <MDBSideNav
           triggerOpening={toggleStateA}
