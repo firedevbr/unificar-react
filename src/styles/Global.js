@@ -109,6 +109,10 @@ const GlobalStyles = createGlobalStyle`
     background-color: #ffaa2b !important;
   }
 
+  .custom-orange {
+    color: #ffaa2b !important;
+  }
+
   .bg-custom-blue {
     background-color: #384e6e !important;
   }
