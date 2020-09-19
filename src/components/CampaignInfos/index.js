@@ -55,11 +55,11 @@ const ProductInfo = ({ campanha }) => {
   const router = useRouter()
 
   useEffect(() => {
-    if (!total.valor) {
+    if (total.valor) {
       updateTotal({ sinal: campanha.valor_sinal, valor: campanha.valor })
       updateParcelas(getParcelas(campanha.valor, campanha.valor_sinal))
     }
-  })
+  }, [])
 
   const handlePaymentChange = (e) => {
     updateFormaPagamento(e.target.value)
@@ -67,6 +67,7 @@ const ProductInfo = ({ campanha }) => {
 
   const handleQuantityChange = (e) => {
     const quantity = e.target.value
+    console.log(quantity)
     updateTotal({
       sinal: campanha.valor_sinal * quantity,
       valor: campanha.valor * quantity
@@ -192,7 +193,7 @@ const ProductInfo = ({ campanha }) => {
               required
             >
               {quantidade.map((option, index) => (
-                <option key={index} value={index + 2}>
+                <option key={index} value={index + 1}>
                   {index + 1}
                 </option>
               ))}

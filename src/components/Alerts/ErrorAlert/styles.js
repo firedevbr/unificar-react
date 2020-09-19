@@ -9,4 +9,12 @@ const CardHeader = styled.div`
   width: 100%;
 `
 
-export { CardHeader }
+const CardButton = styled.div`
+  background-color: #ff4a67;
+  color: #ffffff;
+  margin: 0px auto;
+  padding: 15px;
+  width: 50%;
+`
+
+export { CardHeader, CardButton }

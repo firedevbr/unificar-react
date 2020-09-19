@@ -23,8 +23,8 @@ export const TabsHeader = styled.div`
         color: #000;
         font-weight: 400;
         &.active {
-          color: #4057e3 !important;
-          border-bottom: 1px solid #4057e3;
+          color: #408db6 !important;
+          border-bottom: 1px solid #408db6;
         }
       }
     }

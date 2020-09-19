@@ -48,7 +48,7 @@ const ReservarPedido = () => {
           })
       }
     }
-  }, [])
+  }, [query.campanha])
 
   const renderError = () => (
     <MDBCol
@@ -75,7 +75,6 @@ const ReservarPedido = () => {
       <MDBCol size="12" md="6" lg="5">
         <CampaignInfos campanha={campanha} />
       </MDBCol>
-
       <MDBCol size="12">
         <ProductTabs />
       </MDBCol>

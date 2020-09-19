@@ -110,12 +110,9 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .bg-custom-blue {
-    background-color: #4057e3 !important;
+    background-color: #384e6e !important;
   }
 
-  .cutom-red {
-    color: #ff4a67 !important;
-  }
   .title-orange {
     color: #ffaa2b;
     font-weight: 600;
