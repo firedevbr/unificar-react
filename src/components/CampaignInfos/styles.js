@@ -69,28 +69,6 @@ const CampaignInfos = styled.div`
     flex-wrap: wrap;
     margin-top: 1rem;
 
-    /* .total-purchase__left {
-      display: flex;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      width: 100%;
-      p {
-        padding-top: 0.5rem;
-        margin-right: 15px;
-        color: #a6b1c3;
-        font-size: 1.1rem;
-        font-weight: 300;
-      }
-
-      select {
-        border: 1px solid #a6b1c3;
-        color: #a6b1c3;
-        outline: 0;
-        box-shadow: none;
-        max-width: 150px;
-      }
-    } */
-
     .total-purchase__right {
       width: 100%;
 
@@ -100,7 +78,7 @@ const CampaignInfos = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #4057e3;
+        background: #384e6e;
         border-radius: 5px;
         color: #f0f2f7;
         border: none;
@@ -118,15 +96,6 @@ const CampaignInfos = styled.div`
         display: flex;
         align-items: center;
         width: 60%;
-      }
-    }
-
-    .total-purchase {
-      .total-purchase__right {
-        width: 50%;
-        display: flex;
-        align-items: center;
-        padding-left: 15px;
       }
     }
   }
@@ -198,7 +167,7 @@ const PaymentForm = styled.form`
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #4057e3;
+        background: #384e6e;
         border-radius: 5px;
         color: #f0f2f7;
         border: none;

@@ -10,11 +10,11 @@ import {
 } from 'mdbreact'
 import Link from 'next/link'
 
-import { CardHeader } from './styles'
+import { CardHeader, CardButton } from './styles'
 
 const ErrorAlert = ({ message, linkRef, linkText }) => {
   return (
-    <MDBCol size="10" md="3">
+    <MDBCol size="10" md="4">
       <MDBCard>
         <CardHeader>
           <MDBIcon
@@ -27,7 +27,7 @@ const ErrorAlert = ({ message, linkRef, linkText }) => {
           <MDBCardTitle>Algo deu Errado</MDBCardTitle>
           <MDBCardText>{message || 'Página em manutenção'}</MDBCardText>
           <Link href={linkRef}>
-            <MDBBtn color="pink">{linkText}</MDBBtn>
+            <CardButton>{linkText}</CardButton>
           </Link>
         </MDBCardBody>
       </MDBCard>

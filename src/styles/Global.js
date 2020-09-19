@@ -102,7 +102,11 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .custom-blue {
-    color: #4057e3 !important;
+    color: #384e6e !important;
+  }
+
+  .bg-custom-orange {
+    background-color: #ffaa2b !important;
   }
 
   .custom-orange {
@@ -110,7 +114,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .bg-custom-blue {
-    background-color: #4057e3 !important;
+    background-color: #384e6e !important;
   }
 
   .title-orange {
