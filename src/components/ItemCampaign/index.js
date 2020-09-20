@@ -29,17 +29,17 @@ const ItemCampaign = ({
   data_fim,
   produtos
 }) => {
-  let imgPath = '/assets/images/2020/07/22050670c8c11ee86d31cabbc94fc8b7.png'
+  let imgPath = '/images/placeholder.png'
   const imgIndex = imagens.findIndex((img) => img.imagem_principal === true)
   if (imgIndex > -1) {
-    imgPath = imagens[imgIndex].caminho
+    imgPath = `http://localhost${imagens[imgIndex].caminho}`
   }
 
   const discount = getDiscountPercent(valor, produtos)
 
   return (
     <ItemWrapper>
-      <img className="img-fluid" alt="" src={`http://localhost${imgPath}`} />
+      <img className="img-fluid" alt="" src={imgPath} />
       {discount > 0 ? (
         <BadgePercent
           size="small"

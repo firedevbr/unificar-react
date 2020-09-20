@@ -1,5 +1,6 @@
 import Router from 'next/router'
 import React, { useState, useEffect } from 'react'
+import Link from 'next/link'
 
 import {
   MDBBadge,
@@ -106,7 +107,11 @@ const NavBar = ({ children, customMainClass }) => {
             </MDBSideNavCat>
 
             <MDBSideNavCat name="Cursos" id="categoria-cursos" icon="book-open">
-              <MDBSideNavItem>Ver cursos</MDBSideNavItem>
+              <MDBSideNavItem>
+                <Link href="/cursos">
+                  <a>Ver cursos</a>
+                </Link>
+              </MDBSideNavItem>
               <MDBSideNavItem>Meus Cursos</MDBSideNavItem>
               <MDBSideNavItem>Enviar curso</MDBSideNavItem>
             </MDBSideNavCat>
