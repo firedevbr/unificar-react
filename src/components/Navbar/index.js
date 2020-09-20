@@ -1,5 +1,6 @@
 import Router from 'next/router'
 import React, { useState, useEffect } from 'react'
+import Link from 'next/link'
 
 import {
   MDBBadge,
@@ -16,7 +17,7 @@ import {
   MDBSideNavNav,
   MDBSideNav
 } from 'mdbreact'
-import * as Styled from './styles'
+import { Sidebar, Navbar, NavbarNotification, NavbarUser } from './styles'
 import useAuth from '../../context/auth'
 
 const NavBar = ({ children, customMainClass }) => {
@@ -66,8 +67,8 @@ const NavBar = ({ children, customMainClass }) => {
   }
 
   return (
-    <div className={`fixed-sn mdb-skin ${loading === true && 'd-none'}`}>
-      <Styled.Sidebar>
+    <div className={`fixed-sn ${loading === true && 'd-none'}`}>
+      <Sidebar>
         <MDBSideNav
           triggerOpening={toggleStateA}
           className={sideOpen ? 'fixed' : 'bb'}
@@ -106,7 +107,11 @@ const NavBar = ({ children, customMainClass }) => {
             </MDBSideNavCat>
 
             <MDBSideNavCat name="Cursos" id="categoria-cursos" icon="book-open">
-              <MDBSideNavItem>Ver cursos</MDBSideNavItem>
+              <MDBSideNavItem>
+                <Link href="/cursos">
+                  <a>Ver cursos</a>
+                </Link>
+              </MDBSideNavItem>
               <MDBSideNavItem>Meus Cursos</MDBSideNavItem>
               <MDBSideNavItem>Enviar curso</MDBSideNavItem>
             </MDBSideNavCat>
@@ -148,9 +153,9 @@ const NavBar = ({ children, customMainClass }) => {
             </MDBSideNavCat>
           </MDBSideNavNav>
         </MDBSideNav>
-      </Styled.Sidebar>
+      </Sidebar>
 
-      <Styled.Navbar>
+      <Navbar>
         <MDBNavbar style={navStyle} double expand="md" fixed="top" scrolling>
           <MDBNavbarNav left>
             <MDBNavItem>
@@ -174,12 +179,12 @@ const NavBar = ({ children, customMainClass }) => {
           <MDBNavbarNav right style={specialCaseNavbarStyles}>
             <MDBNavItem>
               <MDBDropdown>
-                <Styled.NavbarNotification>
+                <NavbarNotification>
                   <MDBDropdownToggle nav caret>
                     <MDBBadge color="danger">3</MDBBadge>
                     <MDBIcon icon="bell" className="d-inline-inline" />
                   </MDBDropdownToggle>
-                </Styled.NavbarNotification>
+                </NavbarNotification>
                 <MDBDropdownMenu right>
                   <MDBDropdownItem href="#!">Action</MDBDropdownItem>
                   <MDBDropdownItem href="#!">Another Action</MDBDropdownItem>
@@ -195,7 +200,7 @@ const NavBar = ({ children, customMainClass }) => {
 
             <MDBNavItem>
               <MDBDropdown>
-                <Styled.NavbarUser>
+                <NavbarUser>
                   <MDBDropdownToggle nav caret>
                     <div className="user-photo">
                       <img
@@ -210,7 +215,7 @@ const NavBar = ({ children, customMainClass }) => {
                       </p>
                     </div>
                   </MDBDropdownToggle>
-                </Styled.NavbarUser>
+                </NavbarUser>
                 <MDBDropdownMenu right>
                   <MDBDropdownItem href="#!">Log out</MDBDropdownItem>
                   <MDBDropdownItem
@@ -223,7 +228,7 @@ const NavBar = ({ children, customMainClass }) => {
             </MDBNavItem>
           </MDBNavbarNav>
         </MDBNavbar>
-      </Styled.Navbar>
+      </Navbar>
       <main className={customMainClass} style={mainStyle}>
         <div className="mt-5 ml-md-5 pl-md-5">{children}</div>
       </main>

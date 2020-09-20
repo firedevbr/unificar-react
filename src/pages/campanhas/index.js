@@ -42,6 +42,7 @@ class CampaingsPage extends Component {
     }
 
     try {
+      console.log(config)
       const res = await API.get('/campanhas', config)
       if (res.status === 200) {
         this.setState({
@@ -50,6 +51,7 @@ class CampaingsPage extends Component {
         })
       }
     } catch (e) {
+      console.log(e)
       throw new Error('Erro ao carregar campanhas.')
     }
   }

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const CardHeader = styled.div`
   align-items: center;
-  background-color: #ff4a67;
+  background-color: #cc6329;
   display: flex;
   justify-content: center;
   height: 156px;
@@ -10,7 +10,7 @@ const CardHeader = styled.div`
 `
 
 const CardButton = styled.div`
-  background-color: #ff4a67;
+  background-color: #cc6329;
   color: #ffffff;
   margin: 0px auto;
   padding: 15px;

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Sidebar = styled.div`
+const Sidebar = styled.div`
   .logo {
     height: 76px;
     padding: 0 15px;
@@ -66,18 +66,30 @@ export const Sidebar = styled.div`
             }
           }
 
+          &:hover {
+            background-color: #34b5e5;
+          }
+
           background: transparent;
           padding: 27px 0 27px 15px;
           display: flex;
           align-items: center;
           border-radius: 5px;
+          transition: background-color 0.2s;
+        }
+
+        .collapsible-body ul li {
+          &:hover {
+            background-color: #34b5e5;
+            border-radius: 5px;
+          }
         }
       }
     }
   }
 `
 
-export const Navbar = styled.div`
+const Navbar = styled.div`
   width: 100%;
 
   .navbar {
@@ -106,7 +118,7 @@ export const Navbar = styled.div`
   }
 `
 
-export const NavbarNotification = styled.div`
+const NavbarNotification = styled.div`
   width: 100%;
   margin-right: 1rem;
 
@@ -119,7 +131,7 @@ export const NavbarNotification = styled.div`
   }
 `
 
-export const NavbarUser = styled.div`
+const NavbarUser = styled.div`
   width: 100%;
 
   .navbar .navbar-nav .nav-item a::after,
@@ -149,3 +161,5 @@ export const NavbarUser = styled.div`
     }
   }
 `
+
+export { Navbar, NavbarNotification, NavbarUser, Sidebar }
