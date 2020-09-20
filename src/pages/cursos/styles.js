@@ -83,30 +83,29 @@ const SearchBar = styled.div`
   align-items: center;
   background-color: #f5f8fa;
   display: flex;
+  justify-content: center;
   height: 90px;
+  margin-top: -15px;
   width: 100%;
 
   form {
     display: flex;
     justify-content: left;
-    margin-left: 80px;
     width: 50%;
   }
 
   input {
     border: 1px solid #ffffff;
+    ${(props) => props.error && `border: 2px solid #cc6329;`}
     border-radius: 20px 0px 0px 20px;
+    color: #a8a8b3;
     flex-grow: 1;
     font-weight: 300;
     height: 40px;
     padding-left: 20px;
 
     &:focus {
-      border: 1px solid #384e6e;
-      outline: none;
-    }
-
-    *:focus {
+      border: 0;
       outline: none;
     }
 
