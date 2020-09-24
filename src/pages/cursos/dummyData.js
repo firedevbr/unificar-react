@@ -1,7 +1,19 @@
 const courses = [
   {
     title: 'A Really Nice Course Title That Goes for 2 Lines',
-    instructor: 'Course Instructor',
+    description:
+      'Watto skywalker moff c-3p0 moff. Organa thrawn grievous chewbacca solo. Padmé organa moff boba organa mandalore',
+    highlights: [
+      'First important thing',
+      'Second nice thing of the course',
+      'Third and most exciting topic!'
+    ],
+    bestseller: true,
+    duration: 20.0,
+    instructor: {
+      name: 'Course Instructor',
+      img: '/images/profile_placeholder.png'
+    },
     price: '3780,90',
     originalPrice: '4120,00',
     img: '/images/course1.png'
@@ -9,42 +21,111 @@ const courses = [
   {
     title:
       'A really nice course title that goes above 2 lines and hide the rest',
-    instructor: 'Course Instructor',
+    description:
+      'Watto skywalker moff c-3p0 moff. Organa thrawn grievous chewbacca solo. Padmé organa moff boba organa mandalore',
+    highlights: [
+      'First important thing',
+      'Second nice thing of the course',
+      'Third and most exciting topic!'
+    ],
+    bestseller: true,
+    duration: 20.0,
+    instructor: {
+      name: 'Course Instructor',
+      img: '/images/profile1.PNG'
+    },
     price: '2000,00',
     originalPrice: '3200,00',
     img: '/images/course3.jpg'
   },
   {
     title: 'A Really Nice Course Title',
-    instructor: 'Another Instructor',
+    description:
+      'Watto skywalker moff c-3p0 moff. Organa thrawn grievous chewbacca solo. Padmé organa moff boba organa mandalore',
+    highlights: [
+      'First important thing',
+      'Second nice thing of the course',
+      'Third and most exciting topic!'
+    ],
+    bestseller: true,
+    duration: 20.0,
+    instructor: {
+      name: 'Another Instructor',
+      img: '/images/profile2.PNG'
+    },
     price: '999,90',
     originalPrice: '1499,99',
     img: '/images/course2.jpg'
   },
   {
     title: 'Curso de médico',
-    instructor: 'Course Instructor',
+    description:
+      'Watto skywalker moff c-3p0 moff. Organa thrawn grievous chewbacca solo. Padmé organa moff boba organa mandalore',
+    highlights: [
+      'First important thing',
+      'Second nice thing of the course',
+      'Third and most exciting topic!'
+    ],
+    bestseller: true,
+    duration: 20.0,
+    instructor: {
+      name: 'Course Instructor',
+      img: '/images/profile3.PNG'
+    },
     price: '1500,00',
     originalPrice: '1999,99',
     img: '/images/course1.png'
   },
   {
     title: 'A doctors course',
-    instructor: '',
+    description:
+      'Watto skywalker moff c-3p0 moff. Organa thrawn grievous chewbacca solo. Padmé organa moff boba organa mandalore',
+    highlights: [
+      'First important thing',
+      'Second nice thing of the course',
+      'Third and most exciting topic!'
+    ],
+    bestseller: true,
+    duration: 20.0,
+    instructor: { name: 'Dr. House', img: '/images/profile4.PNG' },
     price: '7467,90',
     originalPrice: '5345,70',
     img: '/images/course3.jpg'
   },
   {
     title: 'A Really Nice Course Title That Goes for 2 Lines',
-    instructor: 'Course Instructor',
+    description:
+      'Watto skywalker moff c-3p0 moff. Organa thrawn grievous chewbacca solo. Padmé organa moff boba organa mandalore',
+    highlights: [
+      'First important thing',
+      'Second nice thing of the course',
+      'Third and most exciting topic!'
+    ],
+    bestseller: true,
+    duration: 20.0,
+    instructor: {
+      name: 'Course Instructor',
+      img: '/images/profile5.PNG'
+    },
     price: '1899,90',
     originalPrice: '2349,99',
     img: '/images/course2.jpg'
   },
   {
     title: 'A Really Nice Course Title',
-    instructor: 'Course Instructor',
+    description:
+      'Watto skywalker moff c-3p0 moff. Organa thrawn grievous chewbacca solo. Padmé organa moff boba organa mandalore',
+    highlights: [
+      'First important thing',
+      'Second nice thing of the course',
+      'Third and most exciting topic!'
+    ],
+    bestseller: true,
+    duration: 20.0,
+    instructor: {
+      name: 'Course Instructor',
+      img: '/images/profile1.PNG'
+    },
     price: '6500,00',
     originalPrice: '6299,99',
     img: '/images/course1.png'

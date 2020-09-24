@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 
 import { MDBRow, MDBContainer, MDBCol, MDBIcon } from 'mdbreact'
 import Layout from '~/components/layout'
+import Course from './components/Course'
 
-import { ItemCourse, Courses, SearchBar } from './styles'
+import { Courses, SearchBar } from './styles'
 
 import coursesSample from './dummyData'
 
@@ -15,7 +16,6 @@ const Cursos = () => {
   useEffect(() => {
     setCourses(coursesSample)
     setFilteredCourses(coursesSample)
-    console.log('run')
   }, [])
 
   const handleSearch = (e) => {
@@ -53,28 +53,7 @@ const Cursos = () => {
             <Courses>
               {filteredCourses &&
                 filteredCourses.map((course, idx) => (
-                  <ItemCourse key={idx}>
-                    <img
-                      src={course.img}
-                      className="img-fluid"
-                      alt="course cover"
-                    />
-                    <div>
-                      <h2>{course.title}</h2>
-                      <p className="instructor">{course.instructor}</p>
-                      <span className="amber-text">
-                        <MDBIcon size="xs" icon="star" />
-                        <MDBIcon size="xs" icon="star" />
-                        <MDBIcon size="xs" icon="star" />
-                        <MDBIcon size="xs" icon="star" />
-                        <MDBIcon size="xs" icon="star-half-alt" />
-                      </span>
-                      <p className="price">
-                        {`R$ ${course.price}`}
-                        <span>{`R$ ${course.originalPrice}`}</span>
-                      </p>
-                    </div>
-                  </ItemCourse>
+                  <Course key={idx} course={course} />
                 ))}
             </Courses>
           </MDBCol>

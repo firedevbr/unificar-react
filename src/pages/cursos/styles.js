@@ -1,57 +1,5 @@
 import styled from 'styled-components'
 
-const ItemCourse = styled.div`
-  -webkit-box-shadow: 0px 0px 6px #00000029;
-  -moz-box-shadow: 0px 0px 6px #00000029;
-  box-shadow: 0px 0px 6px #00000029;
-  height: 300px;
-  margin: 0px 10px 30px;
-  width: 258px;
-
-  img {
-    height: 168px;
-    width: 100%;
-  }
-
-  div {
-    padding: 10px 10px;
-
-    h2 {
-      color: #333333;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 22px;
-      margin-bottom: 2px;
-      height: 45px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .instructor {
-      color: #a6b1c3;
-      font-size: 14px;
-      margin-bottom: 5px;
-    }
-
-    .price {
-      color: #cc6329;
-      font-size: 16px;
-      font-weight: 600;
-
-      span {
-        color: #a6b1c3;
-        font-size: 14px;
-        font-weight: 300;
-        margin-left: 10px;
-        text-decoration: line-through;
-      }
-    }
-  }
-`
-
 const PageCover = styled.div`
   height: 430px;
   margin-left: -10px;
@@ -139,4 +87,4 @@ const SearchBar = styled.div`
     }
   }
 `
-export { ItemCourse, PageCover, Courses, SearchBar }
+export { PageCover, Courses, SearchBar }
