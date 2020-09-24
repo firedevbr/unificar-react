@@ -168,6 +168,10 @@ const ItemCourseDetails = styled.div`
       background-color: ${lighten(0.1, '#384e6e')};
     }
   }
+
+  @media (max-width: 768px) {
+    left: -10%;
+  }
 `
 
 export { ItemCourse, ItemCourseDetails }
