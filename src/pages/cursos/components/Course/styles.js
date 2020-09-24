@@ -59,7 +59,13 @@ const ItemCourse = styled.div`
     z-index: 1;
   }
 
-  @media (min-width: 1493px) {
+  @media (min-width: 1786px) {
+    &:nth-child(5n) .course-details {
+      left: -40%;
+    }
+  }
+
+  @media (min-width: 1493px) and (max-width: 1785px) {
     &:nth-child(4n) .course-details {
       left: -40%;
     }
@@ -108,7 +114,7 @@ const ItemCourseDetails = styled.div`
     }
     p {
       color: #a6b1c3;
-      font-weight: 400;
+      font-weight: 500;
       margin: 0;
     }
   }
