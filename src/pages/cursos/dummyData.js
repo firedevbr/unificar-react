@@ -1,5 +1,6 @@
 const courses = [
   {
+    id: 1,
     title: 'A Really Nice Course Title That Goes for 2 Lines',
     description:
       'Watto skywalker moff c-3p0 moff. Organa thrawn grievous chewbacca solo. Padmé organa moff boba organa mandalore',
@@ -19,6 +20,7 @@ const courses = [
     img: '/images/course1.png'
   },
   {
+    id: 2,
     title:
       'A really nice course title that goes above 2 lines and hide the rest',
     description:
@@ -39,6 +41,7 @@ const courses = [
     img: '/images/course3.jpg'
   },
   {
+    id: 3,
     title: 'A Really Nice Course Title',
     description:
       'Watto skywalker moff c-3p0 moff. Organa thrawn grievous chewbacca solo. Padmé organa moff boba organa mandalore',
@@ -58,6 +61,7 @@ const courses = [
     img: '/images/course2.jpg'
   },
   {
+    id: 4,
     title: 'Curso de médico',
     description:
       'Watto skywalker moff c-3p0 moff. Organa thrawn grievous chewbacca solo. Padmé organa moff boba organa mandalore',
@@ -77,6 +81,7 @@ const courses = [
     img: '/images/course1.png'
   },
   {
+    id: 5,
     title: 'A doctors course',
     description:
       'Watto skywalker moff c-3p0 moff. Organa thrawn grievous chewbacca solo. Padmé organa moff boba organa mandalore',
@@ -93,6 +98,7 @@ const courses = [
     img: '/images/course3.jpg'
   },
   {
+    id: 6,
     title: 'A Really Nice Course Title That Goes for 2 Lines',
     description:
       'Watto skywalker moff c-3p0 moff. Organa thrawn grievous chewbacca solo. Padmé organa moff boba organa mandalore',
@@ -112,6 +118,7 @@ const courses = [
     img: '/images/course2.jpg'
   },
   {
+    id: 7,
     title: 'A Really Nice Course Title',
     description:
       'Watto skywalker moff c-3p0 moff. Organa thrawn grievous chewbacca solo. Padmé organa moff boba organa mandalore',
