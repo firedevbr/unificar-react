@@ -65,6 +65,52 @@ const ItemCart = styled.li`
       text-decoration: line-through;
     }
   }
+
+  @media (min-width: 1024px) and (max-width: 1200px) {
+    margin-left: auto !important;
+    margin-right: auto;
+    width: 90%;
+  }
+
+  @media (max-width: 1200px) {
+    margin-left: 0px;
+  }
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+    margin-left: 0px;
+
+    .information {
+      flex-grow: 1;
+      max-width: 200px;
+
+      p {
+        font-size: 14px;
+      }
+
+      span {
+        font-size: 12px;
+      }
+    }
+
+    button {
+      font-size: 12px;
+      margin-left: 100px;
+      margin-top: 20px;
+    }
+
+    .price {
+      margin-top: 20px;
+
+      p {
+        font-size: 14px;
+      }
+
+      span {
+        font-size: 12px;
+      }
+    }
+  }
 `
 
 export { ItemCart }

@@ -5,18 +5,11 @@ import { ItemCart } from './styles'
 
 import { currencyFormat } from '~/utils/utils'
 
-import courses from '../../../cursos/dummyData'
-
-const loadProductsList = () => {
-  const jsonList = localStorage.getItem('products')
-
-  return JSON.parse(jsonList) || courses.slice(0, 2)
-}
-const CartList = () => {
+const CartList = ({ productList }) => {
   const [products, setProducts] = useState()
 
   useEffect(() => {
-    setProducts(loadProductsList())
+    setProducts(productList)
   }, [])
 
   return (
