@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { MDBRow, MDBContainer, MDBCol, MDBIcon } from 'mdbreact'
 import Layout from '~/components/layout'
 import Course from './components/Course'
+import CartState from '~/context/CartState'
 
 import { Courses, SearchBar } from './styles'
 
@@ -33,33 +34,35 @@ const Cursos = () => {
     setFilteredCourses(result)
   }
   return (
-    <Layout>
-      <MDBContainer fluid>
-        <MDBRow>
-          <SearchBar error={searchError}>
-            <form onSubmit={handleSearch}>
-              <input
-                type="text"
-                name="searchCourse"
-                placeholder="buscar cursos"
-              />
-              <button type="submit">
-                Buscar
-                <MDBIcon icon="search" />
-              </button>
-            </form>
-          </SearchBar>
-          <MDBCol size="12" className="mt-5">
-            <Courses>
-              {filteredCourses &&
-                filteredCourses.map((course, idx) => (
-                  <Course key={idx} course={course} />
-                ))}
-            </Courses>
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
-    </Layout>
+    <CartState>
+      <Layout>
+        <MDBContainer fluid>
+          <MDBRow>
+            <SearchBar error={searchError}>
+              <form onSubmit={handleSearch}>
+                <input
+                  type="text"
+                  name="searchCourse"
+                  placeholder="buscar cursos"
+                />
+                <button type="submit">
+                  Buscar
+                  <MDBIcon icon="search" />
+                </button>
+              </form>
+            </SearchBar>
+            <MDBCol size="12" className="mt-5">
+              <Courses>
+                {filteredCourses &&
+                  filteredCourses.map((course, idx) => (
+                    <Course key={idx} course={course} />
+                  ))}
+              </Courses>
+            </MDBCol>
+          </MDBRow>
+        </MDBContainer>
+      </Layout>
+    </CartState>
   )
 }
 

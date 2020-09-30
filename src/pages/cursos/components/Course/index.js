@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useCallback, useContext } from 'react'
 import { MDBIcon } from 'mdbreact'
-
 import { ItemCourse, ItemCourseDetails } from './styles'
+import CartContext from '~/context/cart-context'
 
 const Course = ({ course }) => {
+  const context = useContext(CartContext)
+  const handleOnclick = useCallback(
+    (product) => {
+      context.addToCart(product)
+      console.log(context)
+    },
+    [course]
+  )
+
   return (
     <ItemCourse>
       <img src={course.img} className="img-fluid" alt="course cover" />
@@ -42,7 +51,9 @@ const Course = ({ course }) => {
             </li>
           ))}
         </ul>
-        <button type="button">Adicionar ao Carrinho</button>
+        <button onClick={() => handleOnclick(course)} type="button">
+          Adicionar ao Carrinho
+        </button>
       </ItemCourseDetails>
     </ItemCourse>
   )

@@ -8,7 +8,7 @@ const ItemCart = styled.li`
   -moz-box-shadow: 0px 0px 1px #00000029;
   box-shadow: 0px 0px 1px #00000029;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-left: 45px;
   padding: 10px 5px;
 
@@ -23,6 +23,7 @@ const ItemCart = styled.li`
   }
 
   .information {
+    flex-grow: 1;
     max-width: 350px;
 
     p {

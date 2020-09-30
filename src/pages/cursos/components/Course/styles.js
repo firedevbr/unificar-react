@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { lighten, shade } from 'polished'
+import { lighten } from 'polished'
 
 const ItemCourse = styled.div`
   -webkit-box-shadow: 0px 0px 6px #00000029;

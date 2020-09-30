@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { lighten } from 'polished'
 
 const CheckoutWrapper = styled.div`
   display: flex;
@@ -35,6 +36,11 @@ const CheckoutWrapper = styled.div`
     font-weight: 500;
     padding: 15px 0;
     width: 200px;
+    transition: 0.2s background-color;
+
+    &:hover {
+      background-color: ${lighten(0.1, '#cc6329')};
+    }
   }
 
   @media (min-width: 768px) and (max-width: 1200px) {

@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useContext } from 'react'
 import { MDBIcon } from 'mdbreact'
-
+import CartContext from '~/context/cart-context'
 import { ItemCart } from './styles'
 
 import { currencyFormat } from '~/utils/utils'
 
-const CartList = ({ productList }) => {
-  const [products, setProducts] = useState()
+const CartList = () => {
+  const cartContext = useContext(CartContext)
 
-  useEffect(() => {
-    setProducts(productList)
+  const handleOnClick = useCallback((id) => {
+    cartContext.removeFromCart(id)
   }, [])
+
+  const { cart: products } = cartContext
 
   return (
     <ul>
@@ -22,7 +24,9 @@ const CartList = ({ productList }) => {
               <p>{product.title}</p>
               <span>{product.instructor.name}</span>
             </div>
-            <button type="button">Remove</button>
+            <button onClick={() => handleOnClick(product.id)} type="button">
+              Remove
+            </button>
             <div className="price">
               <p>
                 {`R$ ${currencyFormat(product.price)}`}
