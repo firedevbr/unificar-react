@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 import { lighten } from 'polished'
+import { animated } from 'react-spring'
 
-const ItemCart = styled.li`
+const ItemCart = styled(animated.li)`
   align-items: center;
   border: 1px solid #f5f5f5;
   -webkit-box-shadow: 0px 0px 1px #00000029;

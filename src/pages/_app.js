@@ -8,6 +8,7 @@ import 'bootstrap-css-only/css/bootstrap.min.css'
 import 'mdbreact/dist/css/mdb.css'
 
 import { AuthProvider } from '../context/auth'
+import { CartProvider } from '../context/CartContext'
 
 class MyApp extends App {
   render() {
@@ -18,7 +19,9 @@ class MyApp extends App {
         <GlobalStyle />
         <GlobalFonts />
         <AuthProvider>
-          <Component {...pageProps} />
+          <CartProvider>
+            <Component {...pageProps} />
+          </CartProvider>
         </AuthProvider>
       </>
     )

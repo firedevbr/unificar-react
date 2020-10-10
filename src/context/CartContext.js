@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from 'react'
-
-import CartContext from './cart-context'
+import React, { useState, useEffect, useCallback, useContext } from 'react'
 import { loadShopList, addToShopList, removeById, findById } from '~/utils/cart'
 
-const CartState = (props) => {
+const CartContext = React.createContext({
+  cart: [],
+  addToCart: () => {},
+  removeFromCart: () => {}
+})
+
+const CartProvider = (props) => {
   const [cart, setCart] = useState([])
 
   useEffect(() => {
     setCart(loadShopList())
   }, [])
 
-  const addToCart = (product) => {
+  const addToCart = useCallback((product) => {
     console.log(`adding to cart ${product}`)
     const exists = findById(product.id)
     if (exists) {
@@ -18,13 +22,13 @@ const CartState = (props) => {
     }
     addToShopList(product)
     setCart(loadShopList())
-  }
+  }, [])
 
-  const removeFromCart = (productId) => {
+  const removeFromCart = useCallback((productId) => {
     console.log(`Removing from cart ${productId}`)
     removeById(productId)
     setCart(loadShopList())
-  }
+  }, [])
 
   return (
     <CartContext.Provider
@@ -39,4 +43,14 @@ const CartState = (props) => {
   )
 }
 
-export default CartState
+const useCart = () => {
+  const context = useContext(CartContext)
+
+  if (!context) {
+    throw new Error('useCart must be used within a CartProvider')
+  }
+
+  return context
+}
+
+export { CartProvider, useCart }
