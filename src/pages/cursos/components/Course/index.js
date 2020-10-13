@@ -1,9 +1,11 @@
 import React from 'react'
 import { MDBIcon } from 'mdbreact'
-
 import { ItemCourse, ItemCourseDetails } from './styles'
+import { useCart } from '~/context/CartContext'
 
 const Course = ({ course }) => {
+  const { addToCart } = useCart()
+
   return (
     <ItemCourse>
       <img src={course.img} className="img-fluid" alt="course cover" />
@@ -42,7 +44,9 @@ const Course = ({ course }) => {
             </li>
           ))}
         </ul>
-        <button type="button">Adicionar ao Carrinho</button>
+        <button onClick={() => addToCart(course)} type="button">
+          Adicionar ao Carrinho
+        </button>
       </ItemCourseDetails>
     </ItemCourse>
   )
