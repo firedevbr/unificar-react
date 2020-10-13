@@ -115,6 +115,11 @@ const Navbar = styled.div`
     .dropdown-toggle::after {
       display: none;
     }
+
+    .navbar-nav .nav-item .dropdown a.dropdown-item {
+      color: #212529;
+      font-weight: 400;
+    }
   }
 `
 
