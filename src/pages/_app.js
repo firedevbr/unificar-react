@@ -7,8 +7,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 import 'bootstrap-css-only/css/bootstrap.min.css'
 import 'mdbreact/dist/css/mdb.css'
 
-import { AuthProvider } from '../context/auth'
-import { CartProvider } from '../context/CartContext'
+import AppProvider from '../context/index'
 
 class MyApp extends App {
   render() {
@@ -18,11 +17,9 @@ class MyApp extends App {
       <>
         <GlobalStyle />
         <GlobalFonts />
-        <AuthProvider>
-          <CartProvider>
-            <Component {...pageProps} />
-          </CartProvider>
-        </AuthProvider>
+        <AppProvider>
+          <Component {...pageProps} />
+        </AppProvider>
       </>
     )
   }

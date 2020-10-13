@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { MDBIcon } from 'mdbreact'
 import { ItemCourse, ItemCourseDetails } from './styles'
 import { useCart } from '~/context/CartContext'
+import { useToast } from '~/context/ToastContext'
 
 const Course = ({ course }) => {
   const { addToCart } = useCart()
+  const { addToast } = useToast()
+
+  const handleOnClick = useCallback((course) => {
+    addToCart(course)
+    addToast({
+      type: 'success',
+      text: 'Produto adicionado ao carrinho!'
+    })
+  }, [])
 
   return (
     <ItemCourse>
@@ -44,7 +54,7 @@ const Course = ({ course }) => {
             </li>
           ))}
         </ul>
-        <button onClick={() => addToCart(course)} type="button">
+        <button onClick={() => handleOnClick(course)} type="button">
           Adicionar ao Carrinho
         </button>
       </ItemCourseDetails>
