@@ -1,24 +1,20 @@
 import React from 'react'
-import { MDBIcon } from 'mdbreact'
-import { useToast } from '~/context/ToastContext'
+import { useTransition } from 'react-spring'
 
-import { Container, Toast } from './styles'
+import Toast from './Toast'
+import { Container } from './styles'
 
 const ToastContainer = ({ messages }) => {
-  const { removeToast } = useToast()
+  const messagesTransitions = useTransition(messages, (message) => message.id, {
+    from: { right: '-120%', opacity: '0' },
+    enter: { right: '0%', opacity: '1' },
+    leave: { right: '-120%', opacity: '0' }
+  })
   return (
     <Container>
-      {messages &&
-        messages.map((message) => (
-          <Toast key={message.id} type={message.type}>
-            <MDBIcon icon="info-circle" size={20} />
-            <div>
-              <strong>{message.text}</strong>
-            </div>
-            <button type="button" onClick={() => removeToast(message.id)}>
-              <MDBIcon icon="times" />
-            </button>
-          </Toast>
+      {messagesTransitions &&
+        messagesTransitions.map(({ item, key, props }) => (
+          <Toast key={key} message={item} style={props} />
         ))}
     </Container>
   )
