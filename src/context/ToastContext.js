@@ -17,14 +17,12 @@ const ToastProvider = ({ children }) => {
       ...message
     }
     setMessages((prevState) => [...prevState, toast])
-    console.log('add toast')
   }, [])
 
   const removeToast = useCallback((id) => {
     setMessages((prevState) => {
       return prevState.filter((message) => message.id !== id)
     })
-    console.log('remove toast')
   }, [])
   return (
     <ToastContext.Provider value={{ addToast, removeToast }}>

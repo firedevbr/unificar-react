@@ -7,9 +7,9 @@ import { ToastProvider } from './ToastContext'
 const AppProvider = ({ children }) => {
   return (
     <AuthProvider>
-      <CartProvider>
-        <ToastProvider>{children}</ToastProvider>
-      </CartProvider>
+      <ToastProvider>
+        <CartProvider>{children}</CartProvider>
+      </ToastProvider>
     </AuthProvider>
   )
 }

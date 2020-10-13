@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react'
 import { loadShopList, addToShopList, removeById, findById } from '~/utils/cart'
+import { useToast } from './ToastContext'
 
 const CartContext = React.createContext({
   cart: [],
@@ -9,23 +10,31 @@ const CartContext = React.createContext({
 
 const CartProvider = (props) => {
   const [cart, setCart] = useState([])
+  const { addToast } = useToast()
 
   useEffect(() => {
     setCart(loadShopList())
   }, [])
 
   const addToCart = useCallback((product) => {
-    console.log(`adding to cart ${product}`)
     const exists = findById(product.id)
     if (exists) {
+      addToast({
+        type: 'error',
+        text: 'Produto já existe no carrinho'
+      })
+
       return false
     }
     addToShopList(product)
     setCart(loadShopList())
+    addToast({
+      type: 'success',
+      text: 'Produto adicionado ao carrinho!'
+    })
   }, [])
 
   const removeFromCart = useCallback((productId) => {
-    console.log(`Removing from cart ${productId}`)
     removeById(productId)
     setCart(loadShopList())
   }, [])
