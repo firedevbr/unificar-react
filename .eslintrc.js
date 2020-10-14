@@ -28,6 +28,7 @@ module.exports = {
     'react/no-array-index-key': 'off',
     'react/state-in-constructor': 'off',
     'react/prop-types': 'off',
+    'react/jsx-props-no-spreading': 'off',
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
     'import/no-unresolved': [2, { ignore: ['^~'] }],
     'import/extensions': ['error', 'never'],

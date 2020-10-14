@@ -6,4 +6,15 @@ const Divider = styled.div`
   border-top: 1px solid #f5f5f5;
 `
 
-export { Divider }
+const KeepShopping = styled.div`
+  align-items: center;
+  border: 1px solid #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 20px auto;
+  padding: 15px;
+  width: 90%;
+`
+
+export { Divider, KeepShopping }
