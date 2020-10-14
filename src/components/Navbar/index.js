@@ -1,7 +1,6 @@
 import Router from 'next/router'
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
-
 import {
   MDBBadge,
   MDBNavbar,
@@ -17,11 +16,14 @@ import {
   MDBSideNavNav,
   MDBSideNav
 } from 'mdbreact'
-import { Sidebar, Navbar, NavbarNotification, NavbarUser } from './styles'
+
+import { Sidebar, Navbar, CustomNavItem, NavbarUser } from './styles'
 import useAuth from '../../context/auth'
+import { useCart } from '../../context/CartContext'
 
 const NavBar = ({ children, customMainClass }) => {
   const { user, loading, isAdmin } = useAuth()
+  const { cart } = useCart()
 
   if (typeof window === 'undefined') {
     global.window = {}
@@ -177,14 +179,35 @@ const NavBar = ({ children, customMainClass }) => {
             />
           </MDBNavbarNav>
           <MDBNavbarNav right style={specialCaseNavbarStyles}>
+            {cart.length > 0 && (
+              <MDBNavItem>
+                <CustomNavItem>
+                  <MDBBadge color="danger">{cart.length}</MDBBadge>
+                  <Link href="/carrinho">
+                    <a>
+                      <MDBIcon
+                        icon="shopping-cart"
+                        size="md"
+                        className="d-inline-inline"
+                      />
+                    </a>
+                  </Link>
+                </CustomNavItem>
+              </MDBNavItem>
+            )}
+
             <MDBNavItem>
               <MDBDropdown>
-                <NavbarNotification>
+                <CustomNavItem>
                   <MDBDropdownToggle nav caret>
                     <MDBBadge color="danger">3</MDBBadge>
-                    <MDBIcon icon="bell" className="d-inline-inline" />
+                    <MDBIcon
+                      icon="bell"
+                      size="md"
+                      className="d-inline-inline"
+                    />
                   </MDBDropdownToggle>
-                </NavbarNotification>
+                </CustomNavItem>
                 <MDBDropdownMenu right>
                   <MDBDropdownItem href="#!">Action</MDBDropdownItem>
                   <MDBDropdownItem href="#!">Another Action</MDBDropdownItem>

@@ -19,7 +19,7 @@ const Carrinho = () => {
             </Title>
           </MDBCol>
           <Divider />
-          <MDBCol size="12" xl="9">
+          <MDBCol size="12" xl="9" className="mb-2">
             {cart.length > 0 && <CartList productList={cart} />}
           </MDBCol>
           <MDBCol size="12" xl="3">
