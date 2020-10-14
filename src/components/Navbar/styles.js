@@ -123,16 +123,23 @@ const Navbar = styled.div`
   }
 `
 
-const NavbarNotification = styled.div`
+const CustomNavItem = styled.div`
+  align-items: center;
+  display: flex;
   width: 100%;
   margin-right: 1rem;
 
-  .badge-danger {
-    margin-right: 10px;
+  .badge {
+    align-items: center;
+    display: flex;
+    font-size: 12px !important;
+    font-weight: 500;
+    height: 15px !important;
+    padding: 9px 5px !important;
   }
 
-  i {
-    font-size: 1.5rem;
+  .badge-danger {
+    margin-right: 10px;
   }
 `
 
@@ -167,4 +174,4 @@ const NavbarUser = styled.div`
   }
 `
 
-export { Navbar, NavbarNotification, NavbarUser, Sidebar }
+export { Navbar, CustomNavItem, NavbarUser, Sidebar }
